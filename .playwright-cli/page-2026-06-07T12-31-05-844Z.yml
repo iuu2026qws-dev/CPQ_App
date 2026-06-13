@@ -1,0 +1,467 @@
+- generic [ref=e48]:
+  - complementary [ref=e49]:
+    - generic [ref=e50]:
+      - heading "SmartCPQ" [level=1] [ref=e51]
+      - generic [ref=e52]: 智能配置报价
+    - navigation [ref=e53]:
+      - link "产品目录" [ref=e54] [cursor=pointer]:
+        - /url: /catalog
+        - img [ref=e56]
+        - generic [ref=e58]: 产品目录
+      - link "BOM管理" [ref=e59] [cursor=pointer]:
+        - /url: /bom
+        - img [ref=e61]
+        - generic [ref=e65]: BOM管理
+      - link "替代品管理" [ref=e66] [cursor=pointer]:
+        - /url: /supersession
+        - img [ref=e68]
+        - generic [ref=e71]: 替代品管理
+      - link "配置规则" [ref=e72] [cursor=pointer]:
+        - /url: /config
+        - img [ref=e74]
+        - generic [ref=e76]: 配置规则
+      - link "价格手册" [ref=e77] [cursor=pointer]:
+        - /url: /pricing/book
+        - img [ref=e79]
+        - generic [ref=e83]: 价格手册
+      - link "定价规则" [ref=e84] [cursor=pointer]:
+        - /url: /pricing/rule
+        - img [ref=e86]
+        - generic [ref=e88]: 定价规则
+      - link "阶梯定价" [ref=e89] [cursor=pointer]:
+        - /url: /pricing/volumetier
+        - img [ref=e91]
+        - generic [ref=e93]: 阶梯定价
+      - link "渠道价格" [ref=e94] [cursor=pointer]:
+        - /url: /pricing/channelprice
+        - img [ref=e96]
+        - generic [ref=e98]: 渠道价格
+      - link "汇率配置" [ref=e99] [cursor=pointer]:
+        - /url: /pricing/currencyrate
+        - img [ref=e101]
+        - generic [ref=e105]: 汇率配置
+  - main [ref=e106]:
+    - generic [ref=e107]:
+      - navigation "面包屑" [ref=e108]:
+        - generic [ref=e109]:
+          - link "首页" [ref=e110]
+          - text: /
+        - link "产品目录" [ref=e112]
+      - button "疯狂的狮子Li" [ref=e115]:
+        - text: 疯狂的狮子Li
+        - img [ref=e119]
+    - generic [ref=e122]:
+      - generic [ref=e123]:
+        - heading "产品目录" [level=2] [ref=e124]
+        - paragraph [ref=e125]: 浏览产品分类树与产品模型
+      - generic [ref=e127]:
+        - textbox "输入关键词搜索，多个关键词用逗号分隔" [ref=e129]
+        - button "搜索" [ref=e132] [cursor=pointer]:
+          - img [ref=e134]
+          - generic [ref=e136]: 搜索
+      - generic [ref=e137]:
+        - generic [ref=e139]:
+          - strong [ref=e141]: 产品分类
+          - tree [ref=e143]:
+            - treeitem "产品族 工业机器人" [expanded] [ref=e144]:
+              - generic [ref=e145] [cursor=pointer]:
+                - img [ref=e147]
+                - generic [ref=e149]:
+                  - generic [ref=e151]: 产品族
+                  - generic [ref=e152]: 工业机器人
+              - group [ref=e153]:
+                - treeitem "产品线 焊接机器人" [expanded] [ref=e154]:
+                  - generic [ref=e155] [cursor=pointer]:
+                    - img [ref=e157]
+                    - generic [ref=e159]:
+                      - generic [ref=e161]: 产品线
+                      - generic [ref=e162]: 焊接机器人
+                  - group [ref=e163]:
+                    - treeitem "产品系列 ARC弧焊系列" [expanded] [ref=e164]:
+                      - generic [ref=e166] [cursor=pointer]:
+                        - generic [ref=e168]: 产品系列
+                        - generic [ref=e169]: ARC弧焊系列
+                      - group
+                    - treeitem "产品系列 SPOT点焊系列" [expanded] [ref=e170]:
+                      - generic [ref=e172] [cursor=pointer]:
+                        - generic [ref=e174]: 产品系列
+                        - generic [ref=e175]: SPOT点焊系列
+                      - group
+                    - treeitem "产品系列 LASER激光焊接系列" [expanded] [ref=e176]:
+                      - generic [ref=e178] [cursor=pointer]:
+                        - generic [ref=e180]: 产品系列
+                        - generic [ref=e181]: LASER激光焊接系列
+                      - group
+                - treeitem "产品线 搬运与码垛机器人" [expanded] [ref=e182]:
+                  - generic [ref=e183] [cursor=pointer]:
+                    - img [ref=e185]
+                    - generic [ref=e187]:
+                      - generic [ref=e189]: 产品线
+                      - generic [ref=e190]: 搬运与码垛机器人
+                  - group [ref=e191]:
+                    - treeitem "产品系列 PAL码垛系列" [expanded] [ref=e192]:
+                      - generic [ref=e194] [cursor=pointer]:
+                        - generic [ref=e196]: 产品系列
+                        - generic [ref=e197]: PAL码垛系列
+                      - group
+                    - treeitem "产品系列 AGV自动导引系列" [expanded] [ref=e198]:
+                      - generic [ref=e200] [cursor=pointer]:
+                        - generic [ref=e202]: 产品系列
+                        - generic [ref=e203]: AGV自动导引系列
+                      - group
+                    - treeitem "产品系列 HEAVY重载系列" [expanded] [ref=e204]:
+                      - generic [ref=e206] [cursor=pointer]:
+                        - generic [ref=e208]: 产品系列
+                        - generic [ref=e209]: HEAVY重载系列
+                      - group
+                - treeitem "产品线 协作机器人" [expanded] [ref=e210]:
+                  - generic [ref=e211] [cursor=pointer]:
+                    - img [ref=e213]
+                    - generic [ref=e215]:
+                      - generic [ref=e217]: 产品线
+                      - generic [ref=e218]: 协作机器人
+                  - group [ref=e219]:
+                    - treeitem "产品系列 COBOT通用协作系列" [expanded] [ref=e220]:
+                      - generic [ref=e222] [cursor=pointer]:
+                        - generic [ref=e224]: 产品系列
+                        - generic [ref=e225]: COBOT通用协作系列
+                      - group
+                    - treeitem "产品系列 PREC精密装配系列" [expanded] [ref=e226]:
+                      - generic [ref=e228] [cursor=pointer]:
+                        - generic [ref=e230]: 产品系列
+                        - generic [ref=e231]: PREC精密装配系列
+                      - group
+                    - treeitem "产品系列 SAFE力控协作系列" [expanded] [ref=e232]:
+                      - generic [ref=e234] [cursor=pointer]:
+                        - generic [ref=e236]: 产品系列
+                        - generic [ref=e237]: SAFE力控协作系列
+                      - group
+                - treeitem "产品线 喷涂与涂装机器人" [expanded] [ref=e238]:
+                  - generic [ref=e239] [cursor=pointer]:
+                    - img [ref=e241]
+                    - generic [ref=e243]:
+                      - generic [ref=e245]: 产品线
+                      - generic [ref=e246]: 喷涂与涂装机器人
+                  - group [ref=e247]:
+                    - treeitem "产品系列 PAINT精密喷涂系列" [expanded] [ref=e248]:
+                      - generic [ref=e250] [cursor=pointer]:
+                        - generic [ref=e252]: 产品系列
+                        - generic [ref=e253]: PAINT精密喷涂系列
+                      - group
+                    - treeitem "产品系列 COAT自动涂装系列" [expanded] [ref=e254]:
+                      - generic [ref=e256] [cursor=pointer]:
+                        - generic [ref=e258]: 产品系列
+                        - generic [ref=e259]: COAT自动涂装系列
+                      - group
+                    - treeitem "产品系列 SEAL涂胶密封系列" [expanded] [ref=e260]:
+                      - generic [ref=e262] [cursor=pointer]:
+                        - generic [ref=e264]: 产品系列
+                        - generic [ref=e265]: SEAL涂胶密封系列
+                      - group
+            - treeitem "产品族 家用机器人" [expanded] [ref=e266]:
+              - generic [ref=e267] [cursor=pointer]:
+                - img [ref=e269]
+                - generic [ref=e271]:
+                  - generic [ref=e273]: 产品族
+                  - generic [ref=e274]: 家用机器人
+              - group [ref=e275]:
+                - treeitem "产品线 清洁机器人" [expanded] [ref=e276]:
+                  - generic [ref=e277] [cursor=pointer]:
+                    - img [ref=e279]
+                    - generic [ref=e281]:
+                      - generic [ref=e283]: 产品线
+                      - generic [ref=e284]: 清洁机器人
+                  - group [ref=e285]:
+                    - treeitem "产品系列 SWEEP扫拖一体系列" [expanded] [ref=e286]:
+                      - generic [ref=e288] [cursor=pointer]:
+                        - generic [ref=e290]: 产品系列
+                        - generic [ref=e291]: SWEEP扫拖一体系列
+                      - group
+                    - treeitem "产品系列 NAVI视觉导航系列" [expanded] [ref=e292]:
+                      - generic [ref=e294] [cursor=pointer]:
+                        - generic [ref=e296]: 产品系列
+                        - generic [ref=e297]: NAVI视觉导航系列
+                      - group
+                    - treeitem "产品系列 DEEP商用清洁系列" [expanded] [ref=e298]:
+                      - generic [ref=e300] [cursor=pointer]:
+                        - generic [ref=e302]: 产品系列
+                        - generic [ref=e303]: DEEP商用清洁系列
+                      - group
+                - treeitem "产品线 教育与编程机器人" [expanded] [ref=e304]:
+                  - generic [ref=e305] [cursor=pointer]:
+                    - img [ref=e307]
+                    - generic [ref=e309]:
+                      - generic [ref=e311]: 产品线
+                      - generic [ref=e312]: 教育与编程机器人
+                  - group [ref=e313]:
+                    - treeitem "产品系列 STEM科教启蒙系列" [expanded] [ref=e314]:
+                      - generic [ref=e316] [cursor=pointer]:
+                        - generic [ref=e318]: 产品系列
+                        - generic [ref=e319]: STEM科教启蒙系列
+                      - group
+                    - treeitem "产品系列 CODE编程进阶系列" [expanded] [ref=e320]:
+                      - generic [ref=e322] [cursor=pointer]:
+                        - generic [ref=e324]: 产品系列
+                        - generic [ref=e325]: CODE编程进阶系列
+                      - group
+                    - treeitem "产品系列 BUILD创意搭建系列" [expanded] [ref=e326]:
+                      - generic [ref=e328] [cursor=pointer]:
+                        - generic [ref=e330]: 产品系列
+                        - generic [ref=e331]: BUILD创意搭建系列
+                      - group
+                - treeitem "产品线 陪伴与服务机器人" [expanded] [ref=e332]:
+                  - generic [ref=e333] [cursor=pointer]:
+                    - img [ref=e335]
+                    - generic [ref=e337]:
+                      - generic [ref=e339]: 产品线
+                      - generic [ref=e340]: 陪伴与服务机器人
+                  - group [ref=e341]:
+                    - treeitem "产品系列 PET仿生宠物系列" [expanded] [ref=e342]:
+                      - generic [ref=e344] [cursor=pointer]:
+                        - generic [ref=e346]: 产品系列
+                        - generic [ref=e347]: PET仿生宠物系列
+                      - group
+                    - treeitem "产品系列 COMP智能陪护系列" [expanded] [ref=e348]:
+                      - generic [ref=e350] [cursor=pointer]:
+                        - generic [ref=e352]: 产品系列
+                        - generic [ref=e353]: COMP智能陪护系列
+                      - group
+                    - treeitem "产品系列 ELDER养老辅助系列" [expanded] [ref=e354]:
+                      - generic [ref=e356] [cursor=pointer]:
+                        - generic [ref=e358]: 产品系列
+                        - generic [ref=e359]: ELDER养老辅助系列
+                      - group
+            - treeitem "产品族 具身智能机器人" [expanded] [ref=e360]:
+              - generic [ref=e361] [cursor=pointer]:
+                - img [ref=e363]
+                - generic [ref=e365]:
+                  - generic [ref=e367]: 产品族
+                  - generic [ref=e368]: 具身智能机器人
+              - group [ref=e369]:
+                - treeitem "产品线 人形机器人" [expanded] [ref=e370]:
+                  - generic [ref=e371] [cursor=pointer]:
+                    - img [ref=e373]
+                    - generic [ref=e375]:
+                      - generic [ref=e377]: 产品线
+                      - generic [ref=e378]: 人形机器人
+                  - group [ref=e379]:
+                    - treeitem "产品系列 BIPED双足人形系列" [expanded] [ref=e380]:
+                      - generic [ref=e382] [cursor=pointer]:
+                        - generic [ref=e384]: 产品系列
+                        - generic [ref=e385]: BIPED双足人形系列
+                      - group
+                    - treeitem "产品系列 WHEEL轮式人形系列" [expanded] [ref=e386]:
+                      - generic [ref=e388] [cursor=pointer]:
+                        - generic [ref=e390]: 产品系列
+                        - generic [ref=e391]: WHEEL轮式人形系列
+                      - group
+                    - treeitem "产品系列 HUMANOID全尺寸系列" [expanded] [ref=e392]:
+                      - generic [ref=e394] [cursor=pointer]:
+                        - generic [ref=e396]: 产品系列
+                        - generic [ref=e397]: HUMANOID全尺寸系列
+                      - group
+                - treeitem "产品线 商用服务机器人" [expanded] [ref=e398]:
+                  - generic [ref=e399] [cursor=pointer]:
+                    - img [ref=e401]
+                    - generic [ref=e403]:
+                      - generic [ref=e405]: 产品线
+                      - generic [ref=e406]: 商用服务机器人
+                  - group [ref=e407]:
+                    - treeitem "产品系列 RECEPTION智能接待系列" [expanded] [ref=e408]:
+                      - generic [ref=e410] [cursor=pointer]:
+                        - generic [ref=e412]: 产品系列
+                        - generic [ref=e413]: RECEPTION智能接待系列
+                      - group
+                    - treeitem "产品系列 DELIVERY物流配送系列" [expanded] [ref=e414]:
+                      - generic [ref=e416] [cursor=pointer]:
+                        - generic [ref=e418]: 产品系列
+                        - generic [ref=e419]: DELIVERY物流配送系列
+                      - group
+                    - treeitem "产品系列 RETAIL商用零售系列" [expanded] [ref=e420]:
+                      - generic [ref=e422] [cursor=pointer]:
+                        - generic [ref=e424]: 产品系列
+                        - generic [ref=e425]: RETAIL商用零售系列
+                      - group
+                - treeitem "产品线 特种作业机器人" [expanded] [ref=e426]:
+                  - generic [ref=e427] [cursor=pointer]:
+                    - img [ref=e429]
+                    - generic [ref=e431]:
+                      - generic [ref=e433]: 产品线
+                      - generic [ref=e434]: 特种作业机器人
+                  - group [ref=e435]:
+                    - treeitem "产品系列 INSPECT智能巡检系列" [expanded] [ref=e436]:
+                      - generic [ref=e438] [cursor=pointer]:
+                        - generic [ref=e440]: 产品系列
+                        - generic [ref=e441]: INSPECT智能巡检系列
+                      - group
+                    - treeitem "产品系列 RESCUE应急救援系列" [expanded] [ref=e442]:
+                      - generic [ref=e444] [cursor=pointer]:
+                        - generic [ref=e446]: 产品系列
+                        - generic [ref=e447]: RESCUE应急救援系列
+                      - group
+                    - treeitem "产品系列 MARINE水下作业系列" [expanded] [ref=e448]:
+                      - generic [ref=e450] [cursor=pointer]:
+                        - generic [ref=e452]: 产品系列
+                        - generic [ref=e453]: MARINE水下作业系列
+                      - group
+        - generic [ref=e455]:
+          - strong [ref=e457]: ARC弧焊系列
+          - generic [ref=e460]:
+            - table [ref=e462]:
+              - rowgroup [ref=e471]:
+                - row "产品编码 产品名称 类型 状态 基准价 分类路径" [ref=e472]:
+                  - columnheader [ref=e473]
+                  - columnheader "产品编码" [ref=e474]:
+                    - generic [ref=e475]: 产品编码
+                  - columnheader "产品名称" [ref=e476]:
+                    - generic [ref=e477]: 产品名称
+                  - columnheader "类型" [ref=e478]:
+                    - generic [ref=e479]: 类型
+                  - columnheader "状态" [ref=e480]:
+                    - generic [ref=e481]: 状态
+                  - columnheader "基准价" [ref=e482]:
+                    - generic [ref=e483]: 基准价
+                  - columnheader "分类路径" [ref=e484]:
+                    - generic [ref=e485]: 分类路径
+            - table [ref=e497]:
+              - rowgroup [ref=e506]:
+                - row "收起当前行 RW-ARC-160 ARC-160 紧凑型弧焊机器人 STANDARD ACTIVE 185000.00 工业机器人 > 焊接机器人 > ARC弧焊系列" [ref=e599]:
+                  - cell "收起当前行" [ref=e600]:
+                    - button "收起当前行" [expanded] [active] [ref=e601] [cursor=pointer]:
+                      - img [ref=e512]
+                  - cell "RW-ARC-160" [ref=e514]:
+                    - generic [ref=e515]: RW-ARC-160
+                  - cell "ARC-160 紧凑型弧焊机器人" [ref=e516]:
+                    - generic [ref=e517]: ARC-160 紧凑型弧焊机器人
+                  - cell "STANDARD" [ref=e518]:
+                    - generic [ref=e521]: STANDARD
+                  - cell "ACTIVE" [ref=e522]:
+                    - generic [ref=e525]: ACTIVE
+                  - cell "185000.00" [ref=e526]:
+                    - generic [ref=e527]: "185000.00"
+                  - cell "工业机器人 > 焊接机器人 > ARC弧焊系列" [ref=e528]:
+                    - generic [ref=e529]: 工业机器人 > 焊接机器人 > ARC弧焊系列
+                - 'row "变体管理（RW-ARC-160） 新增变体 变体编码 变体名称 属性 基础价 默认 操作 ARC-A-A-YW SLAM ArcBot A 黄色(已更新) 颜色: 工程黄 ¥188000.00 默认 编辑 删除 RW-ARC-160-BLU ARC-160 蓝色款 颜色: 工业蓝 ¥185000.00 - 编辑 删除 RW-ARC-160-GRY ARC-160 灰色款 颜色: 深灰 ¥185000.00 - 编辑 删除" [ref=e602]':
+                  - 'cell "变体管理（RW-ARC-160） 新增变体 变体编码 变体名称 属性 基础价 默认 操作 ARC-A-A-YW SLAM ArcBot A 黄色(已更新) 颜色: 工程黄 ¥188000.00 默认 编辑 删除 RW-ARC-160-BLU ARC-160 蓝色款 颜色: 工业蓝 ¥185000.00 - 编辑 删除 RW-ARC-160-GRY ARC-160 灰色款 颜色: 深灰 ¥185000.00 - 编辑 删除" [ref=e603]':
+                    - generic [ref=e604]:
+                      - generic [ref=e605]:
+                        - generic [ref=e606]: 变体管理（RW-ARC-160）
+                        - button "新增变体" [ref=e607] [cursor=pointer]:
+                          - generic [ref=e608]: 新增变体
+                      - generic [ref=e610]:
+                        - table [ref=e612]:
+                          - rowgroup [ref=e620]:
+                            - row "变体编码 变体名称 属性 基础价 默认 操作" [ref=e621]:
+                              - columnheader "变体编码" [ref=e622]:
+                                - generic [ref=e623]: 变体编码
+                              - columnheader "变体名称" [ref=e624]:
+                                - generic [ref=e625]: 变体名称
+                              - columnheader "属性" [ref=e626]:
+                                - generic [ref=e627]: 属性
+                              - columnheader "基础价" [ref=e628]:
+                                - generic [ref=e629]: 基础价
+                              - columnheader "默认" [ref=e630]:
+                                - generic [ref=e631]: 默认
+                              - columnheader "操作" [ref=e632]:
+                                - generic [ref=e633]: 操作
+                        - table [ref=e638]:
+                          - rowgroup [ref=e646]:
+                            - 'row "ARC-A-A-YW SLAM ArcBot A 黄色(已更新) 颜色: 工程黄 ¥188000.00 默认 编辑 删除" [ref=e647]':
+                              - cell "ARC-A-A-YW" [ref=e648]:
+                                - generic [ref=e649]: ARC-A-A-YW
+                              - cell "SLAM ArcBot A 黄色(已更新)" [ref=e650]:
+                                - generic [ref=e651]: SLAM ArcBot A 黄色(已更新)
+                              - 'cell "颜色: 工程黄" [ref=e652]':
+                                - generic [ref=e653]: "颜色: 工程黄"
+                              - cell "¥188000.00" [ref=e654]:
+                                - generic [ref=e655]: ¥188000.00
+                              - cell "默认" [ref=e656]:
+                                - generic [ref=e659]: 默认
+                              - cell "编辑 删除" [ref=e660]:
+                                - generic [ref=e661]:
+                                  - button "编辑" [ref=e662] [cursor=pointer]:
+                                    - generic [ref=e663]: 编辑
+                                  - button "删除" [ref=e664] [cursor=pointer]:
+                                    - generic [ref=e665]: 删除
+                            - 'row "RW-ARC-160-BLU ARC-160 蓝色款 颜色: 工业蓝 ¥185000.00 - 编辑 删除" [ref=e666]':
+                              - cell "RW-ARC-160-BLU" [ref=e667]:
+                                - generic [ref=e668]: RW-ARC-160-BLU
+                              - cell "ARC-160 蓝色款" [ref=e669]:
+                                - generic [ref=e670]: ARC-160 蓝色款
+                              - 'cell "颜色: 工业蓝" [ref=e671]':
+                                - generic [ref=e672]: "颜色: 工业蓝"
+                              - cell "¥185000.00" [ref=e673]:
+                                - generic [ref=e674]: ¥185000.00
+                              - cell "-" [ref=e675]:
+                                - generic [ref=e676]: "-"
+                              - cell "编辑 删除" [ref=e677]:
+                                - generic [ref=e678]:
+                                  - button "编辑" [ref=e679] [cursor=pointer]:
+                                    - generic [ref=e680]: 编辑
+                                  - button "删除" [ref=e681] [cursor=pointer]:
+                                    - generic [ref=e682]: 删除
+                            - 'row "RW-ARC-160-GRY ARC-160 灰色款 颜色: 深灰 ¥185000.00 - 编辑 删除" [ref=e683]':
+                              - cell "RW-ARC-160-GRY" [ref=e684]:
+                                - generic [ref=e685]: RW-ARC-160-GRY
+                              - cell "ARC-160 灰色款" [ref=e686]:
+                                - generic [ref=e687]: ARC-160 灰色款
+                              - 'cell "颜色: 深灰" [ref=e688]':
+                                - generic [ref=e689]: "颜色: 深灰"
+                              - cell "¥185000.00" [ref=e690]:
+                                - generic [ref=e691]: ¥185000.00
+                              - cell "-" [ref=e692]:
+                                - generic [ref=e693]: "-"
+                              - cell "编辑 删除" [ref=e694]:
+                                - generic [ref=e695]:
+                                  - button "编辑" [ref=e696] [cursor=pointer]:
+                                    - generic [ref=e697]: 编辑
+                                  - button "删除" [ref=e698] [cursor=pointer]:
+                                    - generic [ref=e699]: 删除
+                - row "展开当前行 RW-ARC-200 ARC-200 标准型弧焊机器人 STANDARD ACTIVE 258000.00 工业机器人 > 焊接机器人 > ARC弧焊系列" [ref=e530]:
+                  - cell "展开当前行" [ref=e531]:
+                    - button "展开当前行" [ref=e533] [cursor=pointer]:
+                      - img [ref=e535]
+                  - cell "RW-ARC-200" [ref=e537]:
+                    - generic [ref=e538]: RW-ARC-200
+                  - cell "ARC-200 标准型弧焊机器人" [ref=e539]:
+                    - generic [ref=e540]: ARC-200 标准型弧焊机器人
+                  - cell "STANDARD" [ref=e541]:
+                    - generic [ref=e544]: STANDARD
+                  - cell "ACTIVE" [ref=e545]:
+                    - generic [ref=e548]: ACTIVE
+                  - cell "258000.00" [ref=e549]:
+                    - generic [ref=e550]: "258000.00"
+                  - cell "工业机器人 > 焊接机器人 > ARC弧焊系列" [ref=e551]:
+                    - generic [ref=e552]: 工业机器人 > 焊接机器人 > ARC弧焊系列
+                - row "展开当前行 RW-ARC-200P ARC-200P 增强型弧焊机器人 ATO ACTIVE 328000.00 工业机器人 > 焊接机器人 > ARC弧焊系列" [ref=e553]:
+                  - cell "展开当前行" [ref=e554]:
+                    - button "展开当前行" [ref=e556] [cursor=pointer]:
+                      - img [ref=e558]
+                  - cell "RW-ARC-200P" [ref=e560]:
+                    - generic [ref=e561]: RW-ARC-200P
+                  - cell "ARC-200P 增强型弧焊机器人" [ref=e562]:
+                    - generic [ref=e563]: ARC-200P 增强型弧焊机器人
+                  - cell "ATO" [ref=e564]:
+                    - generic [ref=e567]: ATO
+                  - cell "ACTIVE" [ref=e568]:
+                    - generic [ref=e571]: ACTIVE
+                  - cell "328000.00" [ref=e572]:
+                    - generic [ref=e573]: "328000.00"
+                  - cell "工业机器人 > 焊接机器人 > ARC弧焊系列" [ref=e574]:
+                    - generic [ref=e575]: 工业机器人 > 焊接机器人 > ARC弧焊系列
+                - row "展开当前行 RW-ARC-250 ARC-250 大型弧焊机器人 ATO ACTIVE 398000.00 工业机器人 > 焊接机器人 > ARC弧焊系列" [ref=e576]:
+                  - cell "展开当前行" [ref=e577]:
+                    - button "展开当前行" [ref=e579] [cursor=pointer]:
+                      - img [ref=e581]
+                  - cell "RW-ARC-250" [ref=e583]:
+                    - generic [ref=e584]: RW-ARC-250
+                  - cell "ARC-250 大型弧焊机器人" [ref=e585]:
+                    - generic [ref=e586]: ARC-250 大型弧焊机器人
+                  - cell "ATO" [ref=e587]:
+                    - generic [ref=e590]: ATO
+                  - cell "ACTIVE" [ref=e591]:
+                    - generic [ref=e594]: ACTIVE
+                  - cell "398000.00" [ref=e595]:
+                    - generic [ref=e596]: "398000.00"
+                  - cell "工业机器人 > 焊接机器人 > ARC弧焊系列" [ref=e597]:
+                    - generic [ref=e598]: 工业机器人 > 焊接机器人 > ARC弧焊系列

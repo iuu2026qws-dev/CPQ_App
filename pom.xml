@@ -361,8 +361,8 @@
     </dependencyManagement>
 
     <modules>
-        <module>ruoyi-admin</module>
-        <module>ruoyi-common</module>
+        <module>ruoyi-admin 2</module>
+        <module>ruoyi-common 2</module>
         <module>ruoyi-extend</module>
         <module>ruoyi-modules</module>
     </modules>

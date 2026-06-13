@@ -1,0 +1,135 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17] [cursor=pointer]:
+        - img [ref=e18]
+        - generic [ref=e19]: SmartCPQ
+      - menubar [ref=e23]:
+        - menuitem "系统管理" [ref=e24]:
+          - generic [ref=e25] [cursor=pointer]:
+            - generic [ref=e27]: 系统管理
+            - img [ref=e29]
+        - menuitem "系统工具" [ref=e31]:
+          - generic [ref=e32] [cursor=pointer]:
+            - generic [ref=e34]: 系统工具
+            - img [ref=e36]
+        - menuitem "我的任务" [ref=e38]:
+          - generic [ref=e39] [cursor=pointer]:
+            - generic [ref=e41]: 我的任务
+            - img [ref=e43]
+        - menuitem "CPQ管理" [expanded] [ref=e45]:
+          - generic [ref=e46] [cursor=pointer]:
+            - generic [ref=e48]: CPQ管理
+            - img [ref=e50]
+          - menu [ref=e52]:
+            - menuitem "首页工作台" [ref=e53] [cursor=pointer]:
+              - generic [ref=e54]: 首页工作台
+            - menuitem "配置报价" [ref=e55]:
+              - generic [ref=e56] [cursor=pointer]:
+                - generic [ref=e57]: 配置报价
+                - img [ref=e59]
+            - menuitem "报价管理" [ref=e61]:
+              - generic [ref=e62] [cursor=pointer]:
+                - generic [ref=e63]: 报价管理
+                - img [ref=e65]
+            - menuitem "方案管理" [ref=e67]:
+              - generic [ref=e68] [cursor=pointer]:
+                - generic [ref=e69]: 方案管理
+                - img [ref=e71]
+            - menuitem "审批中心" [ref=e73]:
+              - generic [ref=e74] [cursor=pointer]:
+                - generic [ref=e75]: 审批中心
+                - img [ref=e77]
+            - menuitem "售前协同" [ref=e79]:
+              - generic [ref=e80] [cursor=pointer]:
+                - generic [ref=e81]: 售前协同
+                - img [ref=e83]
+            - menuitem "竞品对标" [ref=e85]:
+              - generic [ref=e86] [cursor=pointer]:
+                - generic [ref=e87]: 竞品对标
+                - img [ref=e89]
+            - menuitem "配置规则" [ref=e91] [cursor=pointer]:
+              - generic [ref=e92]: 配置规则
+            - menuitem "产品管理" [ref=e93]:
+              - generic [ref=e94] [cursor=pointer]:
+                - generic [ref=e95]: 产品管理
+                - img [ref=e97]
+            - menuitem "捆绑包" [ref=e99] [cursor=pointer]:
+              - generic [ref=e100]: 捆绑包
+            - menuitem "定价管理" [ref=e101]:
+              - generic [ref=e102] [cursor=pointer]:
+                - generic [ref=e103]: 定价管理
+                - img [ref=e105]
+            - menuitem "交期查询" [ref=e107]:
+              - generic [ref=e108] [cursor=pointer]:
+                - generic [ref=e109]: 交期查询
+                - img [ref=e111]
+            - menuitem "知识库" [ref=e113]:
+              - generic [ref=e114] [cursor=pointer]:
+                - generic [ref=e115]: 知识库
+                - img [ref=e117]
+            - menuitem "系统集成" [ref=e119]:
+              - generic [ref=e120] [cursor=pointer]:
+                - generic [ref=e121]: 系统集成
+                - img [ref=e123]
+            - menuitem "系统设置" [expanded] [ref=e125]:
+              - generic [ref=e126] [cursor=pointer]:
+                - generic [ref=e127]: 系统设置
+                - img [ref=e129]
+              - menu [ref=e131]:
+                - menuitem "租户配置" [ref=e132] [cursor=pointer]:
+                  - generic [ref=e133]: 租户配置
+                - menuitem "用户管理" [ref=e134] [cursor=pointer]:
+                  - generic [ref=e135]: 用户管理
+                - menuitem "角色管理" [ref=e136] [cursor=pointer]:
+                  - generic [ref=e137]: 角色管理
+                - menuitem "ABAC策略" [ref=e138] [cursor=pointer]:
+                  - generic [ref=e139]: ABAC策略
+                - menuitem "审计日志" [ref=e140] [cursor=pointer]:
+                  - generic [ref=e141]: 审计日志
+                - menuitem "数据迁移" [ref=e142] [cursor=pointer]:
+                  - generic [ref=e143]: 数据迁移
+                - menuitem "变更管理" [ref=e144] [cursor=pointer]:
+                  - generic [ref=e145]: 变更管理
+                - menuitem "系统参数" [ref=e146] [cursor=pointer]:
+                  - generic [ref=e147]: 系统参数
+            - menuitem "个人中心" [ref=e148] [cursor=pointer]:
+              - generic [ref=e149]: 个人中心
+    - generic [ref=e150]:
+      - generic [ref=e151]:
+        - generic [ref=e152]:
+          - img [ref=e154] [cursor=pointer]
+          - navigation "Breadcrumb" [ref=e156]:
+            - generic [ref=e157]:
+              - link "首页" [ref=e158]
+              - text: /
+            - link "租户配置" [ref=e160]
+        - button "用户" [ref=e163] [cursor=pointer]:
+          - img [ref=e166]
+          - generic [ref=e168]: 用户
+          - img [ref=e170]
+      - generic [ref=e174]:
+        - generic [ref=e175]: 租户配置
+        - generic [ref=e177]:
+          - generic [ref=e178]:
+            - generic [ref=e179]: 租户名称
+            - textbox "租户名称" [ref=e183]: 示例企业
+          - generic [ref=e184]:
+            - generic [ref=e185]: 租户编码
+            - textbox "租户编码" [disabled] [ref=e189]: T-001
+          - generic [ref=e190]:
+            - generic [ref=e191]: 联系人
+            - textbox "联系人" [ref=e195]: 管理员
+          - generic [ref=e196]:
+            - generic [ref=e197]: 联系电话
+            - textbox "联系电话" [ref=e201]: "13800000000"
+          - generic [ref=e202]:
+            - generic [ref=e203]: 邮箱
+            - textbox "邮箱" [ref=e207]: admin@example.com
+          - button "保存配置" [ref=e210] [cursor=pointer]:
+            - generic [ref=e211]: 保存配置
+  - generic [ref=e3]:
+    - generic "Toggle devtools panel" [ref=e4] [cursor=pointer]:
+      - img [ref=e5]
+    - generic "Toggle Component Inspector" [ref=e10] [cursor=pointer]:
+      - img [ref=e11]

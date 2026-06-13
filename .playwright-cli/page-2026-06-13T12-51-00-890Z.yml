@@ -1,0 +1,255 @@
+- generic [ref=e48]:
+  - complementary [ref=e49]:
+    - generic [ref=e50]:
+      - heading "SmartCPQ" [level=1] [ref=e51]
+      - generic [ref=e52]: 智能配置报价
+    - navigation [ref=e53]:
+      - menubar [ref=e567]:
+        - menuitem "产品管理" [ref=e568]:
+          - generic [ref=e569] [cursor=pointer]:
+            - img [ref=e571]
+            - generic [ref=e573]: 产品管理
+            - img [ref=e575]
+        - menuitem "配置管理" [expanded] [ref=e577]:
+          - generic [ref=e578] [cursor=pointer]:
+            - img [ref=e580]
+            - generic [ref=e582]: 配置管理
+            - img [ref=e584]
+          - menu [ref=e586]:
+            - menuitem "配置规则" [ref=e587] [cursor=pointer]:
+              - img [ref=e589]
+              - generic [ref=e591]: 配置规则
+            - menuitem "产品配置器" [ref=e592] [cursor=pointer]:
+              - img [ref=e594]
+              - generic [ref=e596]: 产品配置器
+            - menuitem "新建标准配置" [ref=e597] [cursor=pointer]:
+              - img [ref=e599]
+              - generic [ref=e601]: 新建标准配置
+            - menuitem "向导式配置" [ref=e602] [cursor=pointer]:
+              - img [ref=e604]
+              - generic [ref=e607]: 向导式配置
+            - menuitem "ATO定制配置" [ref=e608] [cursor=pointer]:
+              - img [ref=e610]
+              - generic [ref=e615]: ATO定制配置
+        - menuitem "价格管理" [ref=e616]:
+          - generic [ref=e617] [cursor=pointer]:
+            - img [ref=e619]
+            - generic [ref=e623]: 价格管理
+            - img [ref=e625]
+        - menuitem "报价管理" [ref=e627]:
+          - generic [ref=e628] [cursor=pointer]:
+            - img [ref=e630]
+            - generic [ref=e632]: 报价管理
+            - img [ref=e634]
+        - menuitem "运营及参数" [ref=e636]:
+          - generic [ref=e637] [cursor=pointer]:
+            - img [ref=e639]
+            - generic [ref=e641]: 运营及参数
+            - img [ref=e643]
+  - main [ref=e143]:
+    - generic [ref=e144]:
+      - navigation "面包屑" [ref=e145]:
+        - generic [ref=e146]:
+          - link "首页" [ref=e147]
+          - text: /
+        - generic [ref=e148]:
+          - link "配置管理" [ref=e645]
+          - text: /
+        - link "ATO定制配置" [ref=e646]
+      - button "疯狂的狮子Li" [ref=e154] [cursor=pointer]:
+        - generic [ref=e157]: 疯狂的狮子Li
+        - img [ref=e159]
+    - generic [ref=e647]:
+      - generic [ref=e676]:
+        - generic [ref=e677]:
+          - generic [ref=e678]: RW-ARC-200P
+          - generic [ref=e679]: ARC-200P 增强型弧焊机器人
+          - generic [ref=e681]: ATO定制
+        - button "重新选择产品" [ref=e682] [cursor=pointer]:
+          - generic [ref=e683]: 重新选择产品
+      - generic [ref=e684]:
+        - generic [ref=e685]:
+          - generic [ref=e686]:
+            - generic [ref=e687]: 标准属性配置
+            - generic [ref=e689]:
+              - generic [ref=e690]:
+                - heading "通信协议" [level=4] [ref=e691]
+                - radiogroup "radio-group" [ref=e693]:
+                  - generic [ref=e694]:
+                    - radio "EtherCAT + PROFINET 双协议" [ref=e695]
+                    - generic [ref=e696] [cursor=pointer]: EtherCAT + PROFINET 双协议
+                  - generic [ref=e697]:
+                    - radio "EtherCAT 总线" [ref=e698]
+                    - generic [ref=e699] [cursor=pointer]: EtherCAT 总线
+                  - generic [ref=e700]:
+                    - radio "PROFINET 工业以太网" [ref=e701]
+                    - generic [ref=e702] [cursor=pointer]: PROFINET 工业以太网
+              - generic [ref=e703]:
+                - heading "焊接工艺" [level=4] [ref=e704]
+                - radiogroup "radio-group" [ref=e706]:
+                  - generic [ref=e707]:
+                    - radio "MAG 活性气体保护焊" [ref=e708]
+                    - generic [ref=e709] [cursor=pointer]: MAG 活性气体保护焊
+                  - generic [ref=e710]:
+                    - radio "MIG 熔化极气体保护焊" [ref=e711]
+                    - generic [ref=e712] [cursor=pointer]: MIG 熔化极气体保护焊
+                  - generic [ref=e713]:
+                    - radio "SAW 埋弧焊" [ref=e714]
+                    - generic [ref=e715] [cursor=pointer]: SAW 埋弧焊
+                  - generic [ref=e716]:
+                    - radio "TIG 钨极氩弧焊" [ref=e717]
+                    - generic [ref=e718] [cursor=pointer]: TIG 钨极氩弧焊
+              - generic [ref=e719]:
+                - heading "防护等级" [level=4] [ref=e720]
+                - radiogroup "radio-group" [ref=e722]:
+                  - generic [ref=e723]:
+                    - radio "IP54 标准防护" [ref=e724]
+                    - generic [ref=e725] [cursor=pointer]: IP54 标准防护
+                  - generic [ref=e726]:
+                    - radio "IP65 加强防护" [ref=e727]
+                    - generic [ref=e728] [cursor=pointer]: IP65 加强防护
+                  - generic [ref=e729]:
+                    - radio "IP67 最高防护" [ref=e730]
+                    - generic [ref=e731] [cursor=pointer]: IP67 最高防护
+              - generic [ref=e732]:
+                - heading "焊枪选型" [level=4] [ref=e733]
+                - radiogroup "radio-group" [ref=e735]:
+                  - generic [ref=e736]:
+                    - radio "400A 气冷焊枪" [ref=e737]
+                    - generic [ref=e738] [cursor=pointer]: 400A 气冷焊枪
+                  - generic [ref=e739]:
+                    - radio "500A 水冷焊枪" [ref=e740]
+                    - generic [ref=e741] [cursor=pointer]: 500A 水冷焊枪
+                  - generic [ref=e742]:
+                    - radio "SAW 埋弧焊枪" [ref=e743]
+                    - generic [ref=e744] [cursor=pointer]: SAW 埋弧焊枪
+                  - generic [ref=e745]:
+                    - radio "350A TIG专用焊枪" [ref=e746]
+                    - generic [ref=e747] [cursor=pointer]: 350A TIG专用焊枪
+              - generic [ref=e748]:
+                - heading "焊缝跟踪" [level=4] [ref=e749]
+                - radiogroup "radio-group" [ref=e751]:
+                  - generic [ref=e752]:
+                    - radio "电弧传感跟踪" [ref=e753]
+                    - generic [ref=e754] [cursor=pointer]: 电弧传感跟踪
+                  - generic [ref=e755]:
+                    - radio "激光焊缝跟踪" [ref=e756]
+                    - generic [ref=e757] [cursor=pointer]: 激光焊缝跟踪
+                  - generic [ref=e758]:
+                    - radio "无（手动编程）" [ref=e759]
+                    - generic [ref=e760] [cursor=pointer]: 无（手动编程）
+          - generic [ref=e761]:
+            - generic [ref=e762]: BOM预览
+            - generic [ref=e765]:
+              - table [ref=e767]:
+                - rowgroup [ref=e773]:
+                  - row "物料编码 物料名称 数量 单位" [ref=e774]:
+                    - columnheader "物料编码" [ref=e775]:
+                      - generic [ref=e776]: 物料编码
+                    - columnheader "物料名称" [ref=e777]:
+                      - generic [ref=e778]: 物料名称
+                    - columnheader "数量" [ref=e779]:
+                      - generic [ref=e780]: 数量
+                    - columnheader "单位" [ref=e781]:
+                      - generic [ref=e782]: 单位
+              - table [ref=e787]:
+                - rowgroup [ref=e793]:
+                  - row "MAT-HOST-ARC200P ARC-200P 弧焊机器人主机 1.0000 PCS" [ref=e794]:
+                    - cell "MAT-HOST-ARC200P" [ref=e795]:
+                      - generic [ref=e796]: MAT-HOST-ARC200P
+                    - cell "ARC-200P 弧焊机器人主机" [ref=e797]:
+                      - generic [ref=e798]: ARC-200P 弧焊机器人主机
+                    - cell "1.0000" [ref=e799]:
+                      - generic [ref=e800]: "1.0000"
+                    - cell "PCS" [ref=e801]:
+                      - generic [ref=e802]: PCS
+                  - row "MAT-WELD-PWR-A FANUC 500A 焊接电源 1.0000 PCS" [ref=e803]:
+                    - cell "MAT-WELD-PWR-A" [ref=e804]:
+                      - generic [ref=e805]: MAT-WELD-PWR-A
+                    - cell "FANUC 500A 焊接电源" [ref=e806]:
+                      - generic [ref=e807]: FANUC 500A 焊接电源
+                    - cell "1.0000" [ref=e808]:
+                      - generic [ref=e809]: "1.0000"
+                    - cell "PCS" [ref=e810]:
+                      - generic [ref=e811]: PCS
+                  - row "MAT-TORCH-500W 500A 水冷焊枪总成 1.0000 PCS" [ref=e812]:
+                    - cell "MAT-TORCH-500W" [ref=e813]:
+                      - generic [ref=e814]: MAT-TORCH-500W
+                    - cell "500A 水冷焊枪总成" [ref=e815]:
+                      - generic [ref=e816]: 500A 水冷焊枪总成
+                    - cell "1.0000" [ref=e817]:
+                      - generic [ref=e818]: "1.0000"
+                    - cell "PCS" [ref=e819]:
+                      - generic [ref=e820]: PCS
+                  - row "MAT-WIRE-FEED 双丝送丝机构 1.0000 PCS" [ref=e821]:
+                    - cell "MAT-WIRE-FEED" [ref=e822]:
+                      - generic [ref=e823]: MAT-WIRE-FEED
+                    - cell "双丝送丝机构" [ref=e824]:
+                      - generic [ref=e825]: 双丝送丝机构
+                    - cell "1.0000" [ref=e826]:
+                      - generic [ref=e827]: "1.0000"
+                    - cell "PCS" [ref=e828]:
+                      - generic [ref=e829]: PCS
+                  - row "MAT-SEAM-TRACK 激光焊缝跟踪系统 1.0000 PCS" [ref=e830]:
+                    - cell "MAT-SEAM-TRACK" [ref=e831]:
+                      - generic [ref=e832]: MAT-SEAM-TRACK
+                    - cell "激光焊缝跟踪系统" [ref=e833]:
+                      - generic [ref=e834]: 激光焊缝跟踪系统
+                    - cell "1.0000" [ref=e835]:
+                      - generic [ref=e836]: "1.0000"
+                    - cell "PCS" [ref=e837]:
+                      - generic [ref=e838]: PCS
+                  - row "MAT-CONTROL-ARC 弧焊专用控制器 1.0000 PCS" [ref=e839]:
+                    - cell "MAT-CONTROL-ARC" [ref=e840]:
+                      - generic [ref=e841]: MAT-CONTROL-ARC
+                    - cell "弧焊专用控制器" [ref=e842]:
+                      - generic [ref=e843]: 弧焊专用控制器
+                    - cell "1.0000" [ref=e844]:
+                      - generic [ref=e845]: "1.0000"
+                    - cell "PCS" [ref=e846]:
+                      - generic [ref=e847]: PCS
+        - generic [ref=e850]:
+          - generic [ref=e851]: 定制需求
+          - generic [ref=e852]:
+            - generic [ref=e853]:
+              - generic [ref=e854]:
+                - generic [ref=e855]: 需求描述
+                - generic [ref=e857]:
+                  - textbox "需求描述" [ref=e858]:
+                    - /placeholder: 描述您的定制需求，如特殊尺寸、接口、材料等
+                  - generic [ref=e859]: 0 / 1000
+              - generic [ref=e860]:
+                - generic [ref=e861]: 期望数量
+                - generic [ref=e863]:
+                  - button "减少数值" [ref=e864] [cursor=pointer]:
+                    - img [ref=e866]
+                  - button "增加数值" [ref=e868] [cursor=pointer]:
+                    - img [ref=e870]
+                  - spinbutton "期望数量" [ref=e874]: "10"
+              - generic [ref=e875]:
+                - generic [ref=e876]: 期望交期
+                - generic [ref=e879]:
+                  - img [ref=e882]
+                  - combobox "期望交期" [ref=e884]
+              - generic [ref=e885]:
+                - generic [ref=e886]: 优先级
+                - radiogroup "优先级" [ref=e888]:
+                  - generic [ref=e889] [cursor=pointer]:
+                    - radio "普通" [checked] [ref=e891]
+                    - generic [ref=e893]: 普通
+                  - generic [ref=e894] [cursor=pointer]:
+                    - radio "紧急" [ref=e896]
+                    - generic [ref=e898]: 紧急
+              - group "附件" [ref=e899]:
+                - generic [ref=e900]: 附件
+                - generic [ref=e902]:
+                  - button "拖拽或点击上传需求文档" [ref=e903] [cursor=pointer]:
+                    - generic [ref=e904]:
+                      - img [ref=e906]
+                      - generic [ref=e908]:
+                        - text: 拖拽或
+                        - emphasis [ref=e909]: 点击上传
+                        - text: 需求文档
+                  - list
+            - button "提交定制评审" [ref=e910] [cursor=pointer]:
+              - generic [ref=e911]: 提交定制评审

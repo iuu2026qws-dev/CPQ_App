@@ -1,0 +1,18 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e86]:
+    - generic [ref=e87]:
+      - img "404" [ref=e88]
+      - img "404" [ref=e89]
+      - img "404" [ref=e90]
+      - img "404" [ref=e91]
+    - generic [ref=e92]:
+      - generic [ref=e93]: 404错误!
+      - generic [ref=e94]: 找不到网页！
+      - generic [ref=e95]: 对不起，您正在寻找的页面不存在。尝试检查URL的错误，然后按浏览器上的刷新按钮或尝试在我们的应用程序中找到其他内容。
+      - link "返回首页" [ref=e96] [cursor=pointer]:
+        - /url: /index
+  - generic [ref=e3]:
+    - generic "Toggle devtools panel" [ref=e4] [cursor=pointer]:
+      - img [ref=e5]
+    - generic "Toggle Component Inspector" [ref=e10] [cursor=pointer]:
+      - img [ref=e11]

@@ -1,0 +1,76 @@
+- generic [ref=e48]:
+  - complementary [ref=e49]:
+    - generic [ref=e50]:
+      - heading "SmartCPQ" [level=1] [ref=e51]
+      - generic [ref=e52]: 智能配置报价
+    - navigation [ref=e53]:
+      - menubar [ref=e567]:
+        - menuitem "产品管理" [ref=e568]:
+          - generic [ref=e569] [cursor=pointer]:
+            - img [ref=e571]
+            - generic [ref=e573]: 产品管理
+            - img [ref=e575]
+        - menuitem "配置管理" [expanded] [ref=e577]:
+          - generic [ref=e578] [cursor=pointer]:
+            - img [ref=e580]
+            - generic [ref=e582]: 配置管理
+            - img [ref=e584]
+          - menu [ref=e586]:
+            - menuitem "配置规则" [ref=e587] [cursor=pointer]:
+              - img [ref=e589]
+              - generic [ref=e591]: 配置规则
+            - menuitem "产品配置器" [ref=e592] [cursor=pointer]:
+              - img [ref=e594]
+              - generic [ref=e596]: 产品配置器
+            - menuitem "新建标准配置" [ref=e597] [cursor=pointer]:
+              - img [ref=e599]
+              - generic [ref=e601]: 新建标准配置
+            - menuitem "向导式配置" [ref=e602] [cursor=pointer]:
+              - img [ref=e604]
+              - generic [ref=e607]: 向导式配置
+            - menuitem "ATO定制配置" [ref=e608] [cursor=pointer]:
+              - img [ref=e610]
+              - generic [ref=e615]: ATO定制配置
+        - menuitem "价格管理" [ref=e616]:
+          - generic [ref=e617] [cursor=pointer]:
+            - img [ref=e619]
+            - generic [ref=e623]: 价格管理
+            - img [ref=e625]
+        - menuitem "报价管理" [ref=e627]:
+          - generic [ref=e628] [cursor=pointer]:
+            - img [ref=e630]
+            - generic [ref=e632]: 报价管理
+            - img [ref=e634]
+        - menuitem "运营及参数" [ref=e636]:
+          - generic [ref=e637] [cursor=pointer]:
+            - img [ref=e639]
+            - generic [ref=e641]: 运营及参数
+            - img [ref=e643]
+  - main [ref=e143]:
+    - generic [ref=e144]:
+      - navigation "面包屑" [ref=e145]:
+        - generic [ref=e146]:
+          - link "首页" [ref=e147]
+          - text: /
+        - generic [ref=e148]:
+          - link "配置管理" [ref=e645]
+          - text: /
+        - link "ATO定制配置" [ref=e646]
+      - button "疯狂的狮子Li" [ref=e154] [cursor=pointer]:
+        - generic [ref=e157]: 疯狂的狮子Li
+        - img [ref=e159]
+    - generic [ref=e648]:
+      - generic [ref=e649]:
+        - heading "ATO定制配置" [level=1] [ref=e650]
+        - paragraph [ref=e651]: 选择ATO类型产品进行参数化配置，并可提交非结构化定制需求。
+      - generic [ref=e653]:
+        - generic [ref=e654]:
+          - img [ref=e657]
+          - textbox "输入产品名称或编码搜索（仅显示ATO类型）" [ref=e659]: ARC-200P
+          - img [ref=e665] [cursor=pointer]
+        - button "搜索" [ref=e662] [cursor=pointer]:
+          - generic [ref=e663]: 搜索
+      - generic [ref=e671] [cursor=pointer]:
+        - heading "RW-ARC-200P" [level=3] [ref=e672]
+        - paragraph [ref=e673]: ARC-200P 增强型弧焊机器人
+        - generic [ref=e675]: ATO

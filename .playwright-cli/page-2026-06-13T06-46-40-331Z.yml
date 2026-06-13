@@ -1,0 +1,249 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - heading "SmartCPQ" [level=1] [ref=e6]
+      - generic [ref=e7]: 智能配置报价
+    - navigation [ref=e8]:
+      - menubar [ref=e9]:
+        - menuitem "产品管理" [ref=e10]:
+          - generic [ref=e11] [cursor=pointer]:
+            - img [ref=e13]
+            - generic [ref=e15]: 产品管理
+            - img [ref=e17]
+        - menuitem "配置管理" [expanded] [ref=e19]:
+          - generic [ref=e20] [cursor=pointer]:
+            - img [ref=e22]
+            - generic [ref=e24]: 配置管理
+            - img [ref=e26]
+          - menu [ref=e28]:
+            - menuitem "配置规则" [ref=e29] [cursor=pointer]:
+              - img [ref=e31]
+              - generic [ref=e33]: 配置规则
+            - menuitem "产品配置器" [ref=e34] [cursor=pointer]:
+              - img [ref=e36]
+              - generic [ref=e38]: 产品配置器
+            - menuitem "新建标准配置" [ref=e39] [cursor=pointer]:
+              - img [ref=e41]
+              - generic [ref=e43]: 新建标准配置
+            - menuitem "向导式配置" [ref=e44] [cursor=pointer]:
+              - img [ref=e46]
+              - generic [ref=e49]: 向导式配置
+            - menuitem "ATO定制配置" [ref=e50] [cursor=pointer]:
+              - img [ref=e52]
+              - generic [ref=e57]: ATO定制配置
+        - menuitem "价格管理" [ref=e58]:
+          - generic [ref=e59] [cursor=pointer]:
+            - img [ref=e61]
+            - generic [ref=e65]: 价格管理
+            - img [ref=e67]
+        - menuitem "报价管理" [ref=e69]:
+          - generic [ref=e70] [cursor=pointer]:
+            - img [ref=e72]
+            - generic [ref=e74]: 报价管理
+            - img [ref=e76]
+        - menuitem "运营及参数" [ref=e78]:
+          - generic [ref=e79] [cursor=pointer]:
+            - img [ref=e81]
+            - generic [ref=e83]: 运营及参数
+            - img [ref=e85]
+  - main [ref=e87]:
+    - generic [ref=e88]:
+      - navigation "面包屑" [ref=e89]:
+        - generic [ref=e90]:
+          - link "首页" [ref=e91]
+          - text: /
+        - generic [ref=e92]:
+          - link "配置管理" [ref=e93]
+          - text: /
+        - link "ATO定制配置" [ref=e171]
+      - button "疯狂的狮子Li" [ref=e98] [cursor=pointer]:
+        - generic [ref=e101]: 疯狂的狮子Li
+        - img [ref=e103]
+    - generic [ref=e172]:
+      - generic [ref=e201]:
+        - generic [ref=e202]:
+          - generic [ref=e203]: RW-ARC-200P
+          - generic [ref=e204]: ARC-200P 增强型弧焊机器人
+          - generic [ref=e206]: ATO定制
+        - button "重新选择产品" [ref=e207] [cursor=pointer]:
+          - generic [ref=e208]: 重新选择产品
+      - generic [ref=e209]:
+        - generic [ref=e210]:
+          - generic [ref=e211]:
+            - generic [ref=e212]: 标准属性配置
+            - generic [ref=e214]:
+              - generic [ref=e215]:
+                - heading "通信协议" [level=4] [ref=e216]
+                - radiogroup "radio-group" [ref=e218]:
+                  - generic [ref=e219]:
+                    - radio "EtherCAT + PROFINET 双协议" [ref=e220]
+                    - generic [ref=e221] [cursor=pointer]: EtherCAT + PROFINET 双协议
+                  - generic [ref=e222]:
+                    - radio "EtherCAT 总线" [ref=e223]
+                    - generic [ref=e224] [cursor=pointer]: EtherCAT 总线
+                  - generic [ref=e225]:
+                    - radio "PROFINET 工业以太网" [ref=e226]
+                    - generic [ref=e227] [cursor=pointer]: PROFINET 工业以太网
+              - generic [ref=e228]:
+                - heading "焊接工艺" [level=4] [ref=e229]
+                - radiogroup "radio-group" [ref=e231]:
+                  - generic [ref=e232]:
+                    - radio "MAG 活性气体保护焊" [ref=e233]
+                    - generic [ref=e234] [cursor=pointer]: MAG 活性气体保护焊
+                  - generic [ref=e235]:
+                    - radio "MIG 熔化极气体保护焊" [ref=e236]
+                    - generic [ref=e237] [cursor=pointer]: MIG 熔化极气体保护焊
+                  - generic [ref=e238]:
+                    - radio "SAW 埋弧焊" [ref=e239]
+                    - generic [ref=e240] [cursor=pointer]: SAW 埋弧焊
+                  - generic [ref=e241]:
+                    - radio "TIG 钨极氩弧焊" [ref=e242]
+                    - generic [ref=e243] [cursor=pointer]: TIG 钨极氩弧焊
+              - generic [ref=e244]:
+                - heading "防护等级" [level=4] [ref=e245]
+                - radiogroup "radio-group" [ref=e247]:
+                  - generic [ref=e248]:
+                    - radio "IP54 标准防护" [ref=e249]
+                    - generic [ref=e250] [cursor=pointer]: IP54 标准防护
+                  - generic [ref=e251]:
+                    - radio "IP65 加强防护" [ref=e252]
+                    - generic [ref=e253] [cursor=pointer]: IP65 加强防护
+                  - generic [ref=e254]:
+                    - radio "IP67 最高防护" [ref=e255]
+                    - generic [ref=e256] [cursor=pointer]: IP67 最高防护
+              - generic [ref=e257]:
+                - heading "焊枪选型" [level=4] [ref=e258]
+                - radiogroup "radio-group" [ref=e260]:
+                  - generic [ref=e261]:
+                    - radio "400A 气冷焊枪" [ref=e262]
+                    - generic [ref=e263] [cursor=pointer]: 400A 气冷焊枪
+                  - generic [ref=e264]:
+                    - radio "500A 水冷焊枪" [ref=e265]
+                    - generic [ref=e266] [cursor=pointer]: 500A 水冷焊枪
+                  - generic [ref=e267]:
+                    - radio "SAW 埋弧焊枪" [ref=e268]
+                    - generic [ref=e269] [cursor=pointer]: SAW 埋弧焊枪
+                  - generic [ref=e270]:
+                    - radio "350A TIG专用焊枪" [ref=e271]
+                    - generic [ref=e272] [cursor=pointer]: 350A TIG专用焊枪
+              - generic [ref=e273]:
+                - heading "焊缝跟踪" [level=4] [ref=e274]
+                - radiogroup "radio-group" [ref=e276]:
+                  - generic [ref=e277]:
+                    - radio "电弧传感跟踪" [ref=e278]
+                    - generic [ref=e279] [cursor=pointer]: 电弧传感跟踪
+                  - generic [ref=e280]:
+                    - radio "激光焊缝跟踪" [ref=e281]
+                    - generic [ref=e282] [cursor=pointer]: 激光焊缝跟踪
+                  - generic [ref=e283]:
+                    - radio "无（手动编程）" [ref=e284]
+                    - generic [ref=e285] [cursor=pointer]: 无（手动编程）
+          - generic [ref=e286]:
+            - generic [ref=e287]: BOM预览
+            - generic [ref=e290]:
+              - table [ref=e292]:
+                - rowgroup [ref=e298]:
+                  - row "物料编码 物料名称 数量 单位" [ref=e299]:
+                    - columnheader "物料编码" [ref=e300]:
+                      - generic [ref=e301]: 物料编码
+                    - columnheader "物料名称" [ref=e302]:
+                      - generic [ref=e303]: 物料名称
+                    - columnheader "数量" [ref=e304]:
+                      - generic [ref=e305]: 数量
+                    - columnheader "单位" [ref=e306]:
+                      - generic [ref=e307]: 单位
+              - table [ref=e312]:
+                - rowgroup [ref=e318]:
+                  - row "1.0000" [ref=e319]:
+                    - cell [ref=e320]
+                    - cell [ref=e321]
+                    - cell "1.0000" [ref=e322]:
+                      - generic [ref=e323]: "1.0000"
+                    - cell [ref=e324]
+                  - row "1.0000" [ref=e325]:
+                    - cell [ref=e326]
+                    - cell [ref=e327]
+                    - cell "1.0000" [ref=e328]:
+                      - generic [ref=e329]: "1.0000"
+                    - cell [ref=e330]
+                  - row "1.0000" [ref=e331]:
+                    - cell [ref=e332]
+                    - cell [ref=e333]
+                    - cell "1.0000" [ref=e334]:
+                      - generic [ref=e335]: "1.0000"
+                    - cell [ref=e336]
+                  - row "1.0000" [ref=e337]:
+                    - cell [ref=e338]
+                    - cell [ref=e339]
+                    - cell "1.0000" [ref=e340]:
+                      - generic [ref=e341]: "1.0000"
+                    - cell [ref=e342]
+                  - row "1.0000" [ref=e343]:
+                    - cell [ref=e344]
+                    - cell [ref=e345]
+                    - cell "1.0000" [ref=e346]:
+                      - generic [ref=e347]: "1.0000"
+                    - cell [ref=e348]
+                  - row "1.0000" [ref=e349]:
+                    - cell [ref=e350]
+                    - cell [ref=e351]
+                    - cell "1.0000" [ref=e352]:
+                      - generic [ref=e353]: "1.0000"
+                    - cell [ref=e354]
+                  - row "1.0000" [ref=e355]:
+                    - cell [ref=e356]
+                    - cell [ref=e357]
+                    - cell "1.0000" [ref=e358]:
+                      - generic [ref=e359]: "1.0000"
+                    - cell [ref=e360]
+                  - row "1.0000" [ref=e361]:
+                    - cell [ref=e362]
+                    - cell [ref=e363]
+                    - cell "1.0000" [ref=e364]:
+                      - generic [ref=e365]: "1.0000"
+                    - cell [ref=e366]
+        - generic [ref=e369]:
+          - generic [ref=e370]: 定制需求
+          - generic [ref=e371]:
+            - generic [ref=e372]:
+              - generic [ref=e373]:
+                - generic [ref=e374]: 需求描述
+                - generic [ref=e376]:
+                  - textbox "需求描述" [ref=e377]:
+                    - /placeholder: 描述您的定制需求，如特殊尺寸、接口、材料等
+                  - generic [ref=e378]: 0 / 1000
+              - generic [ref=e379]:
+                - generic [ref=e380]: 期望数量
+                - generic [ref=e382]:
+                  - button "减少数值" [ref=e383] [cursor=pointer]:
+                    - img [ref=e385]
+                  - button "增加数值" [ref=e387] [cursor=pointer]:
+                    - img [ref=e389]
+                  - spinbutton "期望数量" [ref=e393]: "10"
+              - generic [ref=e394]:
+                - generic [ref=e395]: 期望交期
+                - generic [ref=e398]:
+                  - img [ref=e401]
+                  - combobox "期望交期" [ref=e403]
+              - generic [ref=e404]:
+                - generic [ref=e405]: 优先级
+                - radiogroup "优先级" [ref=e407]:
+                  - generic [ref=e408] [cursor=pointer]:
+                    - radio "普通" [checked] [ref=e410]
+                    - generic [ref=e412]: 普通
+                  - generic [ref=e413] [cursor=pointer]:
+                    - radio "紧急" [ref=e415]
+                    - generic [ref=e417]: 紧急
+              - group "附件" [ref=e418]:
+                - generic [ref=e419]: 附件
+                - generic [ref=e421]:
+                  - button "拖拽或点击上传需求文档" [ref=e422] [cursor=pointer]:
+                    - generic [ref=e423]:
+                      - img [ref=e425]
+                      - generic [ref=e427]:
+                        - text: 拖拽或
+                        - emphasis [ref=e428]: 点击上传
+                        - text: 需求文档
+                  - list
+            - button "提交定制评审" [ref=e429] [cursor=pointer]:
+              - generic [ref=e430]: 提交定制评审

@@ -10,12 +10,23 @@
     <modelVersion>4.0.0</modelVersion>
 
     <modules>
+        <module>ruoyi-cpq</module>
+        <module>ruoyi-cpq-config</module>
+        <module>ruoyi-cpq-pricing</module>
+        <module>ruoyi-cpq-quote</module>
+        <module>ruoyi-cpq-approval</module>
+        <module>ruoyi-cpq-customer</module>
+        <module>ruoyi-cpq-ecn</module>
+        <module>ruoyi-cpq-integration</module>
         <module>ruoyi-demo</module>
         <module>ruoyi-generator</module>
         <module>ruoyi-job</module>
         <module>ruoyi-system</module>
         <module>ruoyi-workflow</module>
-    </modules>
+      <module>ruoyi-cpq-competitive</module>
+    <module>ruoyi-cpq-migration</module>
+        <module>ruoyi-cpq-knowledge</module>
+  </modules>
 
     <artifactId>ruoyi-modules</artifactId>
     <packaging>pom</packaging>

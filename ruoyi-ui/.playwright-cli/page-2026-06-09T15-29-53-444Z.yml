@@ -1,0 +1,7 @@
+- generic [active] [ref=e1]:
+  - paragraph [ref=e8]: 加载中...请稍等
+  - generic [ref=e9]:
+    - generic "Toggle devtools panel" [ref=e10] [cursor=pointer]:
+      - img [ref=e11]
+    - generic "Toggle Component Inspector" [ref=e16] [cursor=pointer]:
+      - img [ref=e17]

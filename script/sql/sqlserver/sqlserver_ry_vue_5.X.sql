@@ -1656,10 +1656,6 @@ INSERT sys_menu VALUES (2, N'系统监控', 0, 3, N'monitor', NULL, N'', 1, 0, N
 GO
 INSERT sys_menu VALUES (3, N'系统工具', 0, 4, N'tool', NULL, N'', 1, 0, N'M', N'0', N'0', N'', N'tool', 103, 1, getdate(), NULL, NULL, N'系统工具目录')
 GO
-INSERT sys_menu VALUES (4, N'PLUS官网', 0, 5, N'https://gitee.com/dromara/RuoYi-Vue-Plus', null, N'', 0, 0, N'M', N'0', N'0', N'', N'guide', 103, 1, getdate(), null, null, N'RuoYi-Vue-Plus官网地址');
-GO
-INSERT sys_menu VALUES (5, N'测试菜单', 0, 5, N'demo', NULL, N'', 1, 0, N'M', N'0', N'0', NULL, N'star', 103, 1, getdate(), NULL, NULL, N'');
-GO
 INSERT sys_menu VALUES (100, N'用户管理', 1, 1, N'user', N'system/user/index', N'', 1, 0, N'C', N'0', N'0', N'system:user:list', N'user', 103, 1, getdate(), NULL, NULL, N'用户管理菜单')
 GO
 INSERT sys_menu VALUES (101, N'角色管理', 1, 2, N'role', N'system/role/index', N'', 1, 0, N'C', N'0', N'0', N'system:role:list', N'peoples', 103, 1, getdate(), NULL, NULL, N'角色管理菜单')
@@ -1871,32 +1867,7 @@ INSERT sys_menu VALUES (1064, N'客户端管理删除', 123, 4, N'#', N'', N'', 
 GO
 INSERT sys_menu VALUES (1065, N'客户端管理导出', 123, 5, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'system:client:export', N'#', 103, 1, getdate(), NULL, NULL, N'');
 GO
--- 测试菜单
-INSERT sys_menu VALUES (1500, N'测试单表', 5, 1, N'demo', N'demo/demo/index', N'', 1, 0, N'C', N'0', N'0', N'demo:demo:list', N'#', 103, 1, getdate(), NULL, NULL, N'测试单表菜单');
-GO
-INSERT sys_menu VALUES (1501, N'测试单表查询', 1500, 1, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'demo:demo:query', N'#', 103, 1, getdate(), NULL, NULL, N'');
-GO
-INSERT sys_menu VALUES (1502, N'测试单表新增', 1500, 2, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'demo:demo:add', N'#', 103, 1, getdate(), NULL, NULL, N'');
-GO
-INSERT sys_menu VALUES (1503, N'测试单表修改', 1500, 3, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'demo:demo:edit', N'#', 103, 1, getdate(), NULL, NULL, N'');
-GO
-INSERT sys_menu VALUES (1504, N'测试单表删除', 1500, 4, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'demo:demo:remove', N'#', 103, 1, getdate(), NULL, NULL, N'');
-GO
-INSERT sys_menu VALUES (1505, N'测试单表导出', 1500, 5, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'demo:demo:export', N'#', 103, 1, getdate(), NULL, NULL, N'');
-GO
 
-INSERT sys_menu VALUES (1506, N'测试树表', 5, 1, N'tree', N'demo/tree/index', N'', 1, 0, N'C', N'0', N'0', N'demo:tree:list', N'#', 103, 1, getdate(), NULL, NULL, N'测试树表菜单');
-GO
-INSERT sys_menu VALUES (1507, N'测试树表查询', 1506, 1, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'demo:tree:query', N'#', 103, 1, getdate(), NULL, NULL, N'');
-GO
-INSERT sys_menu VALUES (1508, N'测试树表新增', 1506, 2, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'demo:tree:add', N'#', 103, 1, getdate(), NULL, NULL, N'');
-GO
-INSERT sys_menu VALUES (1509, N'测试树表修改', 1506, 3, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'demo:tree:edit', N'#', 103, 1, getdate(), NULL, NULL, N'');
-GO
-INSERT sys_menu VALUES (1510, N'测试树表删除', 1506, 4, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'demo:tree:remove', N'#', 103, 1, getdate(), NULL, NULL, N'');
-GO
-INSERT sys_menu VALUES (1511, N'测试树表导出', 1506, 5, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'demo:tree:export', N'#', 103, 1, getdate(), NULL, NULL, N'');
-GO
 
 CREATE TABLE sys_notice
 (
@@ -2470,8 +2441,6 @@ GO
 -- ----------------------------
 INSERT sys_role_menu VALUES (3, 1);
 GO
-INSERT sys_role_menu VALUES (3, 5);
-GO
 INSERT sys_role_menu VALUES (3, 100);
 GO
 INSERT sys_role_menu VALUES (3, 101);
@@ -2608,30 +2577,6 @@ INSERT sys_role_menu VALUES (3, 1064);
 GO
 INSERT sys_role_menu VALUES (3, 1065);
 GO
-INSERT sys_role_menu VALUES (3, 1500);
-GO
-INSERT sys_role_menu VALUES (3, 1501);
-GO
-INSERT sys_role_menu VALUES (3, 1502);
-GO
-INSERT sys_role_menu VALUES (3, 1503);
-GO
-INSERT sys_role_menu VALUES (3, 1504);
-GO
-INSERT sys_role_menu VALUES (3, 1505);
-GO
-INSERT sys_role_menu VALUES (3, 1506);
-GO
-INSERT sys_role_menu VALUES (3, 1507);
-GO
-INSERT sys_role_menu VALUES (3, 1508);
-GO
-INSERT sys_role_menu VALUES (3, 1509);
-GO
-INSERT sys_role_menu VALUES (3, 1510);
-GO
-INSERT sys_role_menu VALUES (3, 1511);
-GO
 INSERT sys_role_menu VALUES (3, 1600);
 GO
 INSERT sys_role_menu VALUES (3, 1601);
@@ -2678,32 +2623,7 @@ INSERT sys_role_menu VALUES (3, 11643);
 GO
 INSERT sys_role_menu VALUES (3, 11701);
 GO
-INSERT sys_role_menu VALUES (4, 5);
-GO
-INSERT sys_role_menu VALUES (4, 1500);
-GO
-INSERT sys_role_menu VALUES (4, 1501);
-GO
-INSERT sys_role_menu VALUES (4, 1502);
-GO
-INSERT sys_role_menu VALUES (4, 1503);
-GO
-INSERT sys_role_menu VALUES (4, 1504);
-GO
-INSERT sys_role_menu VALUES (4, 1505);
-GO
-INSERT sys_role_menu VALUES (4, 1506);
-GO
-INSERT sys_role_menu VALUES (4, 1507);
-GO
-INSERT sys_role_menu VALUES (4, 1508);
-GO
-INSERT sys_role_menu VALUES (4, 1509);
-GO
-INSERT sys_role_menu VALUES (4, 1510);
-GO
-INSERT sys_role_menu VALUES (4, 1511);
-GO
+
 
 CREATE TABLE sys_user
 (

@@ -1,0 +1,192 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e48]:
+    - complementary [ref=e49]:
+      - generic [ref=e50]:
+        - heading "SmartCPQ" [level=1] [ref=e51]
+        - generic [ref=e52]: 智能配置报价
+      - navigation [ref=e53]:
+        - link "产品目录" [ref=e54] [cursor=pointer]:
+          - /url: /catalog
+          - img [ref=e56]
+          - generic [ref=e58]: 产品目录
+        - link "BOM管理" [ref=e59] [cursor=pointer]:
+          - /url: /bom
+          - img [ref=e61]
+          - generic [ref=e65]: BOM管理
+        - link "捆绑包管理" [ref=e66] [cursor=pointer]:
+          - /url: /bundle
+          - img [ref=e68]
+          - generic [ref=e72]: 捆绑包管理
+        - link "替代品管理" [ref=e73] [cursor=pointer]:
+          - /url: /supersession
+          - img [ref=e75]
+          - generic [ref=e78]: 替代品管理
+        - link "配置规则" [ref=e79] [cursor=pointer]:
+          - /url: /config
+          - img [ref=e81]
+          - generic [ref=e83]: 配置规则
+        - link "属性选项" [ref=e84] [cursor=pointer]:
+          - /url: /attribute-option
+          - img [ref=e86]
+          - generic [ref=e88]: 属性选项
+        - link "价格手册" [ref=e89] [cursor=pointer]:
+          - /url: /pricing/book
+          - img [ref=e91]
+          - generic [ref=e95]: 价格手册
+        - link "定价规则" [ref=e96] [cursor=pointer]:
+          - /url: /pricing/rule
+          - img [ref=e98]
+          - generic [ref=e100]: 定价规则
+        - link "阶梯定价" [ref=e101] [cursor=pointer]:
+          - /url: /pricing/volumetier
+          - img [ref=e103]
+          - generic [ref=e105]: 阶梯定价
+        - link "渠道价格" [ref=e106] [cursor=pointer]:
+          - /url: /pricing/channelprice
+          - img [ref=e108]
+          - generic [ref=e110]: 渠道价格
+        - link "汇率配置" [ref=e111] [cursor=pointer]:
+          - /url: /pricing/currencyrate
+          - img [ref=e113]
+          - generic [ref=e117]: 汇率配置
+        - link "产品配置器" [ref=e118] [cursor=pointer]:
+          - /url: /configure
+          - img [ref=e120]
+          - generic [ref=e122]: 产品配置器
+        - link "报价单管理" [ref=e123] [cursor=pointer]:
+          - /url: /quoting
+          - img [ref=e125]
+          - generic [ref=e127]: 报价单管理
+        - link "审批管理" [ref=e128] [cursor=pointer]:
+          - /url: /approval
+          - img [ref=e130]
+          - generic [ref=e132]: 审批管理
+        - link "集成管理" [ref=e133] [cursor=pointer]:
+          - /url: /integration
+          - img [ref=e135]
+          - generic [ref=e137]: 集成管理
+        - link "竞品对标" [ref=e138] [cursor=pointer]:
+          - /url: /competitive
+          - img [ref=e140]
+          - generic [ref=e142]: 竞品对标
+        - link "数据迁移" [ref=e143] [cursor=pointer]:
+          - /url: /migration
+          - img [ref=e145]
+          - generic [ref=e147]: 数据迁移
+        - link "知识库" [ref=e148] [cursor=pointer]:
+          - /url: /knowledge
+          - img [ref=e150]
+          - generic [ref=e153]: 知识库
+    - main [ref=e154]:
+      - generic [ref=e155]:
+        - navigation "面包屑" [ref=e156]:
+          - generic [ref=e157]:
+            - link "首页" [ref=e158]
+            - text: /
+          - link "集成管理" [ref=e160]
+        - button "疯狂的狮子Li" [ref=e163]:
+          - text: 疯狂的狮子Li
+          - img [ref=e167]
+      - generic [ref=e170]:
+        - generic [ref=e171]:
+          - heading "集成管理" [level=2] [ref=e172]
+          - paragraph [ref=e173]: 管理与CRM、ERP、PLM系统的数据集成配置
+        - generic [ref=e174]:
+          - generic [ref=e176]:
+            - strong [ref=e177]: 集成配置列表
+            - button "新增配置" [ref=e178] [cursor=pointer]:
+              - generic [ref=e179]: 新增配置
+          - generic [ref=e182]:
+            - table [ref=e184]:
+              - rowgroup [ref=e194]:
+                - row "ID 系统类型 系统名称 端点URL 认证方式 同步方向 状态 操作" [ref=e195]:
+                  - columnheader "ID" [ref=e196]:
+                    - generic [ref=e197]: ID
+                  - columnheader "系统类型" [ref=e198]:
+                    - generic [ref=e199]: 系统类型
+                  - columnheader "系统名称" [ref=e200]:
+                    - generic [ref=e201]: 系统名称
+                  - columnheader "端点URL" [ref=e202]:
+                    - generic [ref=e203]: 端点URL
+                  - columnheader "认证方式" [ref=e204]:
+                    - generic [ref=e205]: 认证方式
+                  - columnheader "同步方向" [ref=e206]:
+                    - generic [ref=e207]: 同步方向
+                  - columnheader "状态" [ref=e208]:
+                    - generic [ref=e209]: 状态
+                  - columnheader "操作" [ref=e210]:
+                    - generic [ref=e211]: 操作
+            - table [ref=e216]:
+              - rowgroup [ref=e226]:
+                - row "2064304627771273218 CRM TestSys https://t.com API_KEY BIDIRECTIONAL 启用 编辑 测试 删除" [ref=e227]:
+                  - cell "2064304627771273218" [ref=e228]:
+                    - generic [ref=e229]: "2064304627771273218"
+                  - cell "CRM" [ref=e230]:
+                    - generic [ref=e231]: CRM
+                  - cell "TestSys" [ref=e232]:
+                    - generic [ref=e233]: TestSys
+                  - cell "https://t.com" [ref=e234]:
+                    - generic [ref=e235]: https://t.com
+                  - cell "API_KEY" [ref=e236]:
+                    - generic [ref=e237]: API_KEY
+                  - cell "BIDIRECTIONAL" [ref=e238]:
+                    - generic [ref=e239]: BIDIRECTIONAL
+                  - cell "启用" [ref=e240]:
+                    - generic [ref=e243]: 启用
+                  - cell "编辑 测试 删除" [ref=e244]:
+                    - generic [ref=e245]:
+                      - button "编辑" [ref=e246] [cursor=pointer]:
+                        - generic [ref=e247]: 编辑
+                      - button "测试" [ref=e248] [cursor=pointer]:
+                        - generic [ref=e249]: 测试
+                      - button "删除" [ref=e250] [cursor=pointer]:
+                        - generic [ref=e251]: 删除
+                - row "2064286890604920833 CRM TC https://t.com API_KEY BIDIRECTIONAL 启用 编辑 测试 删除" [ref=e252]:
+                  - cell "2064286890604920833" [ref=e253]:
+                    - generic [ref=e254]: "2064286890604920833"
+                  - cell "CRM" [ref=e255]:
+                    - generic [ref=e256]: CRM
+                  - cell "TC" [ref=e257]:
+                    - generic [ref=e258]: TC
+                  - cell "https://t.com" [ref=e259]:
+                    - generic [ref=e260]: https://t.com
+                  - cell "API_KEY" [ref=e261]:
+                    - generic [ref=e262]: API_KEY
+                  - cell "BIDIRECTIONAL" [ref=e263]:
+                    - generic [ref=e264]: BIDIRECTIONAL
+                  - cell "启用" [ref=e265]:
+                    - generic [ref=e268]: 启用
+                  - cell "编辑 测试 删除" [ref=e269]:
+                    - generic [ref=e270]:
+                      - button "编辑" [ref=e271] [cursor=pointer]:
+                        - generic [ref=e272]: 编辑
+                      - button "测试" [ref=e273] [cursor=pointer]:
+                        - generic [ref=e274]: 测试
+                      - button "删除" [ref=e275] [cursor=pointer]:
+                        - generic [ref=e276]: 删除
+                - row "2064283850913120257 CRM TC https://t.com API_KEY BIDIRECTIONAL 启用 编辑 测试 删除" [ref=e277]:
+                  - cell "2064283850913120257" [ref=e278]:
+                    - generic [ref=e279]: "2064283850913120257"
+                  - cell "CRM" [ref=e280]:
+                    - generic [ref=e281]: CRM
+                  - cell "TC" [ref=e282]:
+                    - generic [ref=e283]: TC
+                  - cell "https://t.com" [ref=e284]:
+                    - generic [ref=e285]: https://t.com
+                  - cell "API_KEY" [ref=e286]:
+                    - generic [ref=e287]: API_KEY
+                  - cell "BIDIRECTIONAL" [ref=e288]:
+                    - generic [ref=e289]: BIDIRECTIONAL
+                  - cell "启用" [ref=e290]:
+                    - generic [ref=e293]: 启用
+                  - cell "编辑 测试 删除" [ref=e294]:
+                    - generic [ref=e295]:
+                      - button "编辑" [ref=e296] [cursor=pointer]:
+                        - generic [ref=e297]: 编辑
+                      - button "测试" [ref=e298] [cursor=pointer]:
+                        - generic [ref=e299]: 测试
+                      - button "删除" [ref=e300] [cursor=pointer]:
+                        - generic [ref=e301]: 删除
+  - alert [ref=e302]:
+    - img [ref=e304]
+    - paragraph [ref=e306]: 登录成功

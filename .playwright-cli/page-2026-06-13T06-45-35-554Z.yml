@@ -1,0 +1,123 @@
+- generic [ref=e48]:
+  - complementary [ref=e49]:
+    - generic [ref=e50]:
+      - heading "SmartCPQ" [level=1] [ref=e51]
+      - generic [ref=e52]: 智能配置报价
+    - navigation [ref=e53]:
+      - menubar [ref=e567]:
+        - menuitem "产品管理" [expanded] [ref=e568]:
+          - generic [ref=e569] [cursor=pointer]:
+            - img [ref=e571]
+            - generic [ref=e573]: 产品管理
+            - img [ref=e575]
+          - menu [ref=e740]:
+            - menuitem "产品目录" [ref=e741] [cursor=pointer]:
+              - img [ref=e743]
+              - generic [ref=e745]: 产品目录
+            - menuitem "BOM管理" [ref=e746] [cursor=pointer]:
+              - img [ref=e748]
+              - generic [ref=e752]: BOM管理
+            - menuitem "捆绑包管理" [ref=e753] [cursor=pointer]:
+              - img [ref=e755]
+              - generic [ref=e759]: 捆绑包管理
+            - menuitem "替代品管理" [ref=e760] [cursor=pointer]:
+              - img [ref=e762]
+              - generic [ref=e765]: 替代品管理
+            - menuitem "属性选项" [ref=e766] [cursor=pointer]:
+              - img [ref=e768]
+              - generic [ref=e770]: 属性选项
+            - menuitem "竞品对标" [ref=e771] [cursor=pointer]:
+              - img [ref=e773]
+              - generic [ref=e775]: 竞品对标
+            - menuitem "变更管理" [ref=e776] [cursor=pointer]:
+              - img [ref=e778]
+              - generic [ref=e780]: 变更管理
+        - menuitem "配置管理" [expanded] [ref=e577]:
+          - generic [ref=e578] [cursor=pointer]:
+            - img [ref=e580]
+            - generic [ref=e582]: 配置管理
+            - img [ref=e584]
+          - menu [ref=e586]:
+            - menuitem "配置规则" [ref=e587] [cursor=pointer]:
+              - img [ref=e589]
+              - generic [ref=e591]: 配置规则
+            - menuitem "产品配置器" [ref=e592] [cursor=pointer]:
+              - img [ref=e594]
+              - generic [ref=e596]: 产品配置器
+            - menuitem "新建标准配置" [ref=e597] [cursor=pointer]:
+              - img [ref=e599]
+              - generic [ref=e601]: 新建标准配置
+            - menuitem "向导式配置" [ref=e602] [cursor=pointer]:
+              - img [ref=e604]
+              - generic [ref=e607]: 向导式配置
+            - menuitem "ATO定制配置" [ref=e608] [cursor=pointer]:
+              - img [ref=e610]
+              - generic [ref=e615]: ATO定制配置
+        - menuitem "价格管理" [ref=e616]:
+          - generic [ref=e617] [cursor=pointer]:
+            - img [ref=e619]
+            - generic [ref=e623]: 价格管理
+            - img [ref=e625]
+        - menuitem "报价管理" [ref=e627]:
+          - generic [ref=e628] [cursor=pointer]:
+            - img [ref=e630]
+            - generic [ref=e632]: 报价管理
+            - img [ref=e634]
+        - menuitem "运营及参数" [ref=e636]:
+          - generic [ref=e637] [cursor=pointer]:
+            - img [ref=e639]
+            - generic [ref=e641]: 运营及参数
+            - img [ref=e643]
+  - main [ref=e143]:
+    - generic [ref=e144]:
+      - navigation "面包屑" [ref=e145]:
+        - generic [ref=e146]:
+          - link "首页" [ref=e147]
+          - text: /
+        - generic [ref=e148]:
+          - link "配置管理" [ref=e645]
+          - text: /
+        - link "向导式配置" [ref=e646]
+      - button "疯狂的狮子Li" [ref=e154] [cursor=pointer]:
+        - generic [ref=e157]: 疯狂的狮子Li
+        - img [ref=e159]
+    - generic [ref=e647]:
+      - generic [ref=e676]:
+        - generic [ref=e677]:
+          - generic [ref=e678]: RW-ARC-200P
+          - generic [ref=e679]: ARC-200P 增强型弧焊机器人
+        - generic [ref=e680]:
+          - generic [ref=e681]:
+            - generic [ref=e685]: "1"
+            - generic [ref=e686]:
+              - generic [ref=e687]: 问题引导
+              - generic [ref=e688]: 选择场景偏好
+          - generic [ref=e689]:
+            - generic [ref=e693]: "2"
+            - generic [ref=e694]:
+              - generic [ref=e695]: 范围缩小
+              - generic [ref=e696]: 过滤匹配产品
+          - generic [ref=e697]:
+            - generic [ref=e701]: "3"
+            - generic [ref=e702]:
+              - generic [ref=e703]: 智能推荐
+              - generic [ref=e704]: 推荐最优配置
+          - generic [ref=e705]:
+            - generic [ref=e709]: "4"
+            - generic [ref=e710]:
+              - generic [ref=e711]: 确认配置
+              - generic [ref=e712]: 查看配置详情
+          - generic [ref=e713]:
+            - generic [ref=e716]: "5"
+            - generic [ref=e717]:
+              - generic [ref=e718]: 完成
+              - generic [ref=e719]: 生成报价
+      - generic [ref=e721]:
+        - generic [ref=e722]: 请选择「焊缝跟踪」
+        - generic [ref=e723]:
+          - generic [ref=e724]:
+            - heading "无（手动编程）" [level=4] [ref=e728] [cursor=pointer]
+            - heading "激光焊缝跟踪" [level=4] [ref=e732] [cursor=pointer]
+            - heading "电弧传感跟踪" [level=4] [ref=e736] [cursor=pointer]
+          - button "下一步" [disabled] [ref=e738]:
+            - generic [ref=e739]: 下一步

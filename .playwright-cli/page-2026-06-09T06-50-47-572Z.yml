@@ -1,0 +1,353 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e48]:
+    - complementary [ref=e49]:
+      - generic [ref=e50]:
+        - heading "SmartCPQ" [level=1] [ref=e51]
+        - generic [ref=e52]: 智能配置报价
+      - navigation [ref=e53]:
+        - link "产品目录" [ref=e54] [cursor=pointer]:
+          - /url: /catalog
+          - img [ref=e56]
+          - generic [ref=e58]: 产品目录
+        - link "BOM管理" [ref=e59] [cursor=pointer]:
+          - /url: /bom
+          - img [ref=e61]
+          - generic [ref=e65]: BOM管理
+        - link "捆绑包管理" [ref=e66] [cursor=pointer]:
+          - /url: /bundle
+          - img [ref=e68]
+          - generic [ref=e72]: 捆绑包管理
+        - link "替代品管理" [ref=e73] [cursor=pointer]:
+          - /url: /supersession
+          - img [ref=e75]
+          - generic [ref=e78]: 替代品管理
+        - link "配置规则" [ref=e79] [cursor=pointer]:
+          - /url: /config
+          - img [ref=e81]
+          - generic [ref=e83]: 配置规则
+        - link "属性选项" [ref=e84] [cursor=pointer]:
+          - /url: /attribute-option
+          - img [ref=e86]
+          - generic [ref=e88]: 属性选项
+        - link "价格手册" [ref=e89] [cursor=pointer]:
+          - /url: /pricing/book
+          - img [ref=e91]
+          - generic [ref=e95]: 价格手册
+        - link "定价规则" [ref=e96] [cursor=pointer]:
+          - /url: /pricing/rule
+          - img [ref=e98]
+          - generic [ref=e100]: 定价规则
+        - link "阶梯定价" [ref=e101] [cursor=pointer]:
+          - /url: /pricing/volumetier
+          - img [ref=e103]
+          - generic [ref=e105]: 阶梯定价
+        - link "渠道价格" [ref=e106] [cursor=pointer]:
+          - /url: /pricing/channelprice
+          - img [ref=e108]
+          - generic [ref=e110]: 渠道价格
+        - link "汇率配置" [ref=e111] [cursor=pointer]:
+          - /url: /pricing/currencyrate
+          - img [ref=e113]
+          - generic [ref=e117]: 汇率配置
+        - link "产品配置器" [ref=e118] [cursor=pointer]:
+          - /url: /configure
+          - img [ref=e120]
+          - generic [ref=e122]: 产品配置器
+        - link "报价单管理" [ref=e123] [cursor=pointer]:
+          - /url: /quoting
+          - img [ref=e125]
+          - generic [ref=e127]: 报价单管理
+        - link "审批管理" [ref=e128] [cursor=pointer]:
+          - /url: /approval
+          - img [ref=e130]
+          - generic [ref=e132]: 审批管理
+    - main [ref=e133]:
+      - generic [ref=e134]:
+        - navigation "面包屑" [ref=e135]:
+          - generic [ref=e136]:
+            - link "首页" [ref=e137]
+            - text: /
+          - link "产品目录" [ref=e139]
+        - button "疯狂的狮子Li" [ref=e142]:
+          - text: 疯狂的狮子Li
+          - img [ref=e146]
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - heading "产品目录" [level=2] [ref=e151]
+          - paragraph [ref=e152]: 浏览产品分类树与产品模型
+        - generic [ref=e154]:
+          - textbox "输入关键词搜索，多个关键词用逗号分隔" [ref=e156]
+          - button "搜索" [ref=e159] [cursor=pointer]:
+            - img [ref=e161]
+            - generic [ref=e163]: 搜索
+        - generic [ref=e164]:
+          - generic [ref=e166]:
+            - strong [ref=e168]: 产品分类
+            - tree [ref=e170]:
+              - treeitem "产品族 工业机器人" [expanded] [ref=e171]:
+                - generic [ref=e172] [cursor=pointer]:
+                  - img [ref=e174]
+                  - generic [ref=e176]:
+                    - generic [ref=e178]: 产品族
+                    - generic [ref=e179]: 工业机器人
+                - group [ref=e180]:
+                  - treeitem "产品线 焊接机器人" [expanded] [ref=e181]:
+                    - generic [ref=e182] [cursor=pointer]:
+                      - img [ref=e184]
+                      - generic [ref=e186]:
+                        - generic [ref=e188]: 产品线
+                        - generic [ref=e189]: 焊接机器人
+                    - group [ref=e190]:
+                      - treeitem "产品系列 ARC弧焊系列" [expanded] [ref=e191]:
+                        - generic [ref=e193] [cursor=pointer]:
+                          - generic [ref=e195]: 产品系列
+                          - generic [ref=e196]: ARC弧焊系列
+                        - group
+                      - treeitem "产品系列 SPOT点焊系列" [expanded] [ref=e197]:
+                        - generic [ref=e199] [cursor=pointer]:
+                          - generic [ref=e201]: 产品系列
+                          - generic [ref=e202]: SPOT点焊系列
+                        - group
+                      - treeitem "产品系列 LASER激光焊接系列" [expanded] [ref=e203]:
+                        - generic [ref=e205] [cursor=pointer]:
+                          - generic [ref=e207]: 产品系列
+                          - generic [ref=e208]: LASER激光焊接系列
+                        - group
+                  - treeitem "产品线 搬运与码垛机器人" [expanded] [ref=e209]:
+                    - generic [ref=e210] [cursor=pointer]:
+                      - img [ref=e212]
+                      - generic [ref=e214]:
+                        - generic [ref=e216]: 产品线
+                        - generic [ref=e217]: 搬运与码垛机器人
+                    - group [ref=e218]:
+                      - treeitem "产品系列 PAL码垛系列" [expanded] [ref=e219]:
+                        - generic [ref=e221] [cursor=pointer]:
+                          - generic [ref=e223]: 产品系列
+                          - generic [ref=e224]: PAL码垛系列
+                        - group
+                      - treeitem "产品系列 AGV自动导引系列" [expanded] [ref=e225]:
+                        - generic [ref=e227] [cursor=pointer]:
+                          - generic [ref=e229]: 产品系列
+                          - generic [ref=e230]: AGV自动导引系列
+                        - group
+                      - treeitem "产品系列 HEAVY重载系列" [expanded] [ref=e231]:
+                        - generic [ref=e233] [cursor=pointer]:
+                          - generic [ref=e235]: 产品系列
+                          - generic [ref=e236]: HEAVY重载系列
+                        - group
+                  - treeitem "产品线 协作机器人" [expanded] [ref=e237]:
+                    - generic [ref=e238] [cursor=pointer]:
+                      - img [ref=e240]
+                      - generic [ref=e242]:
+                        - generic [ref=e244]: 产品线
+                        - generic [ref=e245]: 协作机器人
+                    - group [ref=e246]:
+                      - treeitem "产品系列 COBOT通用协作系列" [expanded] [ref=e247]:
+                        - generic [ref=e249] [cursor=pointer]:
+                          - generic [ref=e251]: 产品系列
+                          - generic [ref=e252]: COBOT通用协作系列
+                        - group
+                      - treeitem "产品系列 PREC精密装配系列" [expanded] [ref=e253]:
+                        - generic [ref=e255] [cursor=pointer]:
+                          - generic [ref=e257]: 产品系列
+                          - generic [ref=e258]: PREC精密装配系列
+                        - group
+                      - treeitem "产品系列 SAFE力控协作系列" [expanded] [ref=e259]:
+                        - generic [ref=e261] [cursor=pointer]:
+                          - generic [ref=e263]: 产品系列
+                          - generic [ref=e264]: SAFE力控协作系列
+                        - group
+                  - treeitem "产品线 喷涂与涂装机器人" [expanded] [ref=e265]:
+                    - generic [ref=e266] [cursor=pointer]:
+                      - img [ref=e268]
+                      - generic [ref=e270]:
+                        - generic [ref=e272]: 产品线
+                        - generic [ref=e273]: 喷涂与涂装机器人
+                    - group [ref=e274]:
+                      - treeitem "产品系列 PAINT精密喷涂系列" [expanded] [ref=e275]:
+                        - generic [ref=e277] [cursor=pointer]:
+                          - generic [ref=e279]: 产品系列
+                          - generic [ref=e280]: PAINT精密喷涂系列
+                        - group
+                      - treeitem "产品系列 COAT自动涂装系列" [expanded] [ref=e281]:
+                        - generic [ref=e283] [cursor=pointer]:
+                          - generic [ref=e285]: 产品系列
+                          - generic [ref=e286]: COAT自动涂装系列
+                        - group
+                      - treeitem "产品系列 SEAL涂胶密封系列" [expanded] [ref=e287]:
+                        - generic [ref=e289] [cursor=pointer]:
+                          - generic [ref=e291]: 产品系列
+                          - generic [ref=e292]: SEAL涂胶密封系列
+                        - group
+              - treeitem "产品族 家用机器人" [expanded] [ref=e293]:
+                - generic [ref=e294] [cursor=pointer]:
+                  - img [ref=e296]
+                  - generic [ref=e298]:
+                    - generic [ref=e300]: 产品族
+                    - generic [ref=e301]: 家用机器人
+                - group [ref=e302]:
+                  - treeitem "产品线 清洁机器人" [expanded] [ref=e303]:
+                    - generic [ref=e304] [cursor=pointer]:
+                      - img [ref=e306]
+                      - generic [ref=e308]:
+                        - generic [ref=e310]: 产品线
+                        - generic [ref=e311]: 清洁机器人
+                    - group [ref=e312]:
+                      - treeitem "产品系列 SWEEP扫拖一体系列" [expanded] [ref=e313]:
+                        - generic [ref=e315] [cursor=pointer]:
+                          - generic [ref=e317]: 产品系列
+                          - generic [ref=e318]: SWEEP扫拖一体系列
+                        - group
+                      - treeitem "产品系列 NAVI视觉导航系列" [expanded] [ref=e319]:
+                        - generic [ref=e321] [cursor=pointer]:
+                          - generic [ref=e323]: 产品系列
+                          - generic [ref=e324]: NAVI视觉导航系列
+                        - group
+                      - treeitem "产品系列 DEEP商用清洁系列" [expanded] [ref=e325]:
+                        - generic [ref=e327] [cursor=pointer]:
+                          - generic [ref=e329]: 产品系列
+                          - generic [ref=e330]: DEEP商用清洁系列
+                        - group
+                  - treeitem "产品线 教育与编程机器人" [expanded] [ref=e331]:
+                    - generic [ref=e332] [cursor=pointer]:
+                      - img [ref=e334]
+                      - generic [ref=e336]:
+                        - generic [ref=e338]: 产品线
+                        - generic [ref=e339]: 教育与编程机器人
+                    - group [ref=e340]:
+                      - treeitem "产品系列 STEM科教启蒙系列" [expanded] [ref=e341]:
+                        - generic [ref=e343] [cursor=pointer]:
+                          - generic [ref=e345]: 产品系列
+                          - generic [ref=e346]: STEM科教启蒙系列
+                        - group
+                      - treeitem "产品系列 CODE编程进阶系列" [expanded] [ref=e347]:
+                        - generic [ref=e349] [cursor=pointer]:
+                          - generic [ref=e351]: 产品系列
+                          - generic [ref=e352]: CODE编程进阶系列
+                        - group
+                      - treeitem "产品系列 BUILD创意搭建系列" [expanded] [ref=e353]:
+                        - generic [ref=e355] [cursor=pointer]:
+                          - generic [ref=e357]: 产品系列
+                          - generic [ref=e358]: BUILD创意搭建系列
+                        - group
+                  - treeitem "产品线 陪伴与服务机器人" [expanded] [ref=e359]:
+                    - generic [ref=e360] [cursor=pointer]:
+                      - img [ref=e362]
+                      - generic [ref=e364]:
+                        - generic [ref=e366]: 产品线
+                        - generic [ref=e367]: 陪伴与服务机器人
+                    - group [ref=e368]:
+                      - treeitem "产品系列 PET仿生宠物系列" [expanded] [ref=e369]:
+                        - generic [ref=e371] [cursor=pointer]:
+                          - generic [ref=e373]: 产品系列
+                          - generic [ref=e374]: PET仿生宠物系列
+                        - group
+                      - treeitem "产品系列 COMP智能陪护系列" [expanded] [ref=e375]:
+                        - generic [ref=e377] [cursor=pointer]:
+                          - generic [ref=e379]: 产品系列
+                          - generic [ref=e380]: COMP智能陪护系列
+                        - group
+                      - treeitem "产品系列 ELDER养老辅助系列" [expanded] [ref=e381]:
+                        - generic [ref=e383] [cursor=pointer]:
+                          - generic [ref=e385]: 产品系列
+                          - generic [ref=e386]: ELDER养老辅助系列
+                        - group
+              - treeitem "产品族 具身智能机器人" [expanded] [ref=e387]:
+                - generic [ref=e388] [cursor=pointer]:
+                  - img [ref=e390]
+                  - generic [ref=e392]:
+                    - generic [ref=e394]: 产品族
+                    - generic [ref=e395]: 具身智能机器人
+                - group [ref=e396]:
+                  - treeitem "产品线 人形机器人" [expanded] [ref=e397]:
+                    - generic [ref=e398] [cursor=pointer]:
+                      - img [ref=e400]
+                      - generic [ref=e402]:
+                        - generic [ref=e404]: 产品线
+                        - generic [ref=e405]: 人形机器人
+                    - group [ref=e406]:
+                      - treeitem "产品系列 BIPED双足人形系列" [expanded] [ref=e407]:
+                        - generic [ref=e409] [cursor=pointer]:
+                          - generic [ref=e411]: 产品系列
+                          - generic [ref=e412]: BIPED双足人形系列
+                        - group
+                      - treeitem "产品系列 WHEEL轮式人形系列" [expanded] [ref=e413]:
+                        - generic [ref=e415] [cursor=pointer]:
+                          - generic [ref=e417]: 产品系列
+                          - generic [ref=e418]: WHEEL轮式人形系列
+                        - group
+                      - treeitem "产品系列 HUMANOID全尺寸系列" [expanded] [ref=e419]:
+                        - generic [ref=e421] [cursor=pointer]:
+                          - generic [ref=e423]: 产品系列
+                          - generic [ref=e424]: HUMANOID全尺寸系列
+                        - group
+                  - treeitem "产品线 商用服务机器人" [expanded] [ref=e425]:
+                    - generic [ref=e426] [cursor=pointer]:
+                      - img [ref=e428]
+                      - generic [ref=e430]:
+                        - generic [ref=e432]: 产品线
+                        - generic [ref=e433]: 商用服务机器人
+                    - group [ref=e434]:
+                      - treeitem "产品系列 RECEPTION智能接待系列" [expanded] [ref=e435]:
+                        - generic [ref=e437] [cursor=pointer]:
+                          - generic [ref=e439]: 产品系列
+                          - generic [ref=e440]: RECEPTION智能接待系列
+                        - group
+                      - treeitem "产品系列 DELIVERY物流配送系列" [expanded] [ref=e441]:
+                        - generic [ref=e443] [cursor=pointer]:
+                          - generic [ref=e445]: 产品系列
+                          - generic [ref=e446]: DELIVERY物流配送系列
+                        - group
+                      - treeitem "产品系列 RETAIL商用零售系列" [expanded] [ref=e447]:
+                        - generic [ref=e449] [cursor=pointer]:
+                          - generic [ref=e451]: 产品系列
+                          - generic [ref=e452]: RETAIL商用零售系列
+                        - group
+                  - treeitem "产品线 特种作业机器人" [expanded] [ref=e453]:
+                    - generic [ref=e454] [cursor=pointer]:
+                      - img [ref=e456]
+                      - generic [ref=e458]:
+                        - generic [ref=e460]: 产品线
+                        - generic [ref=e461]: 特种作业机器人
+                    - group [ref=e462]:
+                      - treeitem "产品系列 INSPECT智能巡检系列" [expanded] [ref=e463]:
+                        - generic [ref=e465] [cursor=pointer]:
+                          - generic [ref=e467]: 产品系列
+                          - generic [ref=e468]: INSPECT智能巡检系列
+                        - group
+                      - treeitem "产品系列 RESCUE应急救援系列" [expanded] [ref=e469]:
+                        - generic [ref=e471] [cursor=pointer]:
+                          - generic [ref=e473]: 产品系列
+                          - generic [ref=e474]: RESCUE应急救援系列
+                        - group
+                      - treeitem "产品系列 MARINE水下作业系列" [expanded] [ref=e475]:
+                        - generic [ref=e477] [cursor=pointer]:
+                          - generic [ref=e479]: 产品系列
+                          - generic [ref=e480]: MARINE水下作业系列
+                        - group
+          - generic [ref=e482]:
+            - strong [ref=e484]: 请选择分类
+            - generic [ref=e487]:
+              - table [ref=e489]:
+                - rowgroup [ref=e498]:
+                  - row "产品编码 产品名称 类型 状态 基准价 分类路径" [ref=e499]:
+                    - columnheader [ref=e500]
+                    - columnheader "产品编码" [ref=e501]:
+                      - generic [ref=e502]: 产品编码
+                    - columnheader "产品名称" [ref=e503]:
+                      - generic [ref=e504]: 产品名称
+                    - columnheader "类型" [ref=e505]:
+                      - generic [ref=e506]: 类型
+                    - columnheader "状态" [ref=e507]:
+                      - generic [ref=e508]: 状态
+                    - columnheader "基准价" [ref=e509]:
+                      - generic [ref=e510]: 基准价
+                    - columnheader "分类路径" [ref=e511]:
+                      - generic [ref=e512]: 分类路径
+              - generic [ref=e516]:
+                - table:
+                  - rowgroup
+                - generic [ref=e518]: 暂无产品
+  - alert [ref=e519]:
+    - img [ref=e521]
+    - paragraph [ref=e523]: 登录成功

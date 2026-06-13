@@ -1,0 +1,1 @@
+<template><div class="app-container"><PendingApproval /></div></template><script setup lang="ts">import PendingApproval from './PendingApproval.vue'</script>

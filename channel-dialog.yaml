@@ -1,0 +1,183 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - heading "SmartCPQ" [level=1] [ref=e6]
+      - generic [ref=e7]: 智能配置报价
+    - navigation [ref=e8]:
+      - link "产品目录" [ref=e9] [cursor=pointer]:
+        - /url: /catalog
+        - img [ref=e11]
+        - generic [ref=e13]: 产品目录
+      - link "BOM管理" [ref=e14] [cursor=pointer]:
+        - /url: /bom
+        - img [ref=e16]
+        - generic [ref=e20]: BOM管理
+      - link "替代品管理" [ref=e21] [cursor=pointer]:
+        - /url: /supersession
+        - img [ref=e23]
+        - generic [ref=e26]: 替代品管理
+      - link "配置规则" [ref=e27] [cursor=pointer]:
+        - /url: /config
+        - img [ref=e29]
+        - generic [ref=e31]: 配置规则
+      - link "价格手册" [ref=e32] [cursor=pointer]:
+        - /url: /pricing/book
+        - img [ref=e34]
+        - generic [ref=e38]: 价格手册
+      - link "定价规则" [ref=e39] [cursor=pointer]:
+        - /url: /pricing/rule
+        - img [ref=e41]
+        - generic [ref=e43]: 定价规则
+      - link "阶梯定价" [ref=e44] [cursor=pointer]:
+        - /url: /pricing/volumetier
+        - img [ref=e46]
+        - generic [ref=e48]: 阶梯定价
+      - link "渠道价格" [ref=e49] [cursor=pointer]:
+        - /url: /pricing/channelprice
+        - img [ref=e51]
+        - generic [ref=e53]: 渠道价格
+      - link "汇率配置" [ref=e54] [cursor=pointer]:
+        - /url: /pricing/currencyrate
+        - img [ref=e56]
+        - generic [ref=e60]: 汇率配置
+  - main [ref=e61]:
+    - generic [ref=e62]:
+      - navigation "面包屑" [ref=e63]:
+        - generic [ref=e64]:
+          - link "首页" [ref=e65]
+          - text: /
+        - link "渠道价格" [ref=e67]
+      - button "疯狂的狮子Li" [ref=e70]:
+        - text: 疯狂的狮子Li
+        - img [ref=e74]
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - heading "渠道价格" [level=2] [ref=e79]
+        - paragraph [ref=e80]: 管理不同渠道的专属产品定价和折扣率
+      - generic [ref=e81]:
+        - generic [ref=e83]:
+          - generic [ref=e84]: 渠道价格列表
+          - button "新增" [ref=e85] [cursor=pointer]:
+            - generic [ref=e86]: 新增
+        - generic [ref=e89]:
+          - table [ref=e91]:
+            - rowgroup [ref=e102]:
+              - row "渠道代码 产品 变体 渠道目录价 折扣率(%) 生效日期 失效日期 状态 操作" [ref=e103]:
+                - columnheader "渠道代码" [ref=e104]:
+                  - generic [ref=e105]: 渠道代码
+                - columnheader "产品" [ref=e106]:
+                  - generic [ref=e107]: 产品
+                - columnheader "变体" [ref=e108]:
+                  - generic [ref=e109]: 变体
+                - columnheader "渠道目录价" [ref=e110]:
+                  - generic [ref=e111]: 渠道目录价
+                - columnheader "折扣率(%)" [ref=e112]:
+                  - generic [ref=e113]: 折扣率(%)
+                - columnheader "生效日期" [ref=e114]:
+                  - generic [ref=e115]: 生效日期
+                - columnheader "失效日期" [ref=e116]:
+                  - generic [ref=e117]: 失效日期
+                - columnheader "状态" [ref=e118]:
+                  - generic [ref=e119]: 状态
+                - columnheader "操作" [ref=e120]:
+                  - generic [ref=e121]: 操作
+          - table [ref=e126]:
+            - rowgroup [ref=e137]:
+              - 'row "223333 #1002 模型级定价 0.00 2026-06-07 00:00:00 启用 编辑 删除" [ref=e138]':
+                - cell "223333" [ref=e139]:
+                  - generic [ref=e140]: "223333"
+                - cell "#1002" [ref=e141]:
+                  - generic [ref=e142]: "#1002"
+                - cell "模型级定价" [ref=e143]:
+                  - generic [ref=e144]: 模型级定价
+                - cell "0.00" [ref=e145]:
+                  - generic [ref=e146]: "0.00"
+                - cell [ref=e147]
+                - cell "2026-06-07 00:00:00" [ref=e148]:
+                  - generic [ref=e149]: 2026-06-07 00:00:00
+                - cell [ref=e150]
+                - cell "启用" [ref=e151]:
+                  - generic [ref=e154]: 启用
+                - cell "编辑 删除" [ref=e155]:
+                  - generic [ref=e156]:
+                    - button "编辑" [ref=e157] [cursor=pointer]:
+                      - generic [ref=e158]: 编辑
+                    - button "删除" [ref=e159] [cursor=pointer]:
+                      - generic [ref=e160]: 删除
+              - 'row "wwww1113 #1 模型级定价 0.00 2026-06-07 00:00:00 启用 编辑 删除" [ref=e161]':
+                - cell "wwww1113" [ref=e162]:
+                  - generic [ref=e163]: wwww1113
+                - cell "#1" [ref=e164]:
+                  - generic [ref=e165]: "#1"
+                - cell "模型级定价" [ref=e166]:
+                  - generic [ref=e167]: 模型级定价
+                - cell "0.00" [ref=e168]:
+                  - generic [ref=e169]: "0.00"
+                - cell [ref=e170]
+                - cell "2026-06-07 00:00:00" [ref=e171]:
+                  - generic [ref=e172]: 2026-06-07 00:00:00
+                - cell [ref=e173]
+                - cell "启用" [ref=e174]:
+                  - generic [ref=e177]: 启用
+                - cell "编辑 删除" [ref=e178]:
+                  - generic [ref=e179]:
+                    - button "编辑" [ref=e180] [cursor=pointer]:
+                      - generic [ref=e181]: 编辑
+                    - button "删除" [ref=e182] [cursor=pointer]:
+                      - generic [ref=e183]: 删除
+      - dialog "新增渠道价格" [ref=e185]:
+        - generic [active] [ref=e186]:
+          - generic [ref=e187]:
+            - heading "新增渠道价格" [level=2] [ref=e188]
+            - button "关闭此对话框" [ref=e189] [cursor=pointer]:
+              - img [ref=e191]
+          - generic [ref=e194]:
+            - generic [ref=e195]:
+              - generic [ref=e196]: 渠道代码
+              - textbox "渠道代码" [ref=e200]
+            - generic [ref=e201]:
+              - generic [ref=e202]: "* 产品"
+              - generic [ref=e205]:
+                - generic:
+                  - combobox "* 产品" [ref=e207]
+                  - generic [ref=e208]: "0"
+            - group "变体" [ref=e209]:
+              - generic [ref=e210]: 变体
+            - generic [ref=e212]:
+              - generic [ref=e213]: 渠道目录价
+              - generic [ref=e215]:
+                - button "减少数值" [ref=e216]:
+                  - img [ref=e218]
+                - button "增加数值" [ref=e220] [cursor=pointer]:
+                  - img [ref=e222]
+                - spinbutton "渠道目录价" [ref=e226]: "0.00"
+            - generic [ref=e227]:
+              - generic [ref=e228]: 折扣率(%)
+              - generic [ref=e230]:
+                - button "减少数值" [ref=e231] [cursor=pointer]:
+                  - img [ref=e233]
+                - button "增加数值" [ref=e235] [cursor=pointer]:
+                  - img [ref=e237]
+                - spinbutton "折扣率(%)" [ref=e241]
+            - generic [ref=e242]:
+              - generic [ref=e243]: 生效日期
+              - generic [ref=e246]:
+                - img [ref=e249]
+                - combobox "生效日期" [ref=e251]: 2026-06-07
+            - generic [ref=e252]:
+              - generic [ref=e253]: 失效日期
+              - generic [ref=e256]:
+                - img [ref=e259]
+                - combobox "失效日期" [ref=e261]
+            - generic [ref=e262]:
+              - generic [ref=e263]: 状态
+              - generic [ref=e266] [cursor=pointer]:
+                - generic:
+                  - combobox "状态" [ref=e268]
+                  - generic [ref=e269]: 启用
+                - img [ref=e272]
+          - generic [ref=e274]:
+            - button "取消" [ref=e275] [cursor=pointer]:
+              - generic [ref=e276]: 取消
+            - button "确定" [ref=e277] [cursor=pointer]:
+              - generic [ref=e278]: 确定

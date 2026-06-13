@@ -1,0 +1,169 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e48]:
+    - complementary [ref=e49]:
+      - generic [ref=e50]:
+        - heading "SmartCPQ" [level=1] [ref=e51]
+        - generic [ref=e52]: 智能配置报价
+      - navigation [ref=e53]:
+        - link "产品目录" [ref=e54] [cursor=pointer]:
+          - /url: /catalog
+          - img [ref=e56]
+          - generic [ref=e58]: 产品目录
+        - link "BOM管理" [ref=e59] [cursor=pointer]:
+          - /url: /bom
+          - img [ref=e61]
+          - generic [ref=e65]: BOM管理
+        - link "捆绑包管理" [ref=e66] [cursor=pointer]:
+          - /url: /bundle
+          - img [ref=e68]
+          - generic [ref=e72]: 捆绑包管理
+        - link "替代品管理" [ref=e73] [cursor=pointer]:
+          - /url: /supersession
+          - img [ref=e75]
+          - generic [ref=e78]: 替代品管理
+        - link "配置规则" [ref=e79] [cursor=pointer]:
+          - /url: /config
+          - img [ref=e81]
+          - generic [ref=e83]: 配置规则
+        - link "属性选项" [ref=e84] [cursor=pointer]:
+          - /url: /attribute-option
+          - img [ref=e86]
+          - generic [ref=e88]: 属性选项
+        - link "价格手册" [ref=e89] [cursor=pointer]:
+          - /url: /pricing/book
+          - img [ref=e91]
+          - generic [ref=e95]: 价格手册
+        - link "定价规则" [ref=e96] [cursor=pointer]:
+          - /url: /pricing/rule
+          - img [ref=e98]
+          - generic [ref=e100]: 定价规则
+        - link "阶梯定价" [ref=e101] [cursor=pointer]:
+          - /url: /pricing/volumetier
+          - img [ref=e103]
+          - generic [ref=e105]: 阶梯定价
+        - link "渠道价格" [ref=e106] [cursor=pointer]:
+          - /url: /pricing/channelprice
+          - img [ref=e108]
+          - generic [ref=e110]: 渠道价格
+        - link "汇率配置" [ref=e111] [cursor=pointer]:
+          - /url: /pricing/currencyrate
+          - img [ref=e113]
+          - generic [ref=e117]: 汇率配置
+        - link "产品配置器" [ref=e118] [cursor=pointer]:
+          - /url: /configure
+          - img [ref=e120]
+          - generic [ref=e122]: 产品配置器
+        - link "报价单管理" [ref=e123] [cursor=pointer]:
+          - /url: /quoting
+          - img [ref=e125]
+          - generic [ref=e127]: 报价单管理
+        - link "审批管理" [ref=e128] [cursor=pointer]:
+          - /url: /approval
+          - img [ref=e130]
+          - generic [ref=e132]: 审批管理
+    - main [ref=e133]:
+      - generic [ref=e134]:
+        - navigation "面包屑" [ref=e135]:
+          - generic [ref=e136]:
+            - link "首页" [ref=e137]
+            - text: /
+          - link "报价单管理" [ref=e139]
+        - button "疯狂的狮子Li" [ref=e142]:
+          - text: 疯狂的狮子Li
+          - img [ref=e146]
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - textbox "报价单号" [ref=e153]
+          - generic [ref=e156] [cursor=pointer]:
+            - generic:
+              - combobox [ref=e158]
+              - generic [ref=e159]: 状态
+            - img [ref=e162]
+          - button "搜索" [ref=e164] [cursor=pointer]:
+            - generic [ref=e165]: 搜索
+          - button "重置" [ref=e166] [cursor=pointer]:
+            - generic [ref=e167]: 重置
+        - button "新增报价单" [ref=e169] [cursor=pointer]:
+          - generic [ref=e170]: 新增报价单
+        - generic [ref=e172]:
+          - table [ref=e174]:
+            - rowgroup [ref=e183]:
+              - row "报价单号 客户 类型 总金额 状态 创建时间 操作" [ref=e184]:
+                - columnheader "报价单号" [ref=e185]:
+                  - generic [ref=e186]: 报价单号
+                - columnheader "客户" [ref=e187]:
+                  - generic [ref=e188]: 客户
+                - columnheader "类型" [ref=e189]:
+                  - generic [ref=e190]: 类型
+                - columnheader "总金额" [ref=e191]:
+                  - generic [ref=e192]: 总金额
+                - columnheader "状态" [ref=e193]:
+                  - generic [ref=e194]: 状态
+                - columnheader "创建时间" [ref=e195]:
+                  - generic [ref=e196]: 创建时间
+                - columnheader "操作" [ref=e197]:
+                  - generic [ref=e198]: 操作
+          - table [ref=e203]:
+            - rowgroup [ref=e212]:
+              - row "新报价单 E2E终测 STANDARD - DRAFT 2026-06-09 08:54:08 详情 编辑 删除" [ref=e213]:
+                - cell "新报价单" [ref=e214]:
+                  - generic [ref=e215]: 新报价单
+                - cell "E2E终测" [ref=e216]:
+                  - generic [ref=e217]: E2E终测
+                - cell "STANDARD" [ref=e218]:
+                  - generic [ref=e219]: STANDARD
+                - cell "-" [ref=e220]:
+                  - generic [ref=e221]: "-"
+                - cell "DRAFT" [ref=e222]:
+                  - generic [ref=e225]: DRAFT
+                - cell "2026-06-09 08:54:08" [ref=e226]:
+                  - generic [ref=e227]: 2026-06-09 08:54:08
+                - cell "详情 编辑 删除" [ref=e228]:
+                  - generic [ref=e229]:
+                    - button "详情" [ref=e230] [cursor=pointer]:
+                      - generic [ref=e231]: 详情
+                    - button "编辑" [ref=e232] [cursor=pointer]:
+                      - generic [ref=e233]: 编辑
+                    - button "删除" [ref=e234] [cursor=pointer]:
+                      - generic [ref=e235]: 删除
+              - row "QTE-20260609-0001 测试客户 STANDARD - DRAFT 详情 编辑 删除" [ref=e236]:
+                - cell "QTE-20260609-0001" [ref=e237]:
+                  - generic [ref=e238]: QTE-20260609-0001
+                - cell "测试客户" [ref=e239]:
+                  - generic [ref=e240]: 测试客户
+                - cell "STANDARD" [ref=e241]:
+                  - generic [ref=e242]: STANDARD
+                - cell "-" [ref=e243]:
+                  - generic [ref=e244]: "-"
+                - cell "DRAFT" [ref=e245]:
+                  - generic [ref=e248]: DRAFT
+                - cell [ref=e249]
+                - cell "详情 编辑 删除" [ref=e250]:
+                  - generic [ref=e251]:
+                    - button "详情" [ref=e252] [cursor=pointer]:
+                      - generic [ref=e253]: 详情
+                    - button "编辑" [ref=e254] [cursor=pointer]:
+                      - generic [ref=e255]: 编辑
+                    - button "删除" [ref=e256] [cursor=pointer]:
+                      - generic [ref=e257]: 删除
+        - generic [ref=e258]:
+          - generic [ref=e259]: 共 100 条
+          - button "上一页" [disabled] [ref=e260]:
+            - generic:
+              - img
+          - list [ref=e261]:
+            - listitem "第 1 页" [ref=e262]: "1"
+            - listitem "第 2 页" [ref=e263] [cursor=pointer]: "2"
+            - listitem "第 3 页" [ref=e264] [cursor=pointer]: "3"
+            - listitem "第 4 页" [ref=e265] [cursor=pointer]: "4"
+            - listitem "第 5 页" [ref=e266] [cursor=pointer]: "5"
+            - listitem "第 6 页" [ref=e267] [cursor=pointer]: "6"
+            - listitem "向后 5 页" [ref=e268] [cursor=pointer]:
+              - img
+            - listitem "第 10 页" [ref=e269] [cursor=pointer]: "10"
+          - button "下一页" [ref=e270] [cursor=pointer]:
+            - generic:
+              - img
+  - alert [ref=e271]:
+    - img [ref=e273]
+    - paragraph [ref=e275]: 登录成功

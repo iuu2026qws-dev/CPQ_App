@@ -1,0 +1,120 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - heading "SmartCPQ" [level=1] [ref=e6]
+      - generic [ref=e7]: 智能配置报价
+    - navigation [ref=e8]:
+      - menubar [ref=e9]:
+        - menuitem "产品管理" [ref=e10]:
+          - generic [ref=e11] [cursor=pointer]:
+            - img [ref=e13]
+            - generic [ref=e15]: 产品管理
+            - img [ref=e17]
+        - menuitem "配置管理" [expanded] [ref=e19]:
+          - generic [ref=e20] [cursor=pointer]:
+            - img [ref=e22]
+            - generic [ref=e24]: 配置管理
+            - img [ref=e26]
+          - menu [ref=e28]:
+            - menuitem "配置规则" [ref=e29] [cursor=pointer]:
+              - img [ref=e31]
+              - generic [ref=e33]: 配置规则
+            - menuitem "产品配置器" [ref=e34] [cursor=pointer]:
+              - img [ref=e36]
+              - generic [ref=e38]: 产品配置器
+            - menuitem "新建标准配置" [ref=e39] [cursor=pointer]:
+              - img [ref=e41]
+              - generic [ref=e43]: 新建标准配置
+            - menuitem "向导式配置" [ref=e44] [cursor=pointer]:
+              - img [ref=e46]
+              - generic [ref=e49]: 向导式配置
+            - menuitem "ATO定制配置" [ref=e50] [cursor=pointer]:
+              - img [ref=e52]
+              - generic [ref=e57]: ATO定制配置
+        - menuitem "价格管理" [ref=e58]:
+          - generic [ref=e59] [cursor=pointer]:
+            - img [ref=e61]
+            - generic [ref=e65]: 价格管理
+            - img [ref=e67]
+        - menuitem "报价管理" [ref=e69]:
+          - generic [ref=e70] [cursor=pointer]:
+            - img [ref=e72]
+            - generic [ref=e74]: 报价管理
+            - img [ref=e76]
+        - menuitem "运营及参数" [ref=e78]:
+          - generic [ref=e79] [cursor=pointer]:
+            - img [ref=e81]
+            - generic [ref=e83]: 运营及参数
+            - img [ref=e85]
+  - main [ref=e87]:
+    - generic [ref=e88]:
+      - navigation "面包屑" [ref=e89]:
+        - generic [ref=e90]:
+          - link "首页" [ref=e91]
+          - text: /
+        - generic [ref=e92]:
+          - link "配置管理" [ref=e93]
+          - text: /
+        - link "产品配置器" [ref=e431]
+      - button "疯狂的狮子Li" [ref=e98] [cursor=pointer]:
+        - generic [ref=e101]: 疯狂的狮子Li
+        - img [ref=e103]
+    - generic [ref=e571]:
+      - generic [ref=e572]:
+        - generic [ref=e573]:
+          - button [ref=e574] [cursor=pointer]:
+            - img [ref=e577]
+          - generic [ref=e579]:
+            - strong [ref=e580]: ARC-160
+            - text: ARC-160 紧凑型弧焊机器人
+          - generic [ref=e582]: STANDARD
+        - generic [ref=e583]:
+          - button "重新选择" [ref=e584] [cursor=pointer]:
+            - generic [ref=e585]: 重新选择
+          - button "完成配置" [ref=e586] [cursor=pointer]:
+            - generic [ref=e587]:
+              - text: 完成配置
+              - img [ref=e589]
+      - generic [ref=e591]:
+        - generic [ref=e593]:
+          - generic [ref=e594] [cursor=pointer]:
+            - generic [ref=e595]: 通信协议
+            - generic [ref=e596]: 3 选项
+          - generic [ref=e597] [cursor=pointer]:
+            - generic [ref=e598]: 颜色
+            - generic [ref=e599]: 4 选项
+          - generic [ref=e600] [cursor=pointer]:
+            - generic [ref=e601]: 焊接工艺
+            - generic [ref=e602]: 3 选项
+          - generic [ref=e603] [cursor=pointer]:
+            - generic [ref=e604]: 防护等级
+            - generic [ref=e605]: 3 选项
+          - generic [ref=e606] [cursor=pointer]:
+            - generic [ref=e607]: 基站版本
+            - generic [ref=e608]: 3 选项
+          - generic [ref=e609] [cursor=pointer]:
+            - generic [ref=e610]: 焊枪
+            - generic [ref=e611]: 3 选项
+        - generic [ref=e612]:
+          - heading "通信协议" [level=4] [ref=e614]
+          - generic [ref=e615]:
+            - generic [ref=e616] [cursor=pointer]:
+              - generic [ref=e617]: EtherCAT
+              - generic [ref=e618]: ETHERCAT
+            - generic [ref=e619] [cursor=pointer]:
+              - generic [ref=e620]: EtherNet/IP
+              - generic [ref=e621]: ETHERTCP
+            - generic [ref=e622] [cursor=pointer]:
+              - generic [ref=e623]: PROFINET
+              - generic [ref=e624]: PROFINET
+        - generic [ref=e626]:
+          - generic [ref=e627]: BOM 预览
+          - generic [ref=e628]:
+            - generic [ref=e629]:
+              - generic [ref=e630]: MAT-HOST-001
+              - generic [ref=e631]: 弧焊控制器
+              - generic [ref=e632]: x1.0000
+            - generic [ref=e633]:
+              - generic [ref=e634]: MAT-ACC-001
+              - generic [ref=e635]: 焊枪总成
+              - generic [ref=e636]: x1.0000

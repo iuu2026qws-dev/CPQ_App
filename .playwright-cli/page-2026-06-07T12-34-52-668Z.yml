@@ -1,0 +1,219 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - heading "SmartCPQ" [level=1] [ref=e6]
+        - generic [ref=e7]: 智能配置报价
+      - navigation [ref=e8]:
+        - link "产品目录" [ref=e9] [cursor=pointer]:
+          - /url: /catalog
+          - img [ref=e11]
+          - generic [ref=e13]: 产品目录
+        - link "BOM管理" [ref=e14] [cursor=pointer]:
+          - /url: /bom
+          - img [ref=e16]
+          - generic [ref=e20]: BOM管理
+        - link "替代品管理" [ref=e21] [cursor=pointer]:
+          - /url: /supersession
+          - img [ref=e23]
+          - generic [ref=e26]: 替代品管理
+        - link "配置规则" [ref=e27] [cursor=pointer]:
+          - /url: /config
+          - img [ref=e29]
+          - generic [ref=e31]: 配置规则
+        - link "价格手册" [ref=e32] [cursor=pointer]:
+          - /url: /pricing/book
+          - img [ref=e34]
+          - generic [ref=e38]: 价格手册
+        - link "定价规则" [ref=e39] [cursor=pointer]:
+          - /url: /pricing/rule
+          - img [ref=e41]
+          - generic [ref=e43]: 定价规则
+        - link "阶梯定价" [ref=e44] [cursor=pointer]:
+          - /url: /pricing/volumetier
+          - img [ref=e46]
+          - generic [ref=e48]: 阶梯定价
+        - link "渠道价格" [ref=e49] [cursor=pointer]:
+          - /url: /pricing/channelprice
+          - img [ref=e51]
+          - generic [ref=e53]: 渠道价格
+        - link "汇率配置" [ref=e54] [cursor=pointer]:
+          - /url: /pricing/currencyrate
+          - img [ref=e56]
+          - generic [ref=e60]: 汇率配置
+    - main [ref=e61]:
+      - generic [ref=e62]:
+        - navigation "面包屑" [ref=e63]:
+          - generic [ref=e64]:
+            - link "首页" [ref=e65]
+            - text: /
+          - link "价格手册" [ref=e67]
+        - button "疯狂的狮子Li" [ref=e70]:
+          - text: 疯狂的狮子Li
+          - img [ref=e74]
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - heading "价格手册" [level=2] [ref=e79]
+          - paragraph [ref=e80]: 管理标准/渠道/促销/区域价格手册及其条目
+        - generic [ref=e81]:
+          - generic [ref=e83]:
+            - generic [ref=e85]:
+              - strong [ref=e86]: 价格手册
+              - button "新增" [ref=e87] [cursor=pointer]:
+                - generic [ref=e88]: 新增
+            - generic [ref=e91]:
+              - table [ref=e93]:
+                - rowgroup [ref=e99]:
+                  - row "手册名称 类型 币种 操作" [ref=e100]:
+                    - columnheader "手册名称" [ref=e101]:
+                      - generic [ref=e102]: 手册名称
+                    - columnheader "类型" [ref=e103]:
+                      - generic [ref=e104]: 类型
+                    - columnheader "币种" [ref=e105]:
+                      - generic [ref=e106]: 币种
+                    - columnheader "操作" [ref=e107]:
+                      - generic [ref=e108]: 操作
+              - table [ref=e113]:
+                - rowgroup [ref=e119]:
+                  - row "浏览器测试-修复后 标准 CNY 编辑 删除" [ref=e120]:
+                    - cell "浏览器测试-修复后" [ref=e121]:
+                      - generic [ref=e122]: 浏览器测试-修复后
+                    - cell "标准" [ref=e123]:
+                      - generic [ref=e126]: 标准
+                    - cell "CNY" [ref=e127]:
+                      - generic [ref=e128]: CNY
+                    - cell "编辑 删除" [ref=e129]:
+                      - generic [ref=e130]:
+                        - button "编辑" [ref=e131] [cursor=pointer]:
+                          - generic [ref=e132]: 编辑
+                        - button "删除" [ref=e133] [cursor=pointer]:
+                          - generic [ref=e134]: 删除
+                  - row "test2 标准 CNY 编辑 删除" [ref=e135]:
+                    - cell "test2" [ref=e136]:
+                      - generic [ref=e137]: test2
+                    - cell "标准" [ref=e138]:
+                      - generic [ref=e141]: 标准
+                    - cell "CNY" [ref=e142]:
+                      - generic [ref=e143]: CNY
+                    - cell "编辑 删除" [ref=e144]:
+                      - generic [ref=e145]:
+                        - button "编辑" [ref=e146] [cursor=pointer]:
+                          - generic [ref=e147]: 编辑
+                        - button "删除" [ref=e148] [cursor=pointer]:
+                          - generic [ref=e149]: 删除
+                  - row "test-valid-date 标准 CNY 编辑 删除" [ref=e150]:
+                    - cell "test-valid-date" [ref=e151]:
+                      - generic [ref=e152]: test-valid-date
+                    - cell "标准" [ref=e153]:
+                      - generic [ref=e156]: 标准
+                    - cell "CNY" [ref=e157]:
+                      - generic [ref=e158]: CNY
+                    - cell "编辑 删除" [ref=e159]:
+                      - generic [ref=e160]:
+                        - button "编辑" [ref=e161] [cursor=pointer]:
+                          - generic [ref=e162]: 编辑
+                        - button "删除" [ref=e163] [cursor=pointer]:
+                          - generic [ref=e164]: 删除
+                  - row "test-via-proxy 标准 CNY 编辑 删除" [ref=e165]:
+                    - cell "test-via-proxy" [ref=e166]:
+                      - generic [ref=e167]: test-via-proxy
+                    - cell "标准" [ref=e168]:
+                      - generic [ref=e171]: 标准
+                    - cell "CNY" [ref=e172]:
+                      - generic [ref=e173]: CNY
+                    - cell "编辑 删除" [ref=e174]:
+                      - generic [ref=e175]:
+                        - button "编辑" [ref=e176] [cursor=pointer]:
+                          - generic [ref=e177]: 编辑
+                        - button "删除" [ref=e178] [cursor=pointer]:
+                          - generic [ref=e179]: 删除
+                  - row "test-api-book 标准 CNY 编辑 删除" [ref=e180]:
+                    - cell "test-api-book" [ref=e181]:
+                      - generic [ref=e182]: test-api-book
+                    - cell "标准" [ref=e183]:
+                      - generic [ref=e186]: 标准
+                    - cell "CNY" [ref=e187]:
+                      - generic [ref=e188]: CNY
+                    - cell "编辑 删除" [ref=e189]:
+                      - generic [ref=e190]:
+                        - button "编辑" [ref=e191] [cursor=pointer]:
+                          - generic [ref=e192]: 编辑
+                        - button "删除" [ref=e193] [cursor=pointer]:
+                          - generic [ref=e194]: 删除
+          - generic [ref=e196]:
+            - generic [ref=e198]:
+              - strong [ref=e199]: 浏览器测试-修复后 — 条目
+              - button "新增条目" [active] [ref=e246] [cursor=pointer]:
+                - generic [ref=e247]: 新增条目
+            - generic [ref=e202]:
+              - table [ref=e204]:
+                - rowgroup [ref=e216]:
+                  - row "产品 变体 物料编码 目录价 成本价 最低价 区域 渠道 状态 操作" [ref=e217]:
+                    - columnheader "产品" [ref=e218]:
+                      - generic [ref=e219]: 产品
+                    - columnheader "变体" [ref=e220]:
+                      - generic [ref=e221]: 变体
+                    - columnheader "物料编码" [ref=e222]:
+                      - generic [ref=e223]: 物料编码
+                    - columnheader "目录价" [ref=e224]:
+                      - generic [ref=e225]: 目录价
+                    - columnheader "成本价" [ref=e226]:
+                      - generic [ref=e227]: 成本价
+                    - columnheader "最低价" [ref=e228]:
+                      - generic [ref=e229]: 最低价
+                    - columnheader "区域" [ref=e230]:
+                      - generic [ref=e231]: 区域
+                    - columnheader "渠道" [ref=e232]:
+                      - generic [ref=e233]: 渠道
+                    - columnheader "状态" [ref=e234]:
+                      - generic [ref=e235]: 状态
+                    - columnheader "操作" [ref=e236]:
+                      - generic [ref=e237]: 操作
+              - table [ref=e248]:
+                - rowgroup [ref=e260]:
+                  - row "RW-ARC-160 - ARC-160 紧凑型弧焊机器人 ARC-A-A-YW - SLAM ArcBot A 黄色(已更新) ARC-A-A-YW 188000.00 0 编辑 删除" [ref=e449]:
+                    - cell "RW-ARC-160 - ARC-160 紧凑型弧焊机器人" [ref=e450]:
+                      - generic [ref=e451]: RW-ARC-160 - ARC-160 紧凑型弧焊机器人
+                    - cell "ARC-A-A-YW - SLAM ArcBot A 黄色(已更新)" [ref=e452]:
+                      - generic [ref=e453]: ARC-A-A-YW - SLAM ArcBot A 黄色(已更新)
+                    - cell "ARC-A-A-YW" [ref=e454]:
+                      - generic [ref=e455]: ARC-A-A-YW
+                    - cell "188000.00" [ref=e456]:
+                      - generic [ref=e457]: "188000.00"
+                    - cell [ref=e458]
+                    - cell [ref=e459]
+                    - cell [ref=e460]
+                    - cell [ref=e461]
+                    - cell "0" [ref=e462]:
+                      - generic [ref=e463]: "0"
+                    - cell "编辑 删除" [ref=e464]:
+                      - generic [ref=e465]:
+                        - button "编辑" [ref=e466] [cursor=pointer]:
+                          - generic [ref=e467]: 编辑
+                        - button "删除" [ref=e468] [cursor=pointer]:
+                          - generic [ref=e469]: 删除
+                  - row "RW-ARC-160 - ARC-160 紧凑型弧焊机器人 RW-ARC-160-GRY - ARC-160 灰色款 RW-ARC-160-GRY 185000.00 0 编辑 删除" [ref=e470]:
+                    - cell "RW-ARC-160 - ARC-160 紧凑型弧焊机器人" [ref=e471]:
+                      - generic [ref=e472]: RW-ARC-160 - ARC-160 紧凑型弧焊机器人
+                    - cell "RW-ARC-160-GRY - ARC-160 灰色款" [ref=e473]:
+                      - generic [ref=e474]: RW-ARC-160-GRY - ARC-160 灰色款
+                    - cell "RW-ARC-160-GRY" [ref=e475]:
+                      - generic [ref=e476]: RW-ARC-160-GRY
+                    - cell "185000.00" [ref=e477]:
+                      - generic [ref=e478]: "185000.00"
+                    - cell [ref=e479]
+                    - cell [ref=e480]
+                    - cell [ref=e481]
+                    - cell [ref=e482]
+                    - cell "0" [ref=e483]:
+                      - generic [ref=e484]: "0"
+                    - cell "编辑 删除" [ref=e485]:
+                      - generic [ref=e486]:
+                        - button "编辑" [ref=e487] [cursor=pointer]:
+                          - generic [ref=e488]: 编辑
+                        - button "删除" [ref=e489] [cursor=pointer]:
+                          - generic [ref=e490]: 删除
+        - text: "*"
+  - alert [ref=e491]:
+    - img [ref=e493]
+    - paragraph [ref=e495]: 新增成功

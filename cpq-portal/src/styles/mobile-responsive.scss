@@ -1,0 +1,112 @@
+// CPQ 四级响应式断点（S19.5）
+// Mobile < 768px | Tablet 768px-1024px | Desktop 1025px-1440px | Wide > 1440px
+
+// 断点定义
+$breakpoint-mobile:  768px;
+$breakpoint-tablet:  1024px;
+$breakpoint-desktop: 1440px;
+
+// Mobile-first 混入
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile - 1}) { @content; }
+}
+
+@mixin tablet {
+  @media (min-width: $breakpoint-mobile) and (max-width: #{$breakpoint-tablet - 1}) { @content; }
+}
+
+@mixin tablet-up {
+  @media (min-width: $breakpoint-mobile) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-tablet) and (max-width: #{$breakpoint-desktop - 1}) { @content; }
+}
+
+@mixin desktop-up {
+  @media (min-width: $breakpoint-tablet) { @content; }
+}
+
+@mixin wide {
+  @media (min-width: $breakpoint-desktop) { @content; }
+}
+
+// 移动端全局适配
+@include mobile {
+  html {
+    font-size: 14px;
+  }
+
+  // 隐藏桌面端大屏专属元素
+  .desktop-only { display: none !important; }
+
+  // 页面内容区增加安全区域 padding
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  // Element Plus 表格自适应
+  .el-table {
+    font-size: 12px;
+
+    .el-table__header th {
+      padding: 8px 4px;
+    }
+
+    .el-table__body td {
+      padding: 6px 4px;
+    }
+
+    // 超出两列的表格允许水平滚动
+    .el-table__body-wrapper {
+      overflow-x: auto;
+    }
+  }
+
+  // 弹窗全屏
+  .el-dialog {
+    width: 92% !important;
+    margin-top: 10vh !important;
+
+    .el-dialog__header { padding: 12px 16px; }
+    .el-dialog__body   { padding: 12px 16px; }
+  }
+
+  // 表单全宽
+  .el-form-item {
+    margin-bottom: 12px;
+
+    .el-form-item__label {
+      font-size: 13px;
+    }
+  }
+
+  // 按钮触控区域加大
+  .el-button {
+    min-height: 36px;
+    font-size: 13px;
+  }
+
+  // 分页简化
+  .el-pagination {
+    .el-pagination__sizes,
+    .el-pagination__jump { display: none; }
+  }
+}
+
+// 平板端适配
+@include tablet {
+  html { font-size: 15px; }
+  .mobile-only { display: none !important; }
+}
+
+// 桌面端及更大
+@include desktop-up {
+  html { font-size: 16px; }
+  .mobile-only { display: none !important; }
+
+  // 安全区域重置
+  body { padding-bottom: 0; }
+}

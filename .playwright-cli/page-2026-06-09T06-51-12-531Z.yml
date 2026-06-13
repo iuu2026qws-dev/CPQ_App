@@ -1,0 +1,118 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - heading "SmartCPQ" [level=1] [ref=e6]
+      - generic [ref=e7]: 智能配置报价
+    - navigation [ref=e8]:
+      - link "产品目录" [ref=e9] [cursor=pointer]:
+        - /url: /catalog
+        - img [ref=e11]
+        - generic [ref=e13]: 产品目录
+      - link "BOM管理" [ref=e14] [cursor=pointer]:
+        - /url: /bom
+        - img [ref=e16]
+        - generic [ref=e20]: BOM管理
+      - link "捆绑包管理" [ref=e21] [cursor=pointer]:
+        - /url: /bundle
+        - img [ref=e23]
+        - generic [ref=e27]: 捆绑包管理
+      - link "替代品管理" [ref=e28] [cursor=pointer]:
+        - /url: /supersession
+        - img [ref=e30]
+        - generic [ref=e33]: 替代品管理
+      - link "配置规则" [ref=e34] [cursor=pointer]:
+        - /url: /config
+        - img [ref=e36]
+        - generic [ref=e38]: 配置规则
+      - link "属性选项" [ref=e39] [cursor=pointer]:
+        - /url: /attribute-option
+        - img [ref=e41]
+        - generic [ref=e43]: 属性选项
+      - link "价格手册" [ref=e44] [cursor=pointer]:
+        - /url: /pricing/book
+        - img [ref=e46]
+        - generic [ref=e50]: 价格手册
+      - link "定价规则" [ref=e51] [cursor=pointer]:
+        - /url: /pricing/rule
+        - img [ref=e53]
+        - generic [ref=e55]: 定价规则
+      - link "阶梯定价" [ref=e56] [cursor=pointer]:
+        - /url: /pricing/volumetier
+        - img [ref=e58]
+        - generic [ref=e60]: 阶梯定价
+      - link "渠道价格" [ref=e61] [cursor=pointer]:
+        - /url: /pricing/channelprice
+        - img [ref=e63]
+        - generic [ref=e65]: 渠道价格
+      - link "汇率配置" [ref=e66] [cursor=pointer]:
+        - /url: /pricing/currencyrate
+        - img [ref=e68]
+        - generic [ref=e72]: 汇率配置
+      - link "产品配置器" [ref=e73] [cursor=pointer]:
+        - /url: /configure
+        - img [ref=e75]
+        - generic [ref=e77]: 产品配置器
+      - link "报价单管理" [ref=e78] [cursor=pointer]:
+        - /url: /quoting
+        - img [ref=e80]
+        - generic [ref=e82]: 报价单管理
+      - link "审批管理" [ref=e83] [cursor=pointer]:
+        - /url: /approval
+        - img [ref=e85]
+        - generic [ref=e87]: 审批管理
+  - main [ref=e88]:
+    - generic [ref=e89]:
+      - navigation "面包屑" [ref=e90]:
+        - generic [ref=e91]:
+          - link "首页" [ref=e92]
+          - text: /
+        - link "配置规则" [ref=e94]
+      - button "疯狂的狮子Li" [ref=e97]:
+        - text: 疯狂的狮子Li
+        - img [ref=e101]
+    - generic [ref=e159]:
+      - generic [ref=e160]:
+        - generic [ref=e161]:
+          - button [ref=e162] [cursor=pointer]:
+            - img [ref=e165]
+          - generic [ref=e167]:
+            - strong [ref=e168]: ARC-160
+            - text: ARC-160 紧凑型弧焊机器人
+          - generic [ref=e170]: STANDARD
+        - generic [ref=e171]:
+          - button "重新选择" [ref=e172] [cursor=pointer]:
+            - generic [ref=e173]: 重新选择
+          - button "完成配置" [ref=e174] [cursor=pointer]:
+            - generic [ref=e175]:
+              - text: 完成配置
+              - img [ref=e177]
+      - generic [ref=e179]:
+        - generic [ref=e181]:
+          - generic [ref=e182] [cursor=pointer]:
+            - generic [ref=e183]: 颜色1780925189
+            - generic [ref=e184]: 1 选项
+          - generic [ref=e185] [cursor=pointer]:
+            - generic [ref=e186]: 颜色
+            - generic [ref=e187]: 5 选项
+          - generic [ref=e188] [cursor=pointer]:
+            - generic [ref=e189]: COLOR
+            - generic [ref=e190]: 5 选项
+          - generic [ref=e191] [cursor=pointer]:
+            - generic [ref=e192]: 基站版本
+            - generic [ref=e193]: 2 选项
+        - generic [ref=e194]:
+          - heading "颜色1780925189" [level=4] [ref=e196]
+          - generic [ref=e198] [cursor=pointer]:
+            - generic [ref=e199]: 红1780925189
+            - generic [ref=e200]: red_1780925189
+        - generic [ref=e202]:
+          - generic [ref=e203]: BOM 预览
+          - generic [ref=e204]:
+            - generic [ref=e205]:
+              - generic [ref=e206]: MAT-HOST-001
+              - generic [ref=e207]: 弧焊控制器
+              - generic [ref=e208]: x1.0000
+            - generic [ref=e209]:
+              - generic [ref=e210]: MAT-ACC-001
+              - generic [ref=e211]: 焊枪总成
+              - generic [ref=e212]: x1.0000

@@ -1,0 +1,173 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - heading "SmartCPQ" [level=1] [ref=e6]
+        - generic [ref=e7]: 智能配置报价
+      - navigation [ref=e8]:
+        - link "产品目录" [ref=e9] [cursor=pointer]:
+          - /url: /catalog
+          - img [ref=e11]
+          - generic [ref=e13]: 产品目录
+        - link "BOM管理" [ref=e14] [cursor=pointer]:
+          - /url: /bom
+          - img [ref=e16]
+          - generic [ref=e20]: BOM管理
+        - link "替代品管理" [ref=e21] [cursor=pointer]:
+          - /url: /supersession
+          - img [ref=e23]
+          - generic [ref=e26]: 替代品管理
+        - link "配置规则" [ref=e27] [cursor=pointer]:
+          - /url: /config
+          - img [ref=e29]
+          - generic [ref=e31]: 配置规则
+        - link "价格手册" [ref=e32] [cursor=pointer]:
+          - /url: /pricing/book
+          - img [ref=e34]
+          - generic [ref=e38]: 价格手册
+        - link "定价规则" [ref=e39] [cursor=pointer]:
+          - /url: /pricing/rule
+          - img [ref=e41]
+          - generic [ref=e43]: 定价规则
+        - link "阶梯定价" [ref=e44] [cursor=pointer]:
+          - /url: /pricing/volumetier
+          - img [ref=e46]
+          - generic [ref=e48]: 阶梯定价
+        - link "渠道价格" [ref=e49] [cursor=pointer]:
+          - /url: /pricing/channelprice
+          - img [ref=e51]
+          - generic [ref=e53]: 渠道价格
+        - link "汇率配置" [ref=e54] [cursor=pointer]:
+          - /url: /pricing/currencyrate
+          - img [ref=e56]
+          - generic [ref=e60]: 汇率配置
+    - main [ref=e61]:
+      - generic [ref=e62]:
+        - navigation "面包屑" [ref=e63]:
+          - generic [ref=e64]:
+            - link "首页" [ref=e65]
+            - text: /
+          - link "定价规则" [ref=e67]
+        - button "疯狂的狮子Li" [ref=e70]:
+          - text: 疯狂的狮子Li
+          - img [ref=e74]
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - heading "定价规则" [level=2] [ref=e79]
+          - paragraph [ref=e80]: 配置折扣/加价/促销/合同定价规则，支持JSON条件和动作
+        - generic [ref=e81]:
+          - generic [ref=e83]:
+            - generic [ref=e84]: 规则列表
+            - button "新增规则" [ref=e85] [cursor=pointer]:
+              - generic [ref=e86]: 新增规则
+          - generic [ref=e89]:
+            - table [ref=e91]:
+              - rowgroup [ref=e101]:
+                - row "规则名称 类型 优先级 条件 动作 审批阈值 状态 操作" [ref=e102]:
+                  - columnheader "规则名称" [ref=e103]:
+                    - generic [ref=e104]: 规则名称
+                  - columnheader "类型" [ref=e105]:
+                    - generic [ref=e106]: 类型
+                  - columnheader "优先级" [ref=e107]:
+                    - generic [ref=e108]: 优先级
+                  - columnheader "条件" [ref=e109]:
+                    - generic [ref=e110]: 条件
+                  - columnheader "动作" [ref=e111]:
+                    - generic [ref=e112]: 动作
+                  - columnheader "审批阈值" [ref=e113]:
+                    - generic [ref=e114]: 审批阈值
+                  - columnheader "状态" [ref=e115]:
+                    - generic [ref=e116]: 状态
+                  - columnheader "操作" [ref=e117]:
+                    - generic [ref=e118]: 操作
+            - table [ref=e123]:
+              - rowgroup [ref=e133]:
+                - 'row "测试规则 discount 1 - {\"discount\": 0.9} 启用 编辑 删除" [ref=e134]':
+                  - cell "测试规则" [ref=e135]:
+                    - generic [ref=e136]: 测试规则
+                  - cell "discount" [ref=e137]:
+                    - generic [ref=e140]: discount
+                  - cell "1" [ref=e141]:
+                    - generic [ref=e142]: "1"
+                  - cell "-" [ref=e143]:
+                    - generic [ref=e144]: "-"
+                  - 'cell "{\"discount\": 0.9}" [ref=e145]':
+                    - generic [ref=e146]: "{\"discount\": 0.9}"
+                  - cell [ref=e147]
+                  - cell "启用" [ref=e148]:
+                    - generic [ref=e151]: 启用
+                  - cell "编辑 删除" [ref=e152]:
+                    - generic [ref=e153]:
+                      - button "编辑" [ref=e154] [cursor=pointer]:
+                        - generic [ref=e155]: 编辑
+                      - button "删除" [ref=e156] [cursor=pointer]:
+                        - generic [ref=e157]: 删除
+        - dialog "新增规则" [ref=e159]:
+          - generic [ref=e160]:
+            - generic [ref=e161]:
+              - heading "新增规则" [level=2] [ref=e162]
+              - button "关闭此对话框" [ref=e163] [cursor=pointer]:
+                - img [ref=e165]
+            - generic [ref=e168]:
+              - generic [ref=e169]:
+                - generic [ref=e170]: 规则名称
+                - textbox "规则名称" [ref=e174]: 测试规则
+              - generic [ref=e175]:
+                - generic [ref=e176]: 类型
+                - generic [ref=e179] [cursor=pointer]:
+                  - generic:
+                    - combobox "类型" [ref=e181]
+                    - generic [ref=e182]: DISCOUNT
+                  - img [ref=e185]
+              - generic [ref=e187]:
+                - generic [ref=e188]: 优先级
+                - generic [ref=e190]:
+                  - button "减少数值" [ref=e191]:
+                    - img [ref=e193]
+                  - button "增加数值" [ref=e195] [cursor=pointer]:
+                    - img [ref=e197]
+                  - spinbutton "优先级" [ref=e201]: "0"
+              - generic [ref=e202]:
+                - generic [ref=e203]: 条件JSON
+                - textbox "条件JSON" [ref=e206]:
+                  - /placeholder: "{\"product_ids\":[],\"regions\":[]}"
+              - generic [ref=e207]:
+                - generic [ref=e208]: 动作JSON
+                - textbox "动作JSON" [ref=e211]:
+                  - /placeholder: "{\"adjustment_type\":\"discount\",\"adjustment_value\":10}"
+              - generic [ref=e212]:
+                - generic [ref=e213]: 审批阈值
+                - generic [ref=e215]:
+                  - button "减少数值" [ref=e216] [cursor=pointer]:
+                    - img [ref=e218]
+                  - button "增加数值" [ref=e220] [cursor=pointer]:
+                    - img [ref=e222]
+                  - spinbutton "审批阈值" [ref=e226]
+              - generic [ref=e227]:
+                - generic [ref=e228]: 生效日期
+                - generic [ref=e231]:
+                  - img [ref=e234]
+                  - combobox "生效日期" [ref=e236]: 2026-06-07
+              - generic [ref=e237]:
+                - generic [ref=e238]: 失效日期
+                - generic [ref=e241]:
+                  - img [ref=e244]
+                  - combobox "失效日期" [ref=e246]
+              - generic [ref=e247]:
+                - generic [ref=e248]: 状态
+                - generic [ref=e251] [cursor=pointer]:
+                  - generic:
+                    - combobox "状态" [ref=e253]
+                    - generic [ref=e254]: 启用
+                  - img [ref=e257]
+              - generic [ref=e259]:
+                - generic [ref=e260]: 备注
+                - textbox "备注" [ref=e263]
+            - generic [ref=e264]:
+              - button "取消" [ref=e265] [cursor=pointer]:
+                - generic [ref=e266]: 取消
+              - button "确定" [active] [ref=e267] [cursor=pointer]:
+                - generic [ref=e268]: 确定
+  - alert [ref=e269]:
+    - img [ref=e271]
+    - paragraph [ref=e273]: 发生未知异常，请联系管理员

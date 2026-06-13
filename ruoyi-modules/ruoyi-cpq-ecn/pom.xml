@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent><artifactId>ruoyi-modules</artifactId><groupId>org.dromara</groupId><version>${revision}</version></parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ruoyi-cpq-ecn</artifactId>
+    <description>CPQ工程变更模块（ECN变更单/变更项/影响分析/审批）</description>
+    <dependencies>
+        <dependency><groupId>org.dromara</groupId><artifactId>ruoyi-common-core</artifactId></dependency>
+        <dependency><groupId>org.dromara</groupId><artifactId>ruoyi-common-security</artifactId></dependency>
+        <dependency><groupId>org.dromara</groupId><artifactId>ruoyi-common-web</artifactId></dependency>
+        <dependency><groupId>org.dromara</groupId><artifactId>ruoyi-cpq</artifactId><version>${revision}</version></dependency>
+        <dependency><groupId>org.dromara</groupId><artifactId>ruoyi-cpq-quote</artifactId><version>${revision}</version></dependency>
+        <dependency><groupId>org.dromara</groupId><artifactId>ruoyi-cpq-approval</artifactId><version>${revision}</version></dependency>
+        <dependency><groupId>org.dromara</groupId><artifactId>ruoyi-cpq-config</artifactId><version>${revision}</version></dependency>
+    </dependencies>
+</project>

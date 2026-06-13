@@ -1,0 +1,23 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - heading "SmartCPQ" [level=1] [ref=e6]
+      - paragraph [ref=e7]: 制造业智能配置报价系统 - 业务门户
+    - generic [ref=e8]:
+      - generic [ref=e12] [cursor=pointer]:
+        - generic:
+          - combobox [ref=e14]
+          - generic [ref=e15]: 默认租户 (000000)
+        - img [ref=e18]
+      - generic [ref=e23]:
+        - img [ref=e26]
+        - textbox "用户名" [ref=e28]: admin
+      - generic [ref=e32]:
+        - img [ref=e35]
+        - textbox "密码" [ref=e38]: admin123
+        - img [ref=e41] [cursor=pointer]
+      - button "登 录" [ref=e46] [cursor=pointer]:
+        - generic [ref=e47]: 登 录
+  - alert [ref=e48]:
+    - img [ref=e50]
+    - paragraph [ref=e52]: 登录成功

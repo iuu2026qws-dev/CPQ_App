@@ -1,0 +1,78 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - heading "SmartCPQ" [level=1] [ref=e6]
+      - generic [ref=e7]: 智能配置报价
+    - navigation [ref=e8]:
+      - menubar [ref=e678]:
+        - menuitem "产品管理" [expanded] [ref=e679]:
+          - generic [ref=e680] [cursor=pointer]:
+            - img [ref=e682]
+            - generic [ref=e684]: 产品管理
+            - img [ref=e686]
+          - menu [ref=e688]:
+            - menuitem "产品目录" [ref=e689] [cursor=pointer]:
+              - img [ref=e691]
+              - generic [ref=e693]: 产品目录
+            - menuitem "BOM管理" [ref=e694] [cursor=pointer]:
+              - img [ref=e696]
+              - generic [ref=e700]: BOM管理
+            - menuitem "捆绑包管理" [ref=e701] [cursor=pointer]:
+              - img [ref=e703]
+              - generic [ref=e707]: 捆绑包管理
+            - menuitem "替代品管理" [ref=e708] [cursor=pointer]:
+              - img [ref=e710]
+              - generic [ref=e713]: 替代品管理
+            - menuitem "属性选项" [ref=e714] [cursor=pointer]:
+              - img [ref=e716]
+              - generic [ref=e718]: 属性选项
+            - menuitem "竞品对标" [ref=e719] [cursor=pointer]:
+              - img [ref=e721]
+              - generic [ref=e723]: 竞品对标
+            - menuitem "变更管理" [ref=e724] [cursor=pointer]:
+              - img [ref=e726]
+              - generic [ref=e728]: 变更管理
+        - menuitem "配置管理" [ref=e729]:
+          - generic [ref=e730] [cursor=pointer]:
+            - img [ref=e732]
+            - generic [ref=e734]: 配置管理
+            - img [ref=e736]
+        - menuitem "价格管理" [ref=e738]:
+          - generic [ref=e739] [cursor=pointer]:
+            - img [ref=e741]
+            - generic [ref=e745]: 价格管理
+            - img [ref=e747]
+        - menuitem "报价管理" [ref=e749]:
+          - generic [ref=e750] [cursor=pointer]:
+            - img [ref=e752]
+            - generic [ref=e754]: 报价管理
+            - img [ref=e756]
+        - menuitem "运营及参数" [ref=e758]:
+          - generic [ref=e759] [cursor=pointer]:
+            - img [ref=e761]
+            - generic [ref=e763]: 运营及参数
+            - img [ref=e765]
+  - main [ref=e87]:
+    - generic [ref=e88]:
+      - navigation "面包屑" [ref=e89]:
+        - generic [ref=e90]:
+          - link "首页" [ref=e91]
+          - text: /
+        - generic [ref=e92]:
+          - link "产品管理" [ref=e767]
+          - text: /
+        - link "BOM管理" [ref=e768]
+      - button "疯狂的狮子Li" [ref=e98] [cursor=pointer]:
+        - generic [ref=e101]: 疯狂的狮子Li
+        - img [ref=e103]
+    - generic [ref=e769]:
+      - generic [ref=e770]:
+        - heading "BOM管理" [level=2] [ref=e771]
+        - paragraph [ref=e772]: SBOM Header 与 Line 完整 CRUD，树形 BOM 展开
+      - generic [ref=e778]:
+        - generic:
+          - combobox [ref=e780]
+          - generic [ref=e781]: 搜索产品编码/名称
+      - generic [ref=e783]:
+        - img [ref=e785]
+        - paragraph [ref=e802]: 请搜索并选择一个产品，查看其 SBOM

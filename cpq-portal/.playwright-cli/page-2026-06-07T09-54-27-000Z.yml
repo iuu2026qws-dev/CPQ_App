@@ -1,0 +1,209 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - heading "SmartCPQ" [level=1] [ref=e6]
+      - generic [ref=e7]: 智能配置报价
+    - navigation [ref=e8]:
+      - link "产品目录" [ref=e9] [cursor=pointer]:
+        - /url: /catalog
+        - img [ref=e11]
+        - generic [ref=e13]: 产品目录
+      - link "BOM管理" [ref=e14] [cursor=pointer]:
+        - /url: /bom
+        - img [ref=e16]
+        - generic [ref=e20]: BOM管理
+      - link "替代品管理" [ref=e21] [cursor=pointer]:
+        - /url: /supersession
+        - img [ref=e23]
+        - generic [ref=e26]: 替代品管理
+      - link "配置规则" [ref=e27] [cursor=pointer]:
+        - /url: /config
+        - img [ref=e29]
+        - generic [ref=e31]: 配置规则
+      - link "价格手册" [ref=e32] [cursor=pointer]:
+        - /url: /pricing/book
+        - img [ref=e34]
+        - generic [ref=e38]: 价格手册
+      - link "定价规则" [ref=e39] [cursor=pointer]:
+        - /url: /pricing/rule
+        - img [ref=e41]
+        - generic [ref=e43]: 定价规则
+      - link "阶梯定价" [ref=e44] [cursor=pointer]:
+        - /url: /pricing/volumetier
+        - img [ref=e46]
+        - generic [ref=e48]: 阶梯定价
+      - link "渠道价格" [ref=e49] [cursor=pointer]:
+        - /url: /pricing/channelprice
+        - img [ref=e51]
+        - generic [ref=e53]: 渠道价格
+      - link "汇率配置" [ref=e54] [cursor=pointer]:
+        - /url: /pricing/currencyrate
+        - img [ref=e56]
+        - generic [ref=e60]: 汇率配置
+  - main [ref=e61]:
+    - generic [ref=e62]:
+      - navigation "面包屑" [ref=e63]:
+        - generic [ref=e64]:
+          - link "首页" [ref=e65]
+          - text: /
+        - link "价格手册" [ref=e67]
+      - button "疯狂的狮子Li" [ref=e70]:
+        - text: 疯狂的狮子Li
+        - img [ref=e74]
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - heading "价格手册" [level=2] [ref=e79]
+        - paragraph [ref=e80]: 管理标准/渠道/促销/区域价格手册及其条目
+      - generic [ref=e81]:
+        - generic [ref=e83]:
+          - generic [ref=e85]:
+            - strong [ref=e86]: 价格手册
+            - button "新增" [ref=e87] [cursor=pointer]:
+              - generic [ref=e88]: 新增
+          - generic [ref=e91]:
+            - table [ref=e93]:
+              - rowgroup [ref=e99]:
+                - row "手册名称 类型 币种 操作" [ref=e100]:
+                  - columnheader "手册名称" [ref=e101]:
+                    - generic [ref=e102]: 手册名称
+                  - columnheader "类型" [ref=e103]:
+                    - generic [ref=e104]: 类型
+                  - columnheader "币种" [ref=e105]:
+                    - generic [ref=e106]: 币种
+                  - columnheader "操作" [ref=e107]:
+                    - generic [ref=e108]: 操作
+            - table [ref=e113]:
+              - rowgroup [ref=e119]:
+                - row "test2 标准 CNY 编辑 删除" [ref=e120]:
+                  - cell "test2" [ref=e121]:
+                    - generic [ref=e122]: test2
+                  - cell "标准" [ref=e123]:
+                    - generic [ref=e126]: 标准
+                  - cell "CNY" [ref=e127]:
+                    - generic [ref=e128]: CNY
+                  - cell "编辑 删除" [ref=e129]:
+                    - generic [ref=e130]:
+                      - button "编辑" [ref=e131] [cursor=pointer]:
+                        - generic [ref=e132]: 编辑
+                      - button "删除" [ref=e133] [cursor=pointer]:
+                        - generic [ref=e134]: 删除
+                - row "test-valid-date 标准 CNY 编辑 删除" [ref=e135]:
+                  - cell "test-valid-date" [ref=e136]:
+                    - generic [ref=e137]: test-valid-date
+                  - cell "标准" [ref=e138]:
+                    - generic [ref=e141]: 标准
+                  - cell "CNY" [ref=e142]:
+                    - generic [ref=e143]: CNY
+                  - cell "编辑 删除" [ref=e144]:
+                    - generic [ref=e145]:
+                      - button "编辑" [ref=e146] [cursor=pointer]:
+                        - generic [ref=e147]: 编辑
+                      - button "删除" [ref=e148] [cursor=pointer]:
+                        - generic [ref=e149]: 删除
+                - row "test-via-proxy 标准 CNY 编辑 删除" [ref=e150]:
+                  - cell "test-via-proxy" [ref=e151]:
+                    - generic [ref=e152]: test-via-proxy
+                  - cell "标准" [ref=e153]:
+                    - generic [ref=e156]: 标准
+                  - cell "CNY" [ref=e157]:
+                    - generic [ref=e158]: CNY
+                  - cell "编辑 删除" [ref=e159]:
+                    - generic [ref=e160]:
+                      - button "编辑" [ref=e161] [cursor=pointer]:
+                        - generic [ref=e162]: 编辑
+                      - button "删除" [ref=e163] [cursor=pointer]:
+                        - generic [ref=e164]: 删除
+                - row "test-api-book 标准 CNY 编辑 删除" [ref=e165]:
+                  - cell "test-api-book" [ref=e166]:
+                    - generic [ref=e167]: test-api-book
+                  - cell "标准" [ref=e168]:
+                    - generic [ref=e171]: 标准
+                  - cell "CNY" [ref=e172]:
+                    - generic [ref=e173]: CNY
+                  - cell "编辑 删除" [ref=e174]:
+                    - generic [ref=e175]:
+                      - button "编辑" [ref=e176] [cursor=pointer]:
+                        - generic [ref=e177]: 编辑
+                      - button "删除" [ref=e178] [cursor=pointer]:
+                        - generic [ref=e179]: 删除
+        - generic [ref=e181]:
+          - strong [ref=e184]: 请选择价格手册 — 条目
+          - generic [ref=e187]:
+            - table [ref=e189]:
+              - rowgroup [ref=e200]:
+                - row "物料编码 产品ID 目录价 成本价 最低价 区域 渠道 状态 操作" [ref=e201]:
+                  - columnheader "物料编码" [ref=e202]:
+                    - generic [ref=e203]: 物料编码
+                  - columnheader "产品ID" [ref=e204]:
+                    - generic [ref=e205]: 产品ID
+                  - columnheader "目录价" [ref=e206]:
+                    - generic [ref=e207]: 目录价
+                  - columnheader "成本价" [ref=e208]:
+                    - generic [ref=e209]: 成本价
+                  - columnheader "最低价" [ref=e210]:
+                    - generic [ref=e211]: 最低价
+                  - columnheader "区域" [ref=e212]:
+                    - generic [ref=e213]: 区域
+                  - columnheader "渠道" [ref=e214]:
+                    - generic [ref=e215]: 渠道
+                  - columnheader "状态" [ref=e216]:
+                    - generic [ref=e217]: 状态
+                  - columnheader "操作" [ref=e218]:
+                    - generic [ref=e219]: 操作
+            - generic [ref=e223]:
+              - table:
+                - rowgroup
+              - generic [ref=e225]: 请先选择左侧价格手册
+      - dialog "新增价格手册" [ref=e227]:
+        - generic [active] [ref=e228]:
+          - generic [ref=e229]:
+            - heading "新增价格手册" [level=2] [ref=e230]
+            - button "关闭此对话框" [ref=e231] [cursor=pointer]:
+              - img [ref=e233]
+          - generic [ref=e236]:
+            - generic [ref=e237]:
+              - generic [ref=e238]: 手册名称
+              - textbox "手册名称" [ref=e242]
+            - generic [ref=e243]:
+              - generic [ref=e244]: 类型
+              - generic [ref=e247] [cursor=pointer]:
+                - generic:
+                  - combobox "类型" [ref=e249]
+                  - generic [ref=e250]: STANDARD
+                - img [ref=e253]
+            - generic [ref=e255]:
+              - generic [ref=e256]: 币种
+              - textbox "币种" [ref=e260]: CNY
+            - generic [ref=e261]:
+              - generic [ref=e262]: 优先级
+              - generic [ref=e264]:
+                - button "减少数值" [ref=e265]:
+                  - img [ref=e267]
+                - button "增加数值" [ref=e269] [cursor=pointer]:
+                  - img [ref=e271]
+                - spinbutton "优先级" [ref=e275]: "0"
+            - generic [ref=e276]:
+              - generic [ref=e277]: 生效日期
+              - generic [ref=e280]:
+                - img [ref=e283]
+                - combobox "生效日期" [ref=e285]: 2026-06-07
+            - generic [ref=e286]:
+              - generic [ref=e287]: 失效日期
+              - generic [ref=e290]:
+                - img [ref=e293]
+                - combobox "失效日期" [ref=e295]
+            - generic [ref=e296]:
+              - generic [ref=e297]: 状态
+              - generic [ref=e300] [cursor=pointer]:
+                - generic:
+                  - combobox "状态" [ref=e302]
+                  - generic [ref=e303]: 正常
+                - img [ref=e306]
+            - generic [ref=e308]:
+              - generic [ref=e309]: 备注
+              - textbox "备注" [ref=e312]
+          - generic [ref=e313]:
+            - button "取消" [ref=e314] [cursor=pointer]:
+              - generic [ref=e315]: 取消
+            - button "确定" [ref=e316] [cursor=pointer]:
+              - generic [ref=e317]: 确定

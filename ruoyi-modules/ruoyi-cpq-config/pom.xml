@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.dromara</groupId>
+        <artifactId>ruoyi-modules</artifactId>
+        <version>5.6.1</version>
+    </parent>
+
+    <artifactId>ruoyi-cpq-config</artifactId>
+    <version>${revision}</version>
+    <packaging>jar</packaging>
+    <name>ruoyi-cpq-config</name>
+    <description>CPQ 配置引擎模块 — D03 配置规则+变体BOM+属性映射+兼容性矩阵+D01 Bundle</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>ruoyi-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>ruoyi-common-tenant</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>ruoyi-common-mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>ruoyi-common-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>ruoyi-common-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>ruoyi-common-idempotent</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- CPQ 产品主数据模块（BomExplosionService 需要 SBOM/MBOM Mapper） -->
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>ruoyi-cpq</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!-- CPQ 定价模块（ConfiguratorController 需要 PricingEngineService） -->
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>ruoyi-cpq-pricing</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,36 @@
+// CPQ 设计 Token — 对齐 CPQ_前端门户设计.md §6.1
+:root {
+  --cpq-primary: #1A73E8;
+  --cpq-primary-light: #4A90E2;
+  --cpq-success: #0F974A;
+  --cpq-warning: #E37400;
+  --cpq-danger: #D93025;
+  --cpq-text-primary: #202124;
+  --cpq-text-regular: #5F6368;
+  --cpq-text-secondary: #80868B;
+  --cpq-bg-page: #F8F9FA;
+  --cpq-bg-card: #FFFFFF;
+  --cpq-border: #DADCE0;
+  --cpq-sidebar-width: 240px;
+  --cpq-navbar-height: 56px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--cpq-text-primary);
+  background: var(--cpq-bg-page);
+}
+
+// Element Plus 主题覆盖
+:root {
+  --el-color-primary: var(--cpq-primary);
+  --el-color-success: var(--cpq-success);
+  --el-color-warning: var(--cpq-warning);
+  --el-color-danger: var(--cpq-danger);
+}

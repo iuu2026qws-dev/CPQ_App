@@ -1,0 +1,168 @@
+package ${packageName}.service.impl;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+import ${packageName}.mapper.${ClassName}Mapper;
+import ${packageName}.domain.${ClassName};
+import ${packageName}.service.I${ClassName}Service;
+import lombok.extern.slf4j.Slf4j;
+import cn.hutool.json.JSONUtil;
+
+/**
+ * @Description: ${functionName}Service业务层处理
+ * @BelongsProject: ${projectName}
+ * @BelongsPackage: ${packageName}.service.impl
+ * @Class: ${ClassName}ServiceImpl
+ * @Author: HRuinger.
+ * @CreateTime: ${datetime}
+ * @Version: 1.0.0
+ */
+@Slf4j
+@Service
+public class ${ClassName}ServiceImpl implements I${ClassName}Service
+{
+    @Autowired
+    private ${ClassName}Mapper ${className}Mapper;
+
+    /**
+     * 查询${functionName}
+     *
+     * @param ${pkColumn.javaField} ${functionName}主键
+     * @return ${functionName}
+     */
+    @Override
+    public ${ClassName} select${ClassName}By${pkColumn.capJavaField}(${pkColumn.javaType} ${pkColumn.javaField})
+    {
+        long startTime = System.currentTimeMillis();
+        log.info("查询${functionName}，参数：{}", ${pkColumn.javaField});
+        try {
+            ${ClassName} result = ${className}Mapper.select${ClassName}By${pkColumn.capJavaField}(${pkColumn.javaField});
+            long endTime = System.currentTimeMillis();
+            log.info("查询${functionName}完成，耗时：{}ms，结果：{}", (endTime - startTime), JSONUtil.toJsonStr(result));
+            return result;
+        } catch (Exception e) {
+            long endTime = System.currentTimeMillis();
+            log.error("查询${functionName}失败，参数：{}，耗时：{}ms，错误：", ${pkColumn.javaField}, (endTime - startTime), e);
+            throw e;
+        }
+    }
+
+    /**
+     * 查询${functionName}列表
+     *
+     * @param ${className} ${functionName}
+     * @return ${functionName}
+     */
+    @Override
+    public List<${ClassName}> select${ClassName}List(${ClassName} ${className})
+    {
+        long startTime = System.currentTimeMillis();
+        log.info("查询${functionName}列表，参数：{}", JSONUtil.toJsonStr(${className}));
+        try {
+            List<${ClassName}> list = ${className}Mapper.select${ClassName}List(${className});
+            long endTime = System.currentTimeMillis();
+            log.info("查询${functionName}列表完成，耗时：{}ms，结果数量：{}", (endTime - startTime), list.size());
+            return list;
+        } catch (Exception e) {
+            long endTime = System.currentTimeMillis();
+            log.error("查询${functionName}列表失败，参数：{}，耗时：{}ms，错误：", JSONUtil.toJsonStr(${className}), (endTime - startTime), e);
+            throw e;
+        }
+    }
+
+    /**
+     * 新增${functionName}
+     *
+     * @param ${className} ${functionName}
+     * @return 结果
+     */
+    @Override
+    public int insert${ClassName}(${ClassName} ${className})
+    {
+        long startTime = System.currentTimeMillis();
+        log.info("新增${functionName}，参数：{}", JSONUtil.toJsonStr(${className}));
+        try {
+            int result = ${className}Mapper.insert${ClassName}(${className});
+            long endTime = System.currentTimeMillis();
+            log.info("新增${functionName}完成，耗时：{}ms，影响行数：{}", (endTime - startTime), result);
+            return result;
+        } catch (Exception e) {
+            long endTime = System.currentTimeMillis();
+            log.error("新增${functionName}失败，参数：{}，耗时：{}ms，错误：", JSONUtil.toJsonStr(${className}), (endTime - startTime), e);
+            throw e;
+        }
+    }
+
+    /**
+     * 修改${functionName}
+     *
+     * @param ${className} ${functionName}
+     * @return 结果
+     */
+    @Override
+    public int update${ClassName}(${ClassName} ${className})
+    {
+        long startTime = System.currentTimeMillis();
+        log.info("修改${functionName}，参数：{}", JSONUtil.toJsonStr(${className}));
+        try {
+            int result = ${className}Mapper.update${ClassName}(${className});
+            long endTime = System.currentTimeMillis();
+            log.info("修改${functionName}完成，耗时：{}ms，影响行数：{}", (endTime - startTime), result);
+            return result;
+        } catch (Exception e) {
+            long endTime = System.currentTimeMillis();
+            log.error("修改${functionName}失败，参数：{}，耗时：{}ms，错误：", JSONUtil.toJsonStr(${className}), (endTime - startTime), e);
+            throw e;
+        }
+    }
+
+    /**
+     * 批量删除${functionName}
+     *
+     * @param ${pkColumn.javaField}s 需要删除的${functionName}主键集合
+     * @return 结果
+     */
+    @Override
+    public int delete${ClassName}By${pkColumn.capJavaField}s(${pkColumn.javaType}[] ${pkColumn.javaField}s)
+    {
+        long startTime = System.currentTimeMillis();
+        log.info("批量删除${functionName}，参数：{}", JSONUtil.toJsonStr(${pkColumn.javaField}s));
+        try {
+            int result = ${className}Mapper.delete${ClassName}By${pkColumn.capJavaField}s(${pkColumn.javaField}s);
+            long endTime = System.currentTimeMillis();
+            log.info("批量删除${functionName}完成，耗时：{}ms，影响行数：{}", (endTime - startTime), result);
+            return result;
+        } catch (Exception e) {
+            long endTime = System.currentTimeMillis();
+            log.error("批量删除${functionName}失败，参数：{}，耗时：{}ms，错误：", JSONUtil.toJsonStr(${pkColumn.javaField}s), (endTime - startTime), e);
+            throw e;
+        }
+    }
+
+    /**
+     * 删除${functionName}信息
+     *
+     * @param ${pkColumn.javaField} ${functionName}主键
+     * @return 结果
+     */
+    @Override
+    public int delete${ClassName}By${pkColumn.capJavaField}(${pkColumn.javaType} ${pkColumn.javaField})
+    {
+        long startTime = System.currentTimeMillis();
+        log.info("删除${functionName}，参数：{}", ${pkColumn.javaField});
+        try {
+            int result = ${className}Mapper.delete${ClassName}By${pkColumn.capJavaField}(${pkColumn.javaField});
+            long endTime = System.currentTimeMillis();
+            log.info("删除${functionName}完成，耗时：{}ms，影响行数：{}", (endTime - startTime), result);
+            return result;
+        } catch (Exception e) {
+            long endTime = System.currentTimeMillis();
+            log.error("删除${functionName}失败，参数：{}，耗时：{}ms，错误：", ${pkColumn.javaField}, (endTime - startTime), e);
+            throw e;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - heading "RuoYi-Vue-Plus多租户管理系统" [level=3] [ref=e6]
+        - button [ref=e8]:
+          - img [ref=e9]
+      - generic [ref=e14]:
+        - img [ref=e16]
+        - generic:
+          - combobox [ref=e19]
+          - generic [ref=e20]: "000000"
+        - img [ref=e23] [cursor=pointer]
+      - generic [ref=e28]:
+        - img [ref=e30]
+        - textbox "用户名" [ref=e32]: admin
+      - generic [ref=e36]:
+        - img [ref=e38]
+        - textbox "密码" [ref=e40]: admin123
+      - generic [ref=e42]:
+        - generic [ref=e44]:
+          - img [ref=e46]
+          - textbox "验证码" [ref=e48]
+        - img [ref=e50] [cursor=pointer]
+      - generic [ref=e51] [cursor=pointer]:
+        - generic [ref=e52]:
+          - checkbox "记住我"
+        - generic [ref=e54]: 记住我
+      - generic [ref=e56]:
+        - button "微信登录" [ref=e57] [cursor=pointer]:
+          - img [ref=e59]
+        - button "MaxKey登录" [ref=e61] [cursor=pointer]:
+          - img [ref=e63]
+        - button "TopIam登录" [ref=e65] [cursor=pointer]:
+          - img [ref=e67]
+        - button "Gitee登录" [ref=e69] [cursor=pointer]:
+          - img [ref=e71]
+        - button "Github登录" [ref=e73] [cursor=pointer]:
+          - img [ref=e75]
+      - button "登 录" [ref=e79] [cursor=pointer]:
+        - generic [ref=e81]: 登 录
+    - generic [ref=e82]: Copyright © 2018-2026 疯狂的狮子Li All Rights Reserved.
+  - generic [ref=e83]:
+    - generic "Toggle devtools panel" [ref=e84] [cursor=pointer]:
+      - img [ref=e85]
+    - generic "Toggle Component Inspector" [ref=e90] [cursor=pointer]:
+      - img [ref=e91]
