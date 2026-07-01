@@ -31,8 +31,11 @@ public interface ICpqQuoteTemplateService extends IService<CpqQuoteTemplate> {
     /** 生成模板预览 PDF — 用示例数据填充模板，输出 PDF 字节（PDF 类型） */
     byte[] generatePreviewPdf(Long templateId);
 
-    /** 生成模板预览 Word — 用示例数据生成 .docx 文档（WORD 类型） */
+    /** 生成模板预览 Word — 基于设计布局，用示例数据生成 .docx 文档（WORD 类型） */
     byte[] generatePreviewWord(Long templateId);
+
+    /** 生成模板预览 Excel — 基于设计布局，用示例数据生成 .xlsx 工作簿（EXCEL 类型） */
+    byte[] generatePreviewExcel(Long templateId);
 
     /** 设置默认模板 — 将该模板设为默认，取消其他同类型模板的默认标记 */
     int setDefault(Long templateId);

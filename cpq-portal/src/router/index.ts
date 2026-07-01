@@ -61,6 +61,61 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/layout/PortalLayout.vue'),
     redirect: '/catalog',
     children: [
+      // ===== CRM信息模块 =====
+      {
+        path: 'crm/account',
+        name: 'CrmAccountList',
+        component: () => import('@/views/crm/AccountList.vue'),
+        meta: { title: '客户管理' }
+      },
+      {
+        path: 'crm/account/:id',
+        name: 'CrmAccountDetail',
+        component: () => import('@/views/crm/AccountDetail.vue'),
+        meta: { title: '客户详情' }
+      },
+      {
+        path: 'crm/opportunity',
+        name: 'CrmOpportunityList',
+        component: () => import('@/views/crm/OpportunityList.vue'),
+        meta: { title: '商机管理' }
+      },
+      {
+        path: 'crm/opportunity/:id',
+        name: 'CrmOpportunityDetail',
+        component: () => import('@/views/crm/OpportunityDetail.vue'),
+        meta: { title: '商机详情' }
+      },
+      {
+        path: 'crm/contract',
+        name: 'CrmContractList',
+        component: () => import('@/views/crm/ContractList.vue'),
+        meta: { title: '合同管理' }
+      },
+      {
+        path: 'crm/contract/create',
+        name: 'CrmContractCreate',
+        component: () => import('@/views/crm/ContractForm.vue'),
+        meta: { title: '新建合同' }
+      },
+      {
+        path: 'crm/contract/:id',
+        name: 'CrmContractDetail',
+        component: () => import('@/views/crm/ContractDetail.vue'),
+        meta: { title: '合同详情' }
+      },
+      {
+        path: 'crm/order',
+        name: 'CrmOrderList',
+        component: () => import('@/views/crm/OrderList.vue'),
+        meta: { title: '订单管理' }
+      },
+      {
+        path: 'crm/order/:id',
+        name: 'CrmOrderDetail',
+        component: () => import('@/views/crm/OrderDetail.vue'),
+        meta: { title: '订单详情' }
+      },
       {
         path: 'catalog',
         name: 'ProductCatalog',
@@ -324,18 +379,56 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/settings/AbacPolicyConfig.vue'),
         meta: { title: 'ABAC策略' }
       },
-      // ===== 审批管理模块 =====
+      // ===== 任务中心模块 =====
       {
-        path: 'approval',
-        name: 'PendingApproval',
-        component: () => import('@/views/approval/PendingApproval.vue'),
-        meta: { title: '待审批' }
+        path: 'task/board',
+        name: 'TaskBoard',
+        component: () => import('@/views/task/TaskBoard.vue'),
+        meta: { title: '任务看板' }
+      },
+      {
+        path: 'task/review',
+        name: 'ReviewWorkbench',
+        component: () => import('@/views/task/ReviewWorkbench.vue'),
+        meta: { title: '评审工作台' }
+      },
+      // ===== 审批中心模块 =====
+      {
+        path: 'approval/pending',
+        name: 'PendingMyApproval',
+        component: () => import('@/views/approval/PendingMyApproval.vue'),
+        meta: { title: '待我审批' }
+      },
+      {
+        path: 'approval/processed',
+        name: 'MyProcessed',
+        component: () => import('@/views/approval/MyProcessed.vue'),
+        meta: { title: '我已审批' }
+      },
+      {
+        path: 'approval/initiated',
+        name: 'MyInitiated',
+        component: () => import('@/views/approval/MyInitiated.vue'),
+        meta: { title: '我发起的' }
+      },
+      {
+        path: 'approval/analytics',
+        name: 'ApprovalAnalytics',
+        component: () => import('@/views/approval/ApprovalAnalytics.vue'),
+        meta: { title: '效率看板' }
       },
       {
         path: 'approval/:id',
         name: 'ApprovalDetail',
         component: () => import('@/views/approval/ApprovalDetail.vue'),
         meta: { title: '审批详情' }
+      },
+      // ===== 审批管理模块（兼容旧版）=====
+      {
+        path: 'approval',
+        name: 'PendingApproval',
+        component: () => import('@/views/approval/PendingApproval.vue'),
+        meta: { title: '待审批' }
       },
       {
         path: 'approval/history',

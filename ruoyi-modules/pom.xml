@@ -26,7 +26,8 @@
       <module>ruoyi-cpq-competitive</module>
     <module>ruoyi-cpq-migration</module>
         <module>ruoyi-cpq-knowledge</module>
-  </modules>
+        <module>ruoyi-cpq-crm</module>
+    </modules>
 
     <artifactId>ruoyi-modules</artifactId>
     <packaging>pom</packaging>

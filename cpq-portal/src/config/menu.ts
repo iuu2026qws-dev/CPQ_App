@@ -6,7 +6,7 @@
  * 两套系统的菜单独立管理，互不影响。
  *
  * 两级菜单结构：
- *   - 一级菜单（5个分组）：产品管理、配置管理、价格管理、报价管理、运营及参数
+ *   - 一级菜单（8个分组）：任务中心、审批中心、产品管理、配置管理、价格管理、报价管理、工厂协同、运营及参数
  *   - 二级菜单：原本的一级菜单项，全部归入对应一级分组
  *
  * 新增 CPQ Portal 页面时：
@@ -21,7 +21,8 @@ import {
   Document, Checked, Operation, Link, TrendCharts,
   Upload, Reading, Notebook, Timer, RefreshRight,
   OfficeBuilding, Platform, Lock, Tools, Compass, SetUp,
-  Stamp
+  Stamp, List, Odometer, DocumentChecked, Bell, Clock,
+  CircleCheck, Postcard, DataAnalysis, Files, User, Aim, DocumentAdd, Tickets
 } from '@element-plus/icons-vue'
 
 /** 二级子菜单项 */
@@ -41,6 +42,34 @@ export interface PortalMenuItem {
 
 /** 按侧边栏展示顺序排列的两级菜单 */
 export const portalMenuItems: PortalMenuItem[] = [
+  {
+    label: 'CRM信息',
+    icon: User,
+    children: [
+      { path: '/crm/account',     label: '客户管理', icon: User },
+      { path: '/crm/opportunity', label: '商机管理', icon: Aim },
+      { path: '/crm/contract',    label: '合同管理', icon: DocumentAdd },
+      { path: '/crm/order',       label: '订单管理', icon: Tickets },
+    ]
+  },
+  {
+    label: '任务中心',
+    icon: List,
+    children: [
+      { path: '/task/board',  label: '任务看板',   icon: Odometer },
+      { path: '/task/review', label: '评审工作台', icon: DocumentChecked },
+    ]
+  },
+  {
+    label: '审批中心',
+    icon: Bell,
+    children: [
+      { path: '/approval/pending',   label: '待我审批', icon: Clock },
+      { path: '/approval/processed', label: '我已审批', icon: CircleCheck },
+      { path: '/approval/initiated', label: '我发起的', icon: Postcard },
+      { path: '/approval/analytics', label: '效率看板', icon: DataAnalysis },
+    ]
+  },
   {
     label: '产品管理',
     icon: Goods,
@@ -82,8 +111,16 @@ export const portalMenuItems: PortalMenuItem[] = [
       { path: '/quoting',             label: '报价单管理',   icon: Document },
       { path: '/quoting/template',    label: '报价模板管理', icon: Stamp },
       { path: '/quick-quote',         label: '快速报价',     icon: Platform },
-      { path: '/approval',            label: '审批管理',     icon: Checked },
       { path: '/solution',            label: '方案管理',     icon: Notebook },
+    ]
+  },
+  {
+    label: '工厂协同',
+    icon: OfficeBuilding,
+    children: [
+      { path: '/atp',       label: '交期管理', icon: Timer },
+      { path: '/atp/batch', label: '批量查询', icon: Files },
+      { path: '/plant',     label: '工厂管理', icon: OfficeBuilding },
     ]
   },
   {
@@ -94,8 +131,6 @@ export const portalMenuItems: PortalMenuItem[] = [
       { path: '/integration',          label: '集成管理',   icon: Link },
       { path: '/migration',            label: '数据迁移',   icon: Upload },
       { path: '/knowledge',            label: '知识库',     icon: Reading },
-      { path: '/atp',                  label: '交期管理',   icon: Timer },
-      { path: '/plant',                label: '工厂管理',   icon: OfficeBuilding },
       { path: '/settings/abac',        label: 'ABAC策略',   icon: Lock },
     ]
   },

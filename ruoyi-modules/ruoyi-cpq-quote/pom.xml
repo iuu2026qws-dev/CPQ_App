@@ -40,11 +40,17 @@
             <version>1.0.10</version>
         </dependency>
 
-        <!-- Word 生成：Apache POI XWPF 创建 .docx -->
+        <!-- Word/Excel 生成：Apache POI XWPF/XSSF -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.5</version>
+        </dependency>
+
+        <!-- JSON 解析：fastjson（用于 templateJson 布局解析） -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
         </dependency>
     </dependencies>
 </project>

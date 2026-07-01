@@ -8,10 +8,9 @@
       <el-form-item label="模板类型">
         <el-select v-model="queryParams.templateType" placeholder="全部" clearable style="width: 140px">
           <el-option label="标准报价" value="STANDARD" />
-          <el-option label="快速报价" value="QUICK" />
           <el-option label="PDF" value="PDF" />
-          <el-option label="Word" value="DOCX" />
-          <el-option label="自定义" value="CUSTOM" />
+          <el-option label="Word" value="WORD" />
+          <el-option label="Excel" value="EXCEL" />
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -74,11 +73,10 @@
         </el-form-item>
         <el-form-item label="模板类型" prop="templateType" required>
           <el-select v-model="form.templateType" style="width: 100%">
-            <el-option label="标准报价模板" value="STANDARD" />
-            <el-option label="快速报价模板" value="QUICK" />
+            <el-option label="标准报价（HTML）" value="STANDARD" />
             <el-option label="PDF 输出" value="PDF" />
-            <el-option label="Word 可编辑" value="DOCX" />
-            <el-option label="自定义模板" value="CUSTOM" />
+            <el-option label="Word 可编辑" value="WORD" />
+            <el-option label="Excel 表格" value="EXCEL" />
           </el-select>
         </el-form-item>
         <el-form-item label="备注">
@@ -122,11 +120,11 @@ const previewLoading = ref(false)
 const previewHtml = ref('')
 
 function typeLabel(t: string) {
-  const m: Record<string, string> = { STANDARD: '标准', QUICK: '快速', PDF: 'PDF', DOCX: 'Word', CUSTOM: '自定义' }
+  const m: Record<string, string> = { STANDARD: 'HTML', PDF: 'PDF', WORD: 'Word', EXCEL: 'Excel' }
   return m[t] || t
 }
 function typeTagColor(t: string) {
-  const m: Record<string, string> = { STANDARD: 'primary', QUICK: 'warning', PDF: 'danger', DOCX: 'warning', CUSTOM: 'info' }
+  const m: Record<string, string> = { STANDARD: '', PDF: 'danger', WORD: 'primary', EXCEL: 'success' }
   return m[t] || 'info'
 }
 
@@ -194,6 +192,34 @@ async function handleSetDefault(row: any) {
 }
 
 async function handlePreview(row: any) {
+  const type = (row.templateType || '').toUpperCase()
+  if (type === 'PDF' || type === 'WORD' || type === 'EXCEL') {
+    // 非 HTML 类型：下载文件查看
+    previewLoading.value = true
+    try {
+      const baseURL = import.meta.env.VITE_APP_BASE_API || ''
+      const token = localStorage.getItem('token') || ''
+      const res = await fetch(`${baseURL}/cpq/quote/template/${row.templateId}/preview/file`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+      if (!res.ok) throw new Error('请求失败')
+      const blob = await res.blob()
+      const extMap: Record<string, string> = { PDF: '.pdf', WORD: '.docx', EXCEL: '.xlsx' }
+      const ext = extMap[type] || ''
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url; a.download = `${row.templateName}_预览${ext}`
+      document.body.appendChild(a); a.click(); document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+      ElMessage.success('文件下载中...')
+    } catch {
+      ElMessage.error('预览生成失败')
+    } finally {
+      previewLoading.value = false
+    }
+    return
+  }
+  // STANDARD → 弹窗 HTML 展示
   previewVisible.value = true
   previewLoading.value = true
   previewHtml.value = ''

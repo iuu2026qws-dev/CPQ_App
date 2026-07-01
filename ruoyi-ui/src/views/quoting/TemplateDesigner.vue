@@ -249,8 +249,8 @@ const previewVisible = ref(false)
 const previewLoading = ref(false)
 const previewHtml = ref('')
 
-function typeLabel(t: string) { const m: Record<string, string> = { STANDARD: '标准', QUICK: '快速', PDF: 'PDF', DOCX: 'Word', CUSTOM: '自定义' }; return m[t] || t }
-function typeTagColor(t: string) { const m: Record<string, string> = { STANDARD: 'primary', QUICK: 'warning', PDF: 'danger', DOCX: 'warning', CUSTOM: 'info' }; return m[t] || 'info' }
+function typeLabel(t: string) { const m: Record<string, string> = { STANDARD: 'HTML', PDF: 'PDF', WORD: 'Word', EXCEL: 'Excel' }; return m[t] || t }
+function typeTagColor(t: string) { const m: Record<string, string> = { STANDARD: '', PDF: 'danger', WORD: 'primary', EXCEL: 'success' }; return m[t] || 'info' }
 
 function fieldIcon(ft: string) {
   const m: Record<string, any> = { text: EditPen, number: Star, date: Clock, currency: Tickets }

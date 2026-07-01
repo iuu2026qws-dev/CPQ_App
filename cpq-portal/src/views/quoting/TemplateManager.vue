@@ -196,10 +196,10 @@ const summaryPlaceholders = [
 
 const typeHint = computed(() => {
   const m: Record<string, string> = {
-    STANDARD: '模板内容为 HTML 文档，使用 {{占位符}} 语法。输出为 HTML 格式，支持打印和预览。可通过「设计」按钮进行可视化布局编辑。',
-    PDF: '模板内容为 HTML 文档（使用 {{占位符}} 语法）。输出时系统将 HTML 转换为 PDF 文件提供下载。',
-    WORD: '模板内容为 HTML 文档（使用 {{占位符}} 语法）。输出时系统将数据生成为 .docx Word 文档提供下载。',
-    EXCEL: '表格型模板。输出为 .xlsx 格式。此类型尚在规划中，建议暂时使用 STANDARD 类型。'
+    STANDARD: '通过「设计」按钮可视化编排报价单布局（字段拖拽、网格/表格/汇总区域）。预览和输出均为 HTML 格式，支持打印。',
+    PDF: '通过「设计」按钮可视化编排布局。预览/输出时系统将布局转换为 PDF 文件下载，数据为静态模拟数据供查看布局效果。',
+    WORD: '通过「设计」按钮可视化编排布局。预览/输出时系统将布局生成为 .docx Word 文档下载，数据为静态模拟数据。',
+    EXCEL: '通过「设计」按钮可视化编排布局。预览/输出时系统将布局生成为 .xlsx Excel 工作簿下载，数据为静态模拟数据。'
   }
   return m[form.templateType] || ''
 })
@@ -290,20 +290,56 @@ async function handleSetDefault(row: TemplateVo) {
   }
 }
 
-/** 统一预览：所有模板类型都在弹窗中展示带 mock 数据的 HTML */
+/** 预览：STANDARD → 弹窗 HTML 展示；PDF/WORD/EXCEL → 下载文件查看 */
 async function handlePreview(row: TemplateVo) {
+  const type = row.templateType?.toUpperCase()
+  if (type === 'PDF' || type === 'WORD' || type === 'EXCEL') {
+    // 非 HTML 类型直接下载文件
+    previewLoading.value = true
+    try {
+      await downloadPreviewFile(row.templateId, row.templateName, type)
+      ElMessage.success('文件下载中...')
+    } catch {
+      ElMessage.error('预览生成失败')
+    } finally {
+      previewLoading.value = false
+    }
+    return
+  }
+  // STANDARD / 其他 → 弹窗 HTML 展示
   previewVisible.value = true
   previewHtml.value = ''
   previewLoading.value = true
   try {
     const res = await previewTemplate(row.templateId)
-    // 拦截器已解包了 {code,data} → res 直接就是 HTML 字符串
     previewHtml.value = (typeof res === 'string') ? res : ((res as any)?.data || (res as any)?.msg || '')
   } catch {
     ElMessage.error('预览生成失败')
   } finally {
     previewLoading.value = false
   }
+}
+
+/** 下载预览文件（PDF/WORD/EXCEL） */
+async function downloadPreviewFile(templateId: string, templateName: string, type: string) {
+  const extMap: Record<string, string> = { PDF: '.pdf', WORD: '.docx', EXCEL: '.xlsx' }
+  const ext = extMap[type] || ''
+  // 使用 fetch 请求 blob
+  const baseURL = import.meta.env.VITE_API_BASE_URL || ''
+  const token = localStorage.getItem('token') || ''
+  const res = await fetch(`${baseURL}/cpq/quote/template/${templateId}/preview/file`, {
+    headers: { 'Authorization': `Bearer ${token}`, 'clientid': 'e5cd7e4891bf95d1d19206ce24a7b32e' }
+  })
+  if (!res.ok) throw new Error('请求失败')
+  const blob = await res.blob()
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = `${templateName}_预览${ext}`
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  URL.revokeObjectURL(url)
 }
 
 async function handleSubmit() {

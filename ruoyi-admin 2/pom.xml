@@ -155,6 +155,12 @@
             <artifactId>ruoyi-cpq-knowledge</artifactId>
             <version>${revision}</version>
         </dependency>
+        <!--  CPQ CRM模块  -->
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>ruoyi-cpq-crm</artifactId>
+            <version>${revision}</version>
+        </dependency>
 
         <dependency>
             <groupId>de.codecentric</groupId>

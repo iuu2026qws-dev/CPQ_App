@@ -293,3 +293,101 @@
 | approval.ts | api/ | 4域API+审批动作API+类型定义 |
 | quote.ts | store/ | 报价Pinia Store |
 | approval.ts | store/ | 审批Pinia Store |
+
+---
+
+## 项目状态总览（2026-06-23 更新）
+
+### 一、整体进度
+
+| 阶段 | 状态 | 完成日期 |
+|------|:----:|----------|
+| S1-S21 全部 Sprint | ✅ | 2026-06-09 |
+| CRM 信息模块 v1.0 | ✅ | 2026-06-15 |
+| 报价模板管理模块 | ✅ | 2026-06-13 |
+| 配置管理功能（5页面+6端点） | ✅ | 2026-06-13 |
+
+### 二、当前运行状态
+
+| 组件 | 端口 | 状态 |
+|------|:----:|------|
+| MySQL | 3306 | ✅ 运行中 |
+| Redis | 6379 | ✅ 运行中 |
+| 后端 Admin JAR | 8080 | ✅ 运行中 |
+| cpq-portal 前端 | 3000 | ✅ 运行中 |
+| 数据库 Ruoyi_CPQ | — | ✅ 包含所有CPQ表 |
+
+### 三、Maven 模块清单（14个CPQ模块）
+
+1. `ruoyi-cpq` — 产品主数据
+2. `ruoyi-cpq-pricing` — 定价域
+3. `ruoyi-cpq-config` — 配置引擎+Bundle捆绑
+4. `ruoyi-cpq-quote` — 报价数据域+QuoteGenerateService+AtpCtpService+报价模板管理
+5. `ruoyi-cpq-approval` — 审批数据域+ApprovalRouteService+ApprovalActionController
+6. `ruoyi-cpq-customer` — 客户渠道域（S11）
+7. `ruoyi-cpq-ecn` — 工程变更模块（S12）
+8. `ruoyi-cpq-integration` — 集成数据域（S13）
+9. `ruoyi-cpq-competitive` — 竞品对标模块（S14）
+10. `ruoyi-cpq-migration` — 数据迁移模块（S14）
+11. `ruoyi-cpq-knowledge` — 知识库模块（S15）
+12. **`ruoyi-cpq-crm`** — **CRM信息模块（2026-06-15 新增，31个Java文件）**
+
+### 四、CRM 模块详细状态
+
+**后端**：5 Entity + 5 Mapper + 4 BO + 5 VO + 4 Service + 4 ServiceImpl + 4 Controller，共31个Java文件，29个Swagger端点全部注册
+**前端**：10个Vue页面 + 3个组件，1个API文件(crm.ts)，菜单和路由已配置
+**数据库**：5张CRM表已在MySQL创建（cpq_crm_opportunity/contract/order/order_line/activity），cpq_account已增加2个字段
+**编译**：Maven BUILD SUCCESS，vue-tsc 0新增错误
+**测试**：29个Swagger端点已注册，Playwright浏览器测试通过，4个前端页面HTTP 200
+
+### 五、已修复的问题
+
+1. **CRM表不存在**（2026-06-15）：SQL DDL脚本未执行到MySQL → 修 SQL语法（MySQL不支持`ADD COLUMN IF NOT EXISTS`）→ 执行建表 → 5张表全部创建成功
+2. **跨模块字段名不匹配**：CpqQuote.getGrandTotal() vs getTotalAmount()、CpqQuoteLineItem.getLineId() vs getLineItemId()
+3. **LambdaUpdateWrapper软删除语法**：`.set("del_flag","2")` → `.setSql("del_flag = '2'")`
+
+### 六、已知待处理问题
+
+1. **CRM前端页面功能验证**：虽然后端API端点存在且数据库表已创建，但尚未进行完整的前端增删改查交互验证（如新增商机是否真的能写入数据库）
+2. **合同→订单集成链**：fromOpportunity(商机→合同→订单)和fromQuote(报价→订单)两条集成链路仅在Service层实现，前端触发按钮是否正常工作待验证
+3. **商机阶段推进逻辑**：6阶段不可回退校验+概率自动计算+活动日志自动记录，后端逻辑完整但缺少业务数据测试
+4. **cpq_quote.opportunity_id字段类型**：当前为VARCHAR，设计文档建议改为BIGINT FK → cpq_crm_opportunity，尚未修改
+5. **权限配置**：CRM模块定义了16个权限字符串（cpq:crm:xxx:*），但sys_menu表未追加菜单SQL（50150-50179）
+6. **BO继承链**：CRM模块4个BO extends Entity（非TenantEntity），无@AutoMapper注解。当前使用Hutool BeanUtil.toBean()可用，但与Ruoyi-Vue-Plus框架的MapStruct Plus模式不一致
+7. **全局 @AutoMapper**：整个CPQ项目未引入MapStruct Plus，所有模块均使用BeanUtil做对象转换
+
+### 七、下一步工作建议
+
+1. **P0 - 交互验证**：用Playwright打开CRM各页面，执行新增→编辑→删除完整CRUD流程，确认数据能正确写入和回显
+2. **P0 - 集成链路测试**：端到端验证：客户→商机→报价→合同→订单全链路
+3. **P1 - 菜单SQL**：补充`sql/cpq_menu.sql`追加CRM菜单50150-50179
+4. **P1 - opportunity_id字段类型升级**：ALTER TABLE cpq_quote MODIFY COLUMN opportunity_id BIGINT
+5. **P1 - 权限字符串注册**：在cpq-portal/src/config/permissions.ts追加CRM权限
+6. **P2 - 发布流程**：mvn clean package全量打包 → 部署新jar → 数据库迁移脚本执行
+7. **P2 - 后续功能**：参照设计文档中Planned phase的功能（移动端CRM视图、仪表板、合同审批流程细化等）
+
+### 八、关键配置速查
+
+| 配置项 | 值 |
+|--------|-----|
+| 数据库 | Ruoyi_CPQ, localhost:3306, root/Storm123@ |
+| Redis | localhost:6379, 密码 ruoyi123 |
+| 后端端口 | 8080 |
+| 前端端口 | 3000 |
+| 管理员 | admin / admin123 |
+| 后端JAR | `ruoyi-admin 2/target/ruoyi-admin.jar` |
+| 前端启动 | `cd cpq-portal && npm run dev` |
+| Maven构建 | `mvn clean package -pl ruoyi-admin\ 2 -am -DskipTests` |
+| 登录API | POST /auth/login, body包含clientId/grantType/username/password/tenantId |
+| 认证头 | Authorization: Bearer \<token\> + clientid: e5cd7e4891bf95d1d19206ce24a7b32e |
+
+### 九、工作约定
+
+- 所有终端命令自动执行，`requires_approval=false`
+- 开发完成后必须先编译验证再测试
+- 新增Maven模块必须同时注册modules/pom.xml和admin/pom.xml（注意带&lt;version&gt;）
+- 新增数据库表后必须实际执行DDL到MySQL
+- DDL表必须包含所有TenantEntity/BaseEntity系统字段
+- 禁止使用res.data/.data解构（响应拦截器已自动解包）
+- 路径拼接前先`.replace(/^\\/+/, '')`去前导斜杠
+- FK字段前端用下拉搜索组件，禁止裸el-input-number

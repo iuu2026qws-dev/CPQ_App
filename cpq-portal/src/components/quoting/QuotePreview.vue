@@ -116,7 +116,7 @@ watch(visible, v => { emit('update:modelValue', v) })
 
 function typeLabel(t: string) {
   const m: Record<string, string> = {
-    STANDARD: '标准报价', CUSTOM: '自定义报价', QUICK: '快速报价',
+    STANDARD: '标准报价', CUSTOM: '自定义报价',
     PRODUCT: '产品', ACCESSORY: '配件', SERVICE: '服务', BUNDLE: '捆绑包'
   }
   return m[t] || t

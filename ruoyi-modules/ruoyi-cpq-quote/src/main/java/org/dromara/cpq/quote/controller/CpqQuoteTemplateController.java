@@ -111,8 +111,12 @@ public class CpqQuoteTemplateController extends BaseController {
                 bytes = templateService.generatePreviewWord(templateId);
                 contentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
                 filename = URLEncoder.encode(name + "_预览.docx", StandardCharsets.UTF_8);
+            } else if ("EXCEL".equalsIgnoreCase(type)) {
+                bytes = templateService.generatePreviewExcel(templateId);
+                contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                filename = URLEncoder.encode(name + "_预览.xlsx", StandardCharsets.UTF_8);
             } else {
-                // EXCEL 或其他类型降级返回 HTML
+                // STANDARD 或其他类型降级返回 HTML
                 String html = templateService.generatePreview(templateId);
                 bytes = html.getBytes(StandardCharsets.UTF_8);
                 contentType = "text/html;charset=UTF-8";

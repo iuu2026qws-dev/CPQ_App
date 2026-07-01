@@ -1,0 +1,133 @@
+- generic [ref=e48]:
+  - complementary [ref=e49]:
+    - generic [ref=e50]:
+      - heading "SmartCPQ" [level=1] [ref=e51]
+      - generic [ref=e52]: 智能配置报价
+    - navigation [ref=e53]:
+      - menubar [ref=e599]:
+        - menuitem "CRM信息" [expanded] [ref=e600]:
+          - generic [ref=e601] [cursor=pointer]:
+            - img [ref=e603]
+            - generic [ref=e605]: CRM信息
+            - img [ref=e607]
+          - menu [ref=e609]:
+            - menuitem "客户管理" [ref=e610] [cursor=pointer]:
+              - img [ref=e612]
+              - generic [ref=e614]: 客户管理
+            - menuitem "商机管理" [ref=e615] [cursor=pointer]:
+              - img [ref=e617]
+              - generic [ref=e620]: 商机管理
+            - menuitem "合同管理" [ref=e621] [cursor=pointer]:
+              - img [ref=e623]
+              - generic [ref=e625]: 合同管理
+            - menuitem "订单管理" [ref=e626] [cursor=pointer]:
+              - img [ref=e628]
+              - generic [ref=e630]: 订单管理
+        - menuitem "任务中心" [ref=e631]:
+          - generic [ref=e632] [cursor=pointer]:
+            - img [ref=e634]
+            - generic [ref=e636]: 任务中心
+            - img [ref=e638]
+        - menuitem "审批中心" [ref=e640]:
+          - generic [ref=e641] [cursor=pointer]:
+            - img [ref=e643]
+            - generic [ref=e647]: 审批中心
+            - img [ref=e649]
+        - menuitem "产品管理" [ref=e651]:
+          - generic [ref=e652] [cursor=pointer]:
+            - img [ref=e654]
+            - generic [ref=e656]: 产品管理
+            - img [ref=e658]
+        - menuitem "配置管理" [ref=e660]:
+          - generic [ref=e661] [cursor=pointer]:
+            - img [ref=e663]
+            - generic [ref=e665]: 配置管理
+            - img [ref=e667]
+        - menuitem "价格管理" [ref=e669]:
+          - generic [ref=e670] [cursor=pointer]:
+            - img [ref=e672]
+            - generic [ref=e676]: 价格管理
+            - img [ref=e678]
+        - menuitem "报价管理" [ref=e680]:
+          - generic [ref=e681] [cursor=pointer]:
+            - img [ref=e683]
+            - generic [ref=e685]: 报价管理
+            - img [ref=e687]
+        - menuitem "工厂协同" [ref=e689]:
+          - generic [ref=e690] [cursor=pointer]:
+            - img [ref=e692]
+            - generic [ref=e696]: 工厂协同
+            - img [ref=e698]
+        - menuitem "运营及参数" [ref=e700]:
+          - generic [ref=e701] [cursor=pointer]:
+            - img [ref=e703]
+            - generic [ref=e705]: 运营及参数
+            - img [ref=e707]
+  - main [ref=e183]:
+    - generic [ref=e184]:
+      - navigation "面包屑" [ref=e185]:
+        - generic [ref=e186]:
+          - link "首页" [ref=e187]
+          - text: /
+        - generic [ref=e188]:
+          - link "CRM信息" [ref=e709]
+          - text: /
+        - link "客户管理" [ref=e710]
+      - button "疯狂的狮子Li" [ref=e194] [cursor=pointer]:
+        - generic [ref=e197]: 疯狂的狮子Li
+        - img [ref=e199]
+    - generic [ref=e711]:
+      - generic [ref=e712]:
+        - textbox "客户名称" [ref=e715]
+        - textbox "客户编码" [ref=e719]
+        - generic [ref=e722] [cursor=pointer]:
+          - generic:
+            - combobox [ref=e724]
+            - generic [ref=e725]: 类型
+          - img [ref=e728]
+        - generic [ref=e731] [cursor=pointer]:
+          - generic:
+            - combobox [ref=e733]
+            - generic [ref=e734]: 行业
+          - img [ref=e737]
+        - button "搜索" [ref=e739] [cursor=pointer]:
+          - generic [ref=e740]: 搜索
+        - button "重置" [ref=e741] [cursor=pointer]:
+          - generic [ref=e742]: 重置
+      - generic [ref=e743]:
+        - button "+ 新增客户" [ref=e744] [cursor=pointer]:
+          - generic [ref=e745]: + 新增客户
+        - button "刷新" [ref=e746] [cursor=pointer]:
+          - generic [ref=e747]: 刷新
+      - generic [ref=e749]:
+        - table [ref=e751]:
+          - rowgroup [ref=e760]:
+            - row "客户名称 编码 类型 行业 联系人 电话 操作" [ref=e761]:
+              - columnheader "客户名称" [ref=e762]:
+                - generic [ref=e763]: 客户名称
+              - columnheader "编码" [ref=e764]:
+                - generic [ref=e765]: 编码
+              - columnheader "类型" [ref=e766]:
+                - generic [ref=e767]: 类型
+              - columnheader "行业" [ref=e768]:
+                - generic [ref=e769]: 行业
+              - columnheader "联系人" [ref=e770]:
+                - generic [ref=e771]: 联系人
+              - columnheader "电话" [ref=e772]:
+                - generic [ref=e773]: 电话
+              - columnheader "操作" [ref=e774]:
+                - generic [ref=e775]: 操作
+        - generic [ref=e779]:
+          - table:
+            - rowgroup
+          - generic [ref=e781]: 暂无数据
+      - generic [ref=e782]:
+        - generic [ref=e783]: 共 0 条
+        - button "上一页" [disabled] [ref=e784]:
+          - generic:
+            - img
+        - list [ref=e785]:
+          - listitem "第 1 页" [ref=e786]: "1"
+        - button "下一页" [disabled] [ref=e787]:
+          - generic:
+            - img

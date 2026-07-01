@@ -15,6 +15,8 @@ export function getApprovalChain(chainId: number) { return request.get<ApprovalC
 // ========== 审批记录 API ==========
 export interface ApprovalRecordVo { recordId?: number; chainId?: number; stepNumber?: number; approverId?: number; approverName?: string; action?: string; comment?: string; actionTime?: string; slaDeadline?: string }
 export function listApprovalRecord(chainId: number) { return request.get<ApprovalRecordVo[]>('/cpq/approval/record/chain/' + chainId) }
+/** 分页查询审批记录（支持 status=pending/processed/initiated） */
+export function listApprovalRecords(params?: Record<string, unknown>) { return request.get<{ rows: ApprovalRecordVo[]; total: number }>('/cpq/approval/record/list', { params }) }
 
 // ========== 审批动作 API ==========
 export function processApprovalAction(data: { chainId: number; approverId: number; approverName: string; action: string; comment?: string }) {
