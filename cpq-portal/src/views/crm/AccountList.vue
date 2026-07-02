@@ -157,7 +157,12 @@ const rules: FormRules = {
 async function loadData() {
   loading.value = true
   try {
-    const res = await listAccounts({ pageNum: pageNum.value, pageSize: pageSize.value, ...searchForm })
+    const params: Record<string, unknown> = { pageNum: pageNum.value, pageSize: pageSize.value }
+    if (searchForm.accountName) params.accountName = searchForm.accountName
+    if (searchForm.accountCode) params.accountCode = searchForm.accountCode
+    if (searchForm.accountType) params.accountType = searchForm.accountType
+    if (searchForm.industry) params.industry = searchForm.industry
+    const res = await listAccounts(params)
     tableData.value = res.rows || []
     total.value = res.total || 0
   } catch (e: any) {

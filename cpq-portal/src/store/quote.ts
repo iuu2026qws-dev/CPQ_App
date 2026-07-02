@@ -9,12 +9,16 @@ export const useQuoteStore = defineStore('quote', () => {
   const snapshots = ref<SnapshotVo[]>([])
   const versions = ref<VersionVo[]>([])
   const templates = ref<TemplateVo[]>([])
+  const total = ref(0)
   const loading = ref(false)
 
   async function fetchQuoteList(params?: Record<string, unknown>) {
     loading.value = true
-    try { const res = await listQuote(params || {}); quoteList.value = Array.isArray(res) ? res : (res as { rows: QuoteVo[] }).rows || [] }
-    finally { loading.value = false }
+    try {
+      const res = await listQuote(params || {})
+      quoteList.value = res.rows || []
+      total.value = res.total ?? quoteList.value.length
+    } finally { loading.value = false }
   }
 
   async function fetchQuote(id: string) {
@@ -67,7 +71,7 @@ export const useQuoteStore = defineStore('quote', () => {
     templates.value = Array.isArray(res) ? res : (res as { rows: TemplateVo[] }).rows || []
   }
 
-  return { quoteList, currentQuote, lineItems, snapshots, versions, templates, loading,
+  return { quoteList, currentQuote, lineItems, snapshots, versions, templates, total, loading,
     fetchQuoteList, fetchQuote, createQuote, editQuote, removeQuote,
     fetchLineItems, createLineItem, editLineItem, removeLineItem,
     fetchSnapshots, fetchVersions, fetchTemplates }

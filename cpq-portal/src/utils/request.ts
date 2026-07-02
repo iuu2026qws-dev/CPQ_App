@@ -60,6 +60,10 @@ service.interceptors.response.use(
       }
       // R<T> 格式：{ code, msg, data }
       if ('data' in body) {
+        // 数组自动包装为 TableDataInfo 格式，统一前端消费
+        if (Array.isArray(body.data)) {
+          return { rows: body.data, total: body.data.length }
+        }
         return body.data
       }
     }

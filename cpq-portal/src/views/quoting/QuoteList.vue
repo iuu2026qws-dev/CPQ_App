@@ -42,11 +42,8 @@
     <el-dialog v-model="dialogVisible" :title="dialogTitle" width="650px" @close="resetForm">
       <el-form :model="form" label-width="100px">
         <el-form-item label="报价单号" v-if="form.quoteId"><strong>{{ form.quoteNumber }}</strong></el-form-item>
-        <el-form-item label="客户ID" required v-if="!form.quoteId">
-          <el-input-number v-model="form.accountId" :min="1" />
-        </el-form-item>
-        <el-form-item label="客户名称">
-          <el-input v-model="form.accountName" placeholder="客户名称" />
+        <el-form-item label="客户" required v-if="!form.quoteId">
+          <CustomerSelect v-model="form.accountId" @update:model-value="onCustomerChange" />
         </el-form-item>
         <el-form-item label="类型">
           <el-select v-model="form.quoteType">
@@ -78,6 +75,8 @@ import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useQuoteStore } from '@/store/quote'
+import { getAccount } from '@/api/cpq/crm'
+import CustomerSelect from '@/views/crm/components/CustomerSelect.vue'
 import type { QuoteVo, QuoteBo } from '@/api/quoting'
 
 const router = useRouter()
@@ -92,8 +91,11 @@ const searchForm = reactive({ quoteNumber: '', status: '' })
 const form = reactive<QuoteBo>({ quoteType: 'STANDARD', currency: 'CNY' })
 
 async function loadData() {
-  await store.fetchQuoteList({ pageNum: pageNum.value, pageSize: pageSize.value, ...searchForm })
-  total.value = (store.quoteList.length > 0) ? 100 : 0
+  const params: Record<string, unknown> = { pageNum: pageNum.value, pageSize: pageSize.value }
+  if (searchForm.quoteNumber) params.quoteNumber = searchForm.quoteNumber
+  if (searchForm.status) params.status = searchForm.status
+  await store.fetchQuoteList(params)
+  total.value = store.total ?? (store.quoteList.length > 0 ? 100 : 0)
 }
 
 function handleSearch() { pageNum.value = 1; loadData() }
@@ -105,6 +107,13 @@ function statusType(s: string) {
 }
 
 function handleCreate() { dialogTitle.value = '新增报价单'; Object.assign(form, { quoteId: undefined, quoteType: 'STANDARD', currency: 'CNY', accountId: undefined, accountName: '' }); dialogVisible.value = true }
+async function onCustomerChange(accountId: number | null) {
+  if (!accountId) { form.accountName = ''; return }
+  try {
+    const account = await getAccount(accountId) as any
+    form.accountName = account?.accountName || ''
+  } catch { form.accountName = '' }
+}
 function handleEdit(row: QuoteVo) { dialogTitle.value = '编辑报价单'; Object.assign(form, row); dialogVisible.value = true }
 function handleView(row: QuoteVo) { router.push('/quoting/' + row.quoteId) }
 
