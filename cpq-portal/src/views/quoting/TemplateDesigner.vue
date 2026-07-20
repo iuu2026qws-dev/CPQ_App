@@ -438,7 +438,7 @@ async function loadTemplate() {
   if (!templateId.value) return
   try {
     const res: any = await getTemplate(templateId.value)
-    const tpl = res.data || res
+    const tpl = res
     templateName.value = tpl.templateName || ''
     templateType.value = tpl.templateType || ''
 
@@ -465,7 +465,7 @@ async function loadTemplate() {
 async function loadFieldLibrary() {
   try {
     const res: any = await getFieldLibrary()
-    fieldLibrary.value = Array.isArray(res) ? res : (res.data || [])
+    fieldLibrary.value = Array.isArray(res) ? res : (res.rows || res.data || [])
   } catch { /* ignore */ }
 }
 

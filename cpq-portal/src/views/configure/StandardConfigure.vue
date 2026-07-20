@@ -135,7 +135,8 @@ async function doSearch() {
   searched.value = true
   try {
     // 新建标准配置只搜索 STANDARD 类型产品
-    results.value = await searchProducts(keyword.value, 'STANDARD')
+    const res = await searchProducts(keyword.value, 'STANDARD')
+    results.value = Array.isArray(res) ? res : (res.rows || [])
   } finally {
     loading.value = false
   }

@@ -40,13 +40,13 @@ const showComment = ref(false)
 const comment = ref('')
 
 async function fetchApprovals() {
-  const id = Number(route.params.id)
+  const id = String(route.params.id)
   const res = await request.get('/cpq/ecn/approval/list', { params: { changeOrderId: id, pageSize: 100 } })
   approvals.value = Array.isArray(res) ? res : (res.rows || [])
 }
 
 async function handleAction(action: string) {
-  const id = Number(route.params.id)
+  const id = String(route.params.id)
   await request.post('/cpq/ecn/approval', {
     changeOrderId: id, approverName: '当前用户', stepNumber: 1,
     action, comment: comment.value, actionTime: new Date().toISOString()

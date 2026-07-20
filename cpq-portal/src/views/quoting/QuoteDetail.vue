@@ -137,7 +137,7 @@ async function searchProducts(keyword: string) {
   productSearchLoading.value = true
   try {
     const res = await searchModel(keyword)
-    productOptions.value = Array.isArray(res) ? res : ((res as unknown as { data: CpqProductModelVo[] }).data || [])
+    productOptions.value = Array.isArray(res) ? res : (res.rows || ((res as unknown as { data: CpqProductModelVo[] }).data || []))
   } finally {
     productSearchLoading.value = false
   }

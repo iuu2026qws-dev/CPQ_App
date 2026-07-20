@@ -125,9 +125,9 @@ async function fetchAll() {
   loading.value = true; loading2.value = true; loading4.value = true
   try {
     const [c, p, r] = await Promise.all([getCompetitorList(), getCompetitorProductList(), getRecommendationList()])
-    competitorList.value = Array.isArray(c) ? c : c.data || []
-    productList.value = Array.isArray(p) ? p : p.data || []
-    recList.value = Array.isArray(r) ? r : r.data || []
+    competitorList.value = Array.isArray(c) ? c : (c.rows || c.data || [])
+    productList.value = Array.isArray(p) ? p : (p.rows || p.data || [])
+    recList.value = Array.isArray(r) ? r : (r.rows || r.data || [])
   } catch { /* ignore */ }
   finally { loading.value = loading2.value = loading4.value = false }
 }

@@ -23,12 +23,21 @@
 - Maven 3.8+
 
 ## 当前配置
-- 后端端口：8080
+- 后端端口：30000
 - 前端端口：80
 - 数据库：已配置（Ruoyi_CPQ，localhost:3306，root/Storm123@）
 - Redis：localhost:6379（密码：ruoyi123）
 - 管理员：admin / admin123
-- 配置文件位置：
+
+## 远程部署机器
+- 地址：100.117.79.31
+- 用户：root / 密码：1234
+- MySQL：root / Storm123@
+- 连接方式：SSH（sshpass -p '1234' ssh -o StrictHostKeyChecking=no root@100.117.79.31）
+- 目标部署路径：/Users/mac/Library/Mobile Documents/com~apple~CloudDocs/创新万维/0004. platform_dev/004_CPQ_App/
+- 部署方式：原生应用部署（非 Docker），源码同步 + 远程编译 + 远程发布
+
+## 配置文件位置
   - `ruoyi-admin 2/src/main/resources/application-dev.yml`
   - `ruoyi-admin 2/src/main/resources/application-prod.yml`
   - `ruoyi-extend/ruoyi-snailjob-server/src/main/resources/application-dev.yml`
@@ -313,7 +322,7 @@
 |------|:----:|------|
 | MySQL | 3306 | ✅ 运行中 |
 | Redis | 6379 | ✅ 运行中 |
-| 后端 Admin JAR | 8080 | ✅ 运行中 |
+| 后端 Admin JAR | 30000 | 
 | cpq-portal 前端 | 3000 | ✅ 运行中 |
 | 数据库 Ruoyi_CPQ | — | ✅ 包含所有CPQ表 |
 
@@ -372,7 +381,7 @@
 |--------|-----|
 | 数据库 | Ruoyi_CPQ, localhost:3306, root/Storm123@ |
 | Redis | localhost:6379, 密码 ruoyi123 |
-| 后端端口 | 8080 |
+| 后端端口 | 30000 |
 | 前端端口 | 3000 |
 | 管理员 | admin / admin123 |
 | 后端JAR | `ruoyi-admin 2/target/ruoyi-admin.jar` |

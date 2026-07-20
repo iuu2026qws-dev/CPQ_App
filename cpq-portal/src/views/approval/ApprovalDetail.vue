@@ -92,7 +92,7 @@ async function handleActionCompleted() {
 }
 
 onMounted(async () => {
-  const chainId = Number(route.params.id)
+  const chainId = String(route.params.id)
   if (chainId) { await store.fetchChain(chainId); await store.fetchRecords(chainId) }
 })
 </script>

@@ -51,7 +51,7 @@ const ruleTypeLabel = (t: string) => ({ DISCOUNT: '折扣', MARKUP: '加价', PR
 const dialog = reactive({ visible: false, isEdit: false })
 const form = reactive<CpqPriceRule>({ ruleName: '', ruleType: 'DISCOUNT', priority: 0, actionJson: '', conditionJson: '', approvalThreshold: undefined, effectiveDate: today(), expiryDate: '', status: '0', remark: '' })
 
-const load = async () => { loading.value = true; try { const data = await getPriceRuleList(); rules.value = (Array.isArray(data) ? data : []) } finally { loading.value = false } }
+const load = async () => { loading.value = true; try { const data = await getPriceRuleList(); rules.value = Array.isArray(data) ? data : (data?.rows || []) } finally { loading.value = false } }
 const onAdd = () => { Object.assign(form, { ruleName: '', ruleType: 'DISCOUNT', priority: 0, actionJson: '', conditionJson: '', approvalThreshold: undefined, effectiveDate: today(), expiryDate: '', status: '0', remark: '' }); dialog.isEdit = false; dialog.visible = true }
 const onEdit = (row: CpqPriceRule) => { Object.assign(form, row); dialog.isEdit = true; dialog.visible = true }
 const submit = async () => {

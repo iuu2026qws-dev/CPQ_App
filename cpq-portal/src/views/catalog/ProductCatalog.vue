@@ -123,7 +123,7 @@ const treeRef = ref()
 
 const loadCategoryTree = async () => {
   const data = await request.get('/cpq/product/category/tree')
-  categoryTree.value = data || []
+  categoryTree.value = Array.isArray(data) ? data : (data.rows || data || [])
 }
 
 const handleCategoryClick = async (node: Category) => {

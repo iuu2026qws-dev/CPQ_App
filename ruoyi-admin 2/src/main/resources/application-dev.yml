@@ -32,7 +32,7 @@ snail-job:
   # 命名空间UUID 详见 script/sql/ry_job.sql `sj_namespace`表`unique_id`字段
   namespace: ${spring.profiles.active}
   # 随主应用端口漂移
-  port: 2${server.port}
+  port: 37888
   # 客户端ip指定
   host:
 

@@ -204,7 +204,7 @@ function addChapter() {
 }
 
 async function loadDoc() {
-  const id = Number(route.params.id)
+  const id = String(route.params.id)
   const res = await listSolution({ documentId: id })
   const rows = (res as any).rows || []
   if (rows.length > 0) {

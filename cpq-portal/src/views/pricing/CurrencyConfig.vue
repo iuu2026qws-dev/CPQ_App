@@ -47,7 +47,7 @@ const loading = ref(false)
 const dialog = reactive({ visible: false, isEdit: false })
 const form = reactive<CpqCurrencyRate>({ fromCurrency: '', toCurrency: '', exchangeRate: 0, effectiveDate: today(), status: '0' })
 
-const load = async () => { loading.value = true; try { const data = await getCurrencyRateList(); list.value = (Array.isArray(data) ? data : []) } finally { loading.value = false } }
+const load = async () => { loading.value = true; try { const data = await getCurrencyRateList(); list.value = Array.isArray(data) ? data : (data?.rows || []) } finally { loading.value = false } }
 const onAdd = () => { Object.assign(form, { fromCurrency: '', toCurrency: '', exchangeRate: 0, effectiveDate: today(), status: '0' }); dialog.isEdit = false; dialog.visible = true }
 const onEdit = (row: CpqCurrencyRate) => { Object.assign(form, row); dialog.isEdit = true; dialog.visible = true }
 const submit = async () => { try { await (dialog.isEdit ? updateCurrencyRate(form) : addCurrencyRate(form)); dialog.visible = false; ElMessage.success(dialog.isEdit ? '修改成功' : '新增成功'); load() } catch (e: any) { ElMessage.error(e?.message || '操作失败') } }

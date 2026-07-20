@@ -92,13 +92,13 @@ function statusType(s: string) { const m: Record<string, string> = { DRAFT: 'inf
 
 async function fetchTasks() {
   loading.value = true
-  try { const res = await getMigrationTaskList(); taskList.value = Array.isArray(res) ? res : res.data || [] } catch { taskList.value = [] }
+  try { const res = await getMigrationTaskList(); taskList.value = Array.isArray(res) ? res : (res.rows || res.data || []) } catch { taskList.value = [] }
   finally { loading.value = false }
 }
 
 async function fetchLogs() {
   loadingLog.value = true
-  try { const res = await getMigrationLogList(); logList.value = Array.isArray(res) ? res : res.data || [] } catch { logList.value = [] }
+  try { const res = await getMigrationLogList(); logList.value = Array.isArray(res) ? res : (res.rows || res.data || []) } catch { logList.value = [] }
   finally { loadingLog.value = false }
 }
 

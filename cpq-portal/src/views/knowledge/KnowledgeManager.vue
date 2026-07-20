@@ -99,7 +99,7 @@ async function fetchList() {
     if (searchTitle.value) params.title = searchTitle.value
     if (searchType.value) params.articleType = searchType.value
     const res = await getArticleList(params)
-    articleList.value = Array.isArray(res) ? res : res.data || []
+    articleList.value = Array.isArray(res) ? res : (res.rows || res.data || [])
   } catch { articleList.value = [] }
   finally { loading.value = false }
 }

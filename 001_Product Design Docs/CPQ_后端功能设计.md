@@ -61,7 +61,7 @@ ruoyi-modules/
 
 | 模块 | 端口 | 数据库 | 核心Service |
 |------|:---:|--------|------------|
-| ruoyi-admin | 8080 | 系统DB (sys_*) | 复用RuoYi系统管理 |
+| ruoyi-admin | 30000 | 系统DB (sys_*) | 复用RuoYi系统管理 |
 | ruoyi-cpq-product | 8081 | cpq_product | ProductService, BomService, LifecycleService |
 | ruoyi-cpq-pricing | 8082 | cpq_pricing | PriceBookService, PricingEngine, DiscountService |
 | ruoyi-cpq-config | 8083 | cpq_config | ConfigEngine, RuleCompiler, GuidedSellingService |
@@ -75,7 +75,7 @@ ruoyi-modules/
 | ruoyi-cpq-migration | 8091 | (操作所有CPQ DB) | DataImportService, MappingService, ReconciliationService |
 | ruoyi-cpq-ecn | 8092 | cpq_ecn | EcnService, ImpactAnalysisService |
 
-**内网部署时**，所有模块可合并到 `ruoyi-admin` 进程中，通过 `ruoyi-cpq-*` 作为依赖引入，共享同一端口8080，降低运维复杂度。
+**内网部署时**，所有模块可合并到 `ruoyi-admin` 进程中，通过 `ruoyi-cpq-*` 作为依赖引入，共享同一端口30000，降低运维复杂度。
 
 ### 1.3 公共依赖
 
@@ -1262,7 +1262,7 @@ RuoYi-Vue-Plus的代码生成器可为每张表自动生成：Entity/BO/VO/Domai
 
 ```yaml
 # application-dev.yml — 开发环境关键配置
-server.port: 8080
+server.port: 30000
 
 spring:
   datasource:

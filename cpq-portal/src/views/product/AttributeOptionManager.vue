@@ -193,7 +193,8 @@ async function loadList() {
     if (queryParams.attrName) {
       params.attrName = queryParams.attrName
     }
-    list.value = await getAttributeOptionList(params)
+    const res = await getAttributeOptionList(params)
+    list.value = Array.isArray(res) ? res : (res.rows || [])
   } catch (e: any) {
     ElMessage.error(e?.message ?? '加载失败')
   } finally {

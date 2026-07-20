@@ -14,10 +14,10 @@ export default defineConfig(({ mode }) => {
     plugins: createPlugins({}, mode === 'build'),
     server: {
       host: '0.0.0.0',
-      port: 3000,
+      port: 2999,
       proxy: {
         '/dev-api': {
-          target: 'http://localhost:8080',
+          target: 'http://localhost:30000',
           changeOrigin: true,
           ws: true,
           rewrite: (path) => path.replace(/^\/dev-api/, '')

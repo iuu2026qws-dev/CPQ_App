@@ -115,7 +115,7 @@ const load = async () => {
   loading.value = true
   try {
     const data = await getChannelPriceList()
-    list.value = (Array.isArray(data) ? data : [])
+    list.value = Array.isArray(data) ? data : (data?.rows || [])
     preloadModelNames(list.value.map(e => e.modelId))
   } finally { loading.value = false }
 }

@@ -95,7 +95,8 @@ async function doSearch() {
   loading.value = true
   searched.value = true
   try {
-    results.value = await searchProducts(keyword.value, configType.value || undefined)
+    const res = await searchProducts(keyword.value, configType.value || undefined)
+    results.value = Array.isArray(res) ? res : (res.rows || [])
   } finally {
     loading.value = false
   }

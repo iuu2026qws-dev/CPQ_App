@@ -120,7 +120,8 @@ const bundleTypeTag = (t: string) => ({ FIXED: '', CONFIGURABLE: 'success', SOLU
 async function load() {
   loading.value = true
   try {
-    list.value = await getBundleList() || []
+    const res = await getBundleList()
+    list.value = Array.isArray(res) ? res : (res.rows || [])
   } catch (e: any) { ElMessage.error(e?.message || '加载失败') }
   finally { loading.value = false }
 }

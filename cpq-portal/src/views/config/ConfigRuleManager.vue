@@ -152,7 +152,8 @@ const typeTag = (t: string) => ({ VALIDATION: 'danger', SELECTION: 'success', AL
 async function load() {
   loading.value = true
   try {
-    list.value = await getConfigRuleList(queryParams) || []
+    const res = await getConfigRuleList(queryParams)
+    list.value = Array.isArray(res) ? res : (res.rows || [])
   } catch (e: any) { ElMessage.error(e?.message || '加载失败') }
   finally { loading.value = false }
 }

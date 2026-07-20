@@ -206,10 +206,13 @@ async function handleComplete() {
     return
   }
   try {
-    await store.complete(1)
+    const result = await store.complete(1)
+    console.log('[Configurator] 配置完成响应:', result)
     ElMessage.success('配置完成！')
-  } catch {
-    ElMessage.error('配置完成失败，请重试')
+  } catch (e: any) {
+    console.error('[Configurator] 配置完成失败:', e?.message || e)
+    const msg = e?.message || e?.toString() || '未知错误'
+    ElMessage.error('配置完成失败：' + msg)
   }
 }
 

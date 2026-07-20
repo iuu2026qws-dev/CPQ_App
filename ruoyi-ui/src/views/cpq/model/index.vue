@@ -11,6 +11,11 @@ import {
   listCategoryByLevel, listCategoryByParent,
   type CpqProductCategory
 } from '@/api/cpq/category';
+import {
+  listVariants, addVariant, updateVariant, delVariant,
+  listVariantBom,
+  type CpqProductVariant, type CpqProductVariantForm
+} from '@/api/cpq/variant';
 
 const loading = ref(false);
 const modelList = ref<CpqProductModel[]>([]);
@@ -218,6 +223,141 @@ const handleSelectionChange = (rows: CpqProductModel[]) => {
   selectedIds.value = rows.map(r => r.modelId);
 };
 
+// ========== 变体管理 ==========
+const variantDialogVisible = ref(false);
+const variantDialogTitle = ref('');
+const variantLoading = ref(false);
+const variantList = ref<CpqProductVariant[]>([]);
+const currentModel = ref<CpqProductModel | null>(null);
+const variantFormRef = ref<FormInstance>();
+const variantFormVisible = ref(false);
+const variantFormTitle = ref('');
+const variantSubmitting = ref(false);
+
+const variantForm = ref<CpqProductVariantForm>({
+  modelId: 0,
+  variantCode: '',
+  variantName: '',
+  attributes: '{}',
+  defaultBomId: undefined,
+  basePrice: undefined,
+  isDefault: '0',
+  status: '0'
+});
+
+const variantRules = {
+  variantCode: [{ required: true, message: '请输入变体编码', trigger: 'blur' }],
+  variantName: [{ required: true, message: '请输入变体名称', trigger: 'blur' }]
+};
+
+/** 打开变体管理弹窗 */
+const handleVariantManage = async (row: CpqProductModel) => {
+  currentModel.value = row;
+  variantDialogTitle.value = `${row.modelName}（${row.modelCode}）的变体管理`;
+  variantDialogVisible.value = true;
+  await loadVariants();
+};
+
+/** 加载变体列表 */
+const loadVariants = async () => {
+  if (!currentModel.value) return;
+  variantLoading.value = true;
+  try {
+    const res = await listVariants(currentModel.value.modelId);
+    variantList.value = Array.isArray(res) ? res : ((res as any).data || (res as any).rows || []);
+  } finally {
+    variantLoading.value = false;
+  }
+};
+
+/** 新增变体 */
+const handleVariantAdd = () => {
+  variantFormTitle.value = '新增变体';
+  variantForm.value = {
+    modelId: currentModel.value!.modelId,
+    variantCode: '',
+    variantName: '',
+    attributes: '{}',
+    basePrice: currentModel.value!.basePrice,
+    isDefault: '0',
+    status: '0'
+  };
+  variantFormVisible.value = true;
+};
+
+/** 编辑变体 */
+const handleVariantEdit = (row: CpqProductVariant) => {
+  variantFormTitle.value = '修改变体';
+  variantForm.value = {
+    variantId: row.variantId,
+    modelId: row.modelId,
+    variantCode: row.variantCode,
+    variantName: row.variantName,
+    attributes: row.attributes || '{}',
+    defaultBomId: row.defaultBomId,
+    basePrice: row.basePrice,
+    isDefault: row.isDefault,
+    status: row.status
+  };
+  variantFormVisible.value = true;
+};
+
+/** 删除变体 */
+const handleVariantDelete = async (row: CpqProductVariant) => {
+  await ElMessageBox.confirm(`确认删除变体「${row.variantName}」？`, '提示', { type: 'warning' });
+  await delVariant(row.variantId);
+  ElMessage.success('删除成功');
+  loadVariants();
+};
+
+/** 提交变体表单 */
+const handleVariantSubmit = async () => {
+  try {
+    const valid = await variantFormRef.value?.validate();
+    if (!valid) return;
+  } catch { return; }
+  variantSubmitting.value = true;
+  try {
+    // 确保 attributes 为合法 JSON
+    const attrs = variantForm.value.attributes || '{}';
+    try { JSON.parse(attrs); } catch { variantForm.value.attributes = '{}'; }
+    if (variantForm.value.variantId) {
+      await updateVariant(variantForm.value);
+      ElMessage.success('修改成功');
+    } else {
+      await addVariant(variantForm.value);
+      ElMessage.success('新增成功');
+    }
+    variantFormVisible.value = false;
+    loadVariants();
+  } finally {
+    variantSubmitting.value = false;
+  }
+};
+
+/** 格式化属性JSON为可读文本 */
+const formatAttributes = (attributes: string): string => {
+  if (!attributes) return '-';
+  try {
+    const obj = JSON.parse(attributes);
+    if (typeof obj === 'object' && obj !== null) {
+      return Object.entries(obj).map(([k, v]) => `${k}: ${v}`).join('；');
+    }
+    return attributes;
+  } catch {
+    return attributes;
+  }
+};
+
+/** 判断JSON字符串是否为空 */
+const isEmptyAttributes = (attrs: string): boolean => {
+  if (!attrs || attrs === '{}' || attrs === '') return true;
+  try {
+    const obj = JSON.parse(attrs);
+    return Object.keys(obj).length === 0;
+  } catch { return true; }
+};
+
 onMounted(() => {
   loadCatalogs();
   loadL1();
@@ -283,9 +423,10 @@ onMounted(() => {
             <el-tag :type="row.status==='0'?'success':'danger'" size="small">{{ row.status==='0'?'正常':'停用' }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="140" fixed="right">
+        <el-table-column label="操作" width="200" fixed="right">
           <template #default="{ row }">
             <el-button link type="primary" @click="handleEdit(row)">修改</el-button>
+            <el-button link type="success" @click="handleVariantManage(row)">变体</el-button>
             <el-button link type="danger" @click="handleDelete(row)">删除</el-button>
           </template>
         </el-table-column>
@@ -387,6 +528,78 @@ onMounted(() => {
       <template #footer>
         <el-button @click="dialogVisible=false">取消</el-button>
         <el-button type="primary" @click="handleSubmit">确定</el-button>
+      </template>
+    </el-dialog>
+
+    <!-- 变体管理弹窗 -->
+    <el-dialog v-model="variantDialogVisible" :title="variantDialogTitle" width="1000px" destroy-on-close>
+      <div class="toolbar">
+        <el-button type="primary" @click="handleVariantAdd">新增变体</el-button>
+      </div>
+      <el-table v-loading="variantLoading" :data="variantList" border stripe>
+        <el-table-column prop="variantCode" label="变体编码" width="170" show-overflow-tooltip />
+        <el-table-column prop="variantName" label="变体名称" min-width="160" show-overflow-tooltip />
+        <el-table-column label="属性值" min-width="200" show-overflow-tooltip>
+          <template #default="{ row }">
+            <span>{{ formatAttributes(row.attributes) }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="basePrice" label="基础价" width="100">
+          <template #default="{ row }">{{ row.basePrice ? '¥' + row.basePrice : '-' }}</template>
+        </el-table-column>
+        <el-table-column prop="isDefault" label="默认" width="70" align="center">
+          <template #default="{ row }">
+            <el-tag :type="row.isDefault === '1' ? 'success' : 'info'" size="small">{{ row.isDefault === '1' ? '是' : '否' }}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column prop="status" label="状态" width="70" align="center">
+          <template #default="{ row }">
+            <el-tag :type="row.status === '0' ? 'success' : 'danger'" size="small">{{ row.status === '0' ? '正常' : '停用' }}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" width="140" fixed="right" align="center">
+          <template #default="{ row }">
+            <el-button link type="primary" @click="handleVariantEdit(row)">修改</el-button>
+            <el-button link type="danger" @click="handleVariantDelete(row)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <template #footer>
+        <el-button @click="variantDialogVisible = false">关闭</el-button>
+      </template>
+    </el-dialog>
+
+    <!-- 变体编辑弹窗 -->
+    <el-dialog v-model="variantFormVisible" :title="variantFormTitle" width="600px" destroy-on-close append-to-body>
+      <el-form ref="variantFormRef" :model="variantForm" :rules="variantRules" label-width="100px">
+        <el-form-item label="变体编码" prop="variantCode">
+          <el-input v-model="variantForm.variantCode" placeholder="如：PD785-WHT" maxlength="100" />
+        </el-form-item>
+        <el-form-item label="变体名称" prop="variantName">
+          <el-input v-model="variantForm.variantName" placeholder="如：白色款" maxlength="200" />
+        </el-form-item>
+        <el-form-item label="属性值(JSON)">
+          <el-input v-model="variantForm.attributes" type="textarea" :rows="4" placeholder='{&#34;color&#34;:&#34;white&#34;,&#34;size&#34;:&#34;L&#34;}' />
+        </el-form-item>
+        <el-form-item label="基础价">
+          <el-input-number v-model="variantForm.basePrice" :precision="2" :min="0" style="width:100%" />
+        </el-form-item>
+        <el-form-item label="默认变体">
+          <el-radio-group v-model="variantForm.isDefault">
+            <el-radio value="0">否</el-radio>
+            <el-radio value="1">是</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item label="状态">
+          <el-radio-group v-model="variantForm.status">
+            <el-radio value="0">正常</el-radio>
+            <el-radio value="1">停用</el-radio>
+          </el-radio-group>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <el-button @click="variantFormVisible = false">取消</el-button>
+        <el-button type="primary" :loading="variantSubmitting" @click="handleVariantSubmit">确定</el-button>
       </template>
     </el-dialog>
   </div>

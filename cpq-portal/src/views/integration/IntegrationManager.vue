@@ -97,7 +97,7 @@ async function fetchList() {
   loading.value = true
   try {
     const res = await getConfigList()
-    configList.value = Array.isArray(res) ? res : res.data || []
+    configList.value = Array.isArray(res) ? res : (res.rows || res.data || [])
   } catch { configList.value = [] }
   finally { loading.value = false }
 }

@@ -201,7 +201,7 @@ async function searchProducts() {
   searched.value = true
   try {
     const res = await searchModel(keyword.value.trim())
-    const all = Array.isArray(res) ? res : ((res as any).data || [])
+    const all = Array.isArray(res) ? res : (res.rows || ((res as any).data || []))
     // 仅显示ATO类型
     products.value = all.filter((p: CpqProductModelVo) => p.configType === 'ATO')
   } finally {

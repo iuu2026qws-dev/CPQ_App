@@ -118,7 +118,7 @@ const orderTotal = computed(() => {
 function calcTotal() { /* reactive triggers computed */ }
 
 function addLine() {
-  lines.value.push({ productCode: '', productName: '', quantity: 1, unitPrice: 0, discountPct: 0, taxRate: 0, orderId: Number(route.params.id), _isNew: true })
+  lines.value.push({ productCode: '', productName: '', quantity: 1, unitPrice: 0, discountPct: 0, taxRate: 0, orderId: String(route.params.id), _isNew: true })
 }
 
 function removeLine(idx: number) {
@@ -128,7 +128,7 @@ function removeLine(idx: number) {
 async function loadData() {
   loading.value = true
   try {
-    const id = Number(route.params.id)
+    const id = String(route.params.id)
     order.value = await getOrder(id)
     const existingLines = await listOrderLines(id)
     lines.value = (existingLines || []).map((l: OrderLineVo) => ({
@@ -153,7 +153,7 @@ async function loadData() {
 async function saveLines() {
   saving.value = true
   try {
-    const orderId = Number(route.params.id)
+    const orderId = String(route.params.id)
     const currentLineIds = new Set(lines.value.filter(l => l.lineId).map(l => l.lineId))
     const originalLineIds = new Set(
       lines.value.filter(l => l._original).map(l => l._original!.lineId)

@@ -178,7 +178,7 @@ async function fetchList() {
   loading.value = true
   try {
     const res = await getAbacPolicyList(queryParams)
-    tableData.value = Array.isArray(res) ? res : (res as any)?.data || []
+    tableData.value = Array.isArray(res) ? res : (res.rows || (res as any)?.data || [])
   } finally {
     loading.value = false
   }

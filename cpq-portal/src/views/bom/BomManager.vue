@@ -183,7 +183,7 @@
     <el-dialog
       v-model="lineDialog.visible"
       :title="lineDialogTitle"
-      width="580px"
+      width="720px"
       :close-on-click-modal="false"
     >
       <el-form ref="lineFormRef" :model="lineDialog.form" :rules="lineRules" label-width="100px">
@@ -318,7 +318,7 @@ const searchModels = async (query: string) => {
   modelSearching.value = true
   try {
     const data = await request.get('/cpq/product/model/search', { params: { keyword: query } })
-    modelOptions.value = (data || []).map((m: any) => ({
+    modelOptions.value = (Array.isArray(data) ? data : (data.rows || data || [])).map((m: any) => ({
       label: `${m.modelCode} - ${m.modelName}`,
       value: m.modelId
     }))
@@ -345,7 +345,8 @@ const onModelChange = async (modelId: number | null) => {
   // 加载该产品的 SBOM Header 列表
   headerLoading.value = true
   try {
-    headers.value = await listSbomHeaders({ modelId })
+    const res = await listSbomHeaders({ modelId })
+    headers.value = Array.isArray(res) ? res : (res.rows || [])
   } finally {
     headerLoading.value = false
   }
@@ -468,7 +469,7 @@ const loadBomTree = async () => {
   bomLoading.value = true
   try {
     const data = await explodeBom(selectedHeaderId.value)
-    bomTreeData.value = formatChildren(data || [])
+    bomTreeData.value = formatChildren(Array.isArray(data) ? data : (data.rows || data || []))
   } finally {
     bomLoading.value = false
   }
@@ -546,12 +547,26 @@ const lineRules: FormRules = {
 
 const lineFormRef = ref<FormInstance>()
 
+const getNextLineNumber = (): number => {
+  const max = collectLineNumbers(bomTreeData.value).reduce((a, b) => Math.max(a, b), 0)
+  return max + 10
+}
+
+const collectLineNumbers = (items: SbomLine[]): number[] => {
+  let nums: number[] = []
+  for (const item of items) {
+    if (item.lineNumber) nums.push(item.lineNumber)
+    if (item.children && item.children.length > 0) nums.push(...collectLineNumbers(item.children))
+  }
+  return nums
+}
+
 const resetLineForm = () => {
   lineDialog.form = {
     sbomLineId: undefined,
     sbomHeaderId: selectedHeaderId.value!,
     parentLineId: null,
-    lineNumber: 10,
+    lineNumber: getNextLineNumber(),
     itemCode: '',
     itemName: '',
     quantity: 1,
@@ -664,7 +679,14 @@ const submitLine = async () => {
       ElMessage.success('新增成功')
     }
     lineDialog.visible = false
-    await loadBomTree()
+    // BOM树刷新失败不影响保存结果
+    try {
+      await loadBomTree()
+    } catch (e: any) {
+      ElMessage.warning('BOM树刷新失败，请手动点击刷新按钮')
+    }
+  } catch (e: any) {
+    ElMessage.error('保存失败：' + (e?.message || '未知错误'))
   } finally {
     lineDialog.submitting = false
   }

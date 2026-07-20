@@ -188,7 +188,7 @@ const preloadModelNames = (modelIds: number[]) => {
 }
 
 // ---- 加载数据 ----
-const loadBooks = async () => { bookLoading.value = true; try { const data = await getPriceBookList(); books.value = (Array.isArray(data) ? data : []) } finally { bookLoading.value = false } }
+const loadBooks = async () => { bookLoading.value = true; try { const data = await getPriceBookList(); books.value = Array.isArray(data) ? data : (data.rows || []) } finally { bookLoading.value = false } }
 
 const onBookSelect = async (row: CpqPriceBook | null) => {
   selectedBook.value = row; entries.value = []
@@ -196,7 +196,7 @@ const onBookSelect = async (row: CpqPriceBook | null) => {
   entryLoading.value = true
   try {
     const data = await getEntryList({ priceBookId: row.priceBookId })
-    entries.value = (Array.isArray(data) ? data : [])
+    entries.value = Array.isArray(data) ? data : (data.rows || [])
     preloadModelNames(entries.value.map(e => e.modelId))
   } finally { entryLoading.value = false }
 }

@@ -95,7 +95,7 @@ const loadVariants = async () => {
   loading.value = true
   try {
     const data = await getVariantList(props.modelId)
-    variants.value = Array.isArray(data) ? data : []
+    variants.value = Array.isArray(data) ? data : (data?.rows || [])
   } catch {
     variants.value = []
   } finally {

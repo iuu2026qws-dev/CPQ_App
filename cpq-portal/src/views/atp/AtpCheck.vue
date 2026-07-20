@@ -87,7 +87,7 @@ async function searchProducts(keyword: string) {
   searchLoading.value = true
   try {
     const res = await searchModel(keyword)
-    productOptions.value = Array.isArray(res) ? res : ((res as any).data || [])
+    productOptions.value = Array.isArray(res) ? res : (res.rows || ((res as any).data || []))
   } finally {
     searchLoading.value = false
   }

@@ -146,7 +146,7 @@ function viewAll(type: string) {
 async function loadData() {
   loading.value = true
   try {
-    const id = Number(route.params.id)
+    const id = String(route.params.id)
     const [acc, oppRes, conRes, ordRes] = await Promise.all([
       getAccount(id),
       listOpportunities({ accountId: id, pageSize: 5 }),

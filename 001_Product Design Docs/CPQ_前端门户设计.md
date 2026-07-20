@@ -37,7 +37,7 @@
 ┌─────────────────────────────────────────────────────────┐
 │                    RuoYi-Vue-Plus 后台                    │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  ruoyi-admin (Spring Boot + Undertow :8080)        │  │
+│  │  ruoyi-admin (Spring Boot + Undertow :30000)        │  │
 │  │  ├─ Sa-Token + JWT 认证                            │  │
 │  │  ├─ RBAC 权限管理 (sys_user/sys_role/sys_menu)     │  │
 │  │  ├─ 多租户 (sys_tenant)                            │  │
@@ -353,7 +353,7 @@ server {
 
     # 后端 API 统一代理
     location /api/ {
-        proxy_pass http://127.0.0.1:8080/;
+        proxy_pass http://127.0.0.1:30000/;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

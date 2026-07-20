@@ -121,7 +121,7 @@ const loading = ref(false)
 const searchModelOptions = async (query: string) => {
   if (!query || query.length < 1) { modelOpts.value = []; return }
   const data = await request.get('/cpq/product/model/search', { params: { keyword: query } })
-  modelOpts.value = (data || []).map((m: any) => ({
+  modelOpts.value = (Array.isArray(data) ? data : (data.rows || data || [])).map((m: any) => ({
     label: `${m.modelCode} - ${m.modelName}`,
     value: m.modelId
   }))
@@ -132,7 +132,7 @@ const loadWhereUsed = async () => {
   loading.value = true
   try {
     const data = await request.get(`/cpq/product/supersession/whereUsed/${searchModelId.value}`)
-    whereUsedData.value = data || []
+    whereUsedData.value = Array.isArray(data) ? data : (data.rows || data || [])
     activeTab.value = 'whereUsed'
   } finally { loading.value = false }
 }
@@ -142,7 +142,7 @@ const loadRecommend = async () => {
   loading.value = true
   try {
     const data = await request.get(`/cpq/product/supersession/recommend/${searchModelId.value}`)
-    recommendData.value = data || []
+    recommendData.value = Array.isArray(data) ? data : (data.rows || data || [])
     activeTab.value = 'recommend'
   } finally { loading.value = false }
 }

@@ -49,7 +49,7 @@ const hasAnalysis = ref(false)
 function tag(s: string) { const m: Record<string,string>={DRAFT:'info',ANALYZING:'warning',ANALYZED:'',APPROVED:'success',REJECTED:'danger',IMPLEMENTED:'success',CLOSED:'info'}; return m[s]||'info' }
 
 async function loadOrder() {
-  const id = Number(route.params.id)
+  const id = String(route.params.id)
   order.value = await request.get(`/cpq/ecn/order/${id}`)
   try {
     const res = await request.get('/cpq/ecn/impact/list', { params: { changeOrderId: id, pageSize: 100 } })
@@ -59,14 +59,14 @@ async function loadOrder() {
 }
 
 async function doAnalyze() {
-  const id = Number(route.params.id)
+  const id = String(route.params.id)
   impacts.value = await request.post(`/cpq/ecn/impact/analyze/${id}`)
   hasAnalysis.value = true; ElMessage.success('影响分析完成')
   await nextTick().then(drawTree)
 }
 
 async function doPropagate() {
-  const id = Number(route.params.id)
+  const id = String(route.params.id)
   const count = await request.post(`/cpq/ecn/impact/propagate/${id}`)
   ElMessage.success(`已传播 ${count} 项变更`); loadOrder()
 }

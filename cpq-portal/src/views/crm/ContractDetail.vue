@@ -89,7 +89,7 @@ function orderStatusTag(s: string) { const m: Record<string, string> = { DRAFT: 
 async function loadData() {
   loading.value = true
   try {
-    const id = Number(route.params.id)
+    const id = String(route.params.id)
     contract.value = await getContract(id)
     // Product lines might come from contract detail or a separate API
     productLines.value = (contract.value as any)?.lines || []

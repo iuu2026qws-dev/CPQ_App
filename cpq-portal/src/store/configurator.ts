@@ -126,15 +126,27 @@ export const useConfiguratorStore = defineStore('configurator', () => {
 
   /** 完成配置（验证 + BOM + 定价） */
   async function complete(quantity: number = 1) {
-    if (!modelId.value) return null
+    if (!modelId.value) {
+      console.error('[Configurator Store] 完成配置失败：modelId 为空')
+      throw new Error('产品模型ID为空，无法完成配置')
+    }
     loading.value = true
     try {
+      console.log('[Configurator Store] 开始完成配置, modelId:', modelId.value, 'selections:', selections.value, 'quantity:', quantity)
       const result = await completeConfiguration(modelId.value, selections.value, quantity)
-      validationResult.value = result.validation
+      console.log('[Configurator Store] 配置API返回:', result)
+      if (!result || typeof result !== 'object') {
+        throw new Error('API返回数据异常')
+      }
+      validationResult.value = result.validation ?? null
       mbomLines.value = result.mbomLines ?? []
-      priceResult.value = result.price
+      priceResult.value = result.price ?? null
       step.value = 'review'
+      console.log('[Configurator Store] 配置完成，验证状态:', result.validation?.status)
       return result
+    } catch (e) {
+      console.error('[Configurator Store] 完成配置异常:', e)
+      throw e
     } finally {
       loading.value = false
     }

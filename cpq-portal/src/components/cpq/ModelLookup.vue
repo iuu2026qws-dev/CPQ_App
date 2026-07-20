@@ -76,7 +76,7 @@ const onSearch = async (query: string) => {
   }
   try {
     const data = await searchModel(query, props.configType)
-    const list = Array.isArray(data) ? data : []
+    const list = Array.isArray(data) ? data : (data?.rows || [])
     options.value = list.map((m: CpqProductModelVo) => {
       modelCache.value.set(m.modelId, m)
       return {

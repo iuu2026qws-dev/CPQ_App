@@ -122,21 +122,45 @@
         <!-- Step 2: Narrowing 范围缩小 -->
         <el-card v-else-if="guideData && guideData.state === 'NARROWING'" class="step-card">
           <template #header>
-            <span class="step-title">匹配产品范围已缩小</span>
+            <div class="narrow-header">
+              <span class="step-title">范围缩小 — 请选择「{{ guideData.currentAttribute || '未知属性' }}」</span>
+              <el-tag type="warning" size="small">已缩小至 {{ (guideData.options || []).filter(o => o.available).length }} 个选项</el-tag>
+            </div>
           </template>
           <div class="narrow-summary">
             <p v-if="guideData.recommendation">{{ guideData.recommendation }}</p>
-            <p v-else>基于您之前的选择，系统过滤掉了不满足约束的选项。</p>
-            <div v-if="guideData.prohibited && Object.keys(guideData.prohibited).length > 0">
-              <p>当前禁止的选项：</p>
-              <el-tag v-for="(value, key) in guideData.prohibited" :key="key" type="danger" style="margin:2px">
+            <p v-else>基于您之前的选择，系统已过滤不满足约束的选项，请从剩余选项中做出选择。</p>
+            <div v-if="guideData.prohibited && Object.keys(guideData.prohibited).length > 0" class="prohibited-section">
+              <p><strong>已排除的选项：</strong></p>
+              <el-tag v-for="(value, key) in guideData.prohibited" :key="key" type="danger" size="small" style="margin:2px">
                 {{ key }}: {{ value }}
               </el-tag>
             </div>
           </div>
+          <div class="option-list">
+            <el-card
+              v-for="opt in (guideData.options || [])"
+              :key="opt.code"
+              class="option-card"
+              :class="{
+                selected: selections[guideData.currentAttribute] === opt.code,
+                disabled: !opt.available
+              }"
+              shadow="hover"
+              @click="opt.available && selectGuideOption(guideData.currentAttribute, opt.code)"
+            >
+              <div class="option-info">
+                <h4>{{ opt.label }}</h4>
+                <p v-if="opt.reason">{{ opt.reason }}</p>
+              </div>
+              <el-icon v-if="selections[guideData.currentAttribute] === opt.code" class="check-icon" color="#409EFF"><CircleCheckFilled /></el-icon>
+              <el-tag v-if="!opt.available" type="info" size="small" class="disabled-tag">不可用</el-tag>
+            </el-card>
+          </div>
+          <el-empty v-if="!guideData.options || guideData.options.length === 0" description="无可选选项" />
           <div class="step-actions">
             <el-button @click="prevStep">上一步</el-button>
-            <el-button type="primary" @click="nextStep">查看推荐</el-button>
+            <el-button type="primary" :disabled="!selections[guideData.currentAttribute]" @click="nextStep">查看推荐</el-button>
           </div>
         </el-card>
 
@@ -309,7 +333,7 @@ async function searchProducts() {
   searched.value = true
   try {
     const res = await searchModel(keyword.value.trim())
-    products.value = Array.isArray(res) ? res : ((res as any).data || [])
+    products.value = Array.isArray(res) ? res : (res.rows || ((res as any).data || []))
   } finally {
     searchLoading.value = false
   }
@@ -356,12 +380,8 @@ async function loadGuideStep() {
     result.state = 'QUESTIONING'
   }
 
-  // NARROWING state 在模板中无选项选择UI，与 QUESTIONING 本质相同（都需要用户选择属性值）
-  // 将 NARROWING 映射为 QUESTIONING，让用户能在选项卡片中选择
-  if (result.state === 'NARROWING') {
-    console.log('[GuidedSelling] NARROWING→QUESTIONING (need option selection UI)')
-    result.state = 'QUESTIONING'
-  }
+  // NARROWING 保留原状态，让步骤指示器正确显示"范围缩小"步骤
+  // 模板中已添加选项选择卡片，用户在缩小的范围内直接选择即可
 
   // 确保 options 不为 null
   if (!result.options) {
@@ -543,7 +563,9 @@ function goBackToSearch() {
         transition: all 0.2s;
         border: 2px solid transparent;
         &.selected { border-color: var(--cpq-primary); background: rgba(64,158,255,0.04); }
+        &.disabled { opacity: 0.45; cursor: not-allowed; border-color: #f0f0f0; background: #fafafa; }
         &:hover { border-color: #c0c4cc; }
+        &.disabled:hover { border-color: #f0f0f0; }
         .option-info {
           h4 { font-size: 15px; margin-bottom: 4px; }
           p { color: #909399; font-size: 12px; }
@@ -553,6 +575,14 @@ function goBackToSearch() {
     }
 
     .narrow-summary { padding: 12px 0; color: #606266; }
+    .narrow-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .prohibited-section { margin-top: 8px; padding-top: 8px; border-top: 1px dashed #e4e7ed; }
+    .disabled-tag { position: absolute; bottom: 8px; right: 8px; }
     .recommend-list {
       display: flex;
       flex-direction: column;
