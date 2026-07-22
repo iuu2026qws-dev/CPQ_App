@@ -1,7 +1,7 @@
 # STATUS.md — CPQ App 项目交接文档
 
 > **目的**：读完本文档即可理解项目全貌、恢复开发环境、继续干活。
-> 最后更新: 2026-07-20 17:00（团队产品评审后更新）
+> 最后更新: 2026-07-22 11:30（quoteId 修复 + feat 分支 + 交接）
 
 ---
 
@@ -20,8 +20,8 @@
 | **Node** | v22.19.0 |
 | **Maven** | 3.x |
 | **项目路径** | `iCloud Drive/创新万维/0004. platform_dev/004_CPQ_App/` |
-| **Git 分支** | `manong_20260702_ver` |
-| **最新 Commit** | `2b83b302b` |
+| **Git 分支** | `manong_20260702_ver`（主）/ `feat/fix-quote-api`（今日修复） |
+| **最新 Commit** | `188ad07b1`（2026-07-22） |
 
 ---
 
@@ -241,6 +241,13 @@ TOKEN=$(curl -s -X POST 'http://localhost:30000/auth/login' \
 
 ## 九、已知问题（Bug / 技术债）
 
+### 9.0 ✅ 已修复：创建报价不返回 quoteId + itemName 缺失（2026-07-22）
+
+- `CpqQuoteController.add()` 返回 `R<Long>`，前端可获取新增报价 ID
+- `CpqQuoteLineItemServiceImpl` 行项目创建时自动从产品填充 `itemName`
+- `selectMaxLineNumber` 增加 `IFNULL` 空值保护
+- 5 文件改动，commit `188ad07b1`，已推 `feat/fix-quote-api` 分支
+
 ### 9.1 🔴 P1：Snowflake ID JS 精度丢失
 
 - **现象**：19 位 Snowflake ID 超出 `Number.MAX_SAFE_INTEGER`，`Number(route.params.id)` 丢失精度，导致页面取不到数据
@@ -268,7 +275,10 @@ TOKEN=$(curl -s -X POST 'http://localhost:30000/auth/login' \
 1. **axios 响应解包**：拦截器统一返回 `{rows, total}`，Vue 组件必须用 `res.rows || res.data || []`，不要直接取 `res`
 2. **Snowflake ID**：19 位 ID 超 JS 精度，一律用 `String(route.params.id)`，**禁止** `Number()`
 3. **status 字段**：数据库 CHAR(1)，取值 `'0'` / `'1'`，不要传 `'ACTIVE'` 等字符串
-4. **代码提交**：当前分支 `manong_20260702_ver` 有未提交的本地改动，尽快提交
+4. **代码提交**：所有改动已提交（`188ad07b1`），已推 `manong_20260702_ver` + `feat/fix-quote-api`
+5. **GitHub 推送**：IPv6 不通，必须加 `-4` 参数 `git push -4 github <branch>`
+6. **Docker 生产环境**：`root@8.148.208.235`，需通过跳板机 `mac@100.119.232.95` 中转
+7. **交接文档**：workspace-manong/CPQ_HANDOVER.md（新 Agent 即看即上手）
 
 ---
 
@@ -303,18 +313,7 @@ TOKEN=$(curl -s -X POST 'http://localhost:30000/auth/login' \
 
 > 详见 `001_Product Design Docs/CPQ_开发任务清单.md` 任务 5-13
 
-## 十三、下一步工作
-
-| 优先级 | 任务 | 说明 |
-|--------|------|------|
-| 🔴 **立即** | 提交当前分支代码 | `manong_20260702_ver` 有未提交改动 |
-| 🟡 P2+ | 修复剩余 11 个 Snowflake ID 文件 | `Number(route.params.*)` → `String()` |
-| 🟢 P3 | 审批中心开发 | 后端接口 + 前端审批流页面 |
-| 📋 持续 | CPQ Agent Skill 增强 | 补全成本核算、对接真实 ERP 成本 API |
-
----
-
-## 十三、快速上手（新开发者 10 分钟启动）
+## 十四、快速上手（新开发者 10 分钟启动）
 
 ```bash
 # 1. 进入项目目录
