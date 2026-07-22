@@ -13,7 +13,7 @@ public interface ICpqQuoteService extends IService<CpqQuote> {
     CpqQuoteVo selectById(Long id);
     List<CpqQuoteVo> selectList(CpqQuoteBo bo);
     TableDataInfo<CpqQuoteVo> selectPageList(CpqQuoteBo bo, PageQuery pageQuery);
-    int insert(CpqQuoteBo bo);
+    Long insert(CpqQuoteBo bo);
     int update(CpqQuoteBo bo);
     int deleteById(Long id);
     int deleteByIds(Long[] ids);

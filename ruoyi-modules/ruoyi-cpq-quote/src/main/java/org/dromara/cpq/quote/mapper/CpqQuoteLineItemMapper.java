@@ -32,4 +32,10 @@ public interface CpqQuoteLineItemMapper extends BaseMapperPlus<CpqQuoteLineItem,
      */
     @Select("SELECT * FROM cpq_quote_line_item WHERE item_code = #{itemCode} AND del_flag = '0'")
     List<CpqQuoteLineItem> selectLineItemsByItemCode(String itemCode);
+
+    /**
+     * 按 modelId 查产品名称（用于自动填充行项目的 itemName）
+     */
+    @Select("SELECT model_name FROM cpq_product_model WHERE model_id = #{modelId}")
+    String selectProductNameByModelId(Long modelId);
 }

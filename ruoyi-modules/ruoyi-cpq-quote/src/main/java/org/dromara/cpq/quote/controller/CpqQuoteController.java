@@ -35,8 +35,9 @@ public class CpqQuoteController extends BaseController {
     @Log(title = "报价单", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping
-    public R<Void> add(@Validated @RequestBody CpqQuoteBo bo) {
-        return toAjax(quoteService.insert(bo));
+    public R<Long> add(@Validated @RequestBody CpqQuoteBo bo) {
+        Long quoteId = quoteService.insert(bo);
+        return R.ok(quoteId);
     }
 
     @Log(title = "报价单", businessType = BusinessType.UPDATE)

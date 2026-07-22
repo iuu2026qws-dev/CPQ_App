@@ -54,6 +54,13 @@ public class CpqQuoteLineItemServiceImpl extends ServiceImpl<CpqQuoteLineItemMap
         if (StringUtils.isBlank(entity.getUnit())) {
             entity.setUnit("PCS");
         }
+        // itemName 为 NOT NULL，自动从 modelId 查产品名填充
+        if (StringUtils.isBlank(entity.getItemName()) && entity.getModelId() != null) {
+            String productName = baseMapper.selectProductNameByModelId(entity.getModelId());
+            if (StringUtils.isNotBlank(productName)) {
+                entity.setItemName(productName);
+            }
+        }
         return save(entity) ? 1 : 0;
     }
     @Override @Transactional public int update(CpqQuoteLineItemBo bo) { return updateById(BeanUtil.toBean(bo, CpqQuoteLineItem.class)) ? 1 : 0; }

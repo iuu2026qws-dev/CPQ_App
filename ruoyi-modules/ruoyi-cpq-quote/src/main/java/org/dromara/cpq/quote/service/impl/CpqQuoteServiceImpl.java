@@ -104,7 +104,7 @@ public class CpqQuoteServiceImpl extends ServiceImpl<CpqQuoteMapper, CpqQuote> i
 
     @Override
     @Transactional
-    public int insert(CpqQuoteBo bo) {
+    public Long insert(CpqQuoteBo bo) {
         log.info("新增报价单: {}", bo);
         CpqQuote entity = BeanUtil.toBean(bo, CpqQuote.class);
         if (StringUtils.isBlank(entity.getQuoteNumber())) {
@@ -113,7 +113,8 @@ public class CpqQuoteServiceImpl extends ServiceImpl<CpqQuoteMapper, CpqQuote> i
         if (StringUtils.isBlank(entity.getStatus())) {
             entity.setStatus("DRAFT");
         }
-        return save(entity) ? 1 : 0;
+        save(entity);
+        return entity.getQuoteId();
     }
 
     private String generateQuoteNumber() {
