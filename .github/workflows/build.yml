@@ -12,15 +12,15 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with: { java-version: '17', distribution: 'temurin' }
+      - name: Rename directory
+        run: mv "ruoyi-admin 2" ruoyi-admin && mv "ruoyi-common 2" ruoyi-common && sed -i 's/ruoyi-admin 2/ruoyi-admin/g;s/ruoyi-common 2/ruoyi-common/g' pom.xml ruoyi-modules/pom.xml 2>/dev/null
       - name: Build JAR
         run: mvn clean package -DskipTests -q
-      - name: Copy JAR
-        run: cp "./ruoyi-admin 2/target/ruoyi-admin.jar" /tmp/cpq-app.jar && ls -lh /tmp/cpq-app.jar
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: cpq-app-jar
-          path: /tmp/cpq-app.jar
+          path: ruoyi-admin/target/ruoyi-admin.jar
           if-no-files-found: error
           retention-days: 30
       - name: Upload JAR

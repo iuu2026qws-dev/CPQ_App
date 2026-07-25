@@ -71,7 +71,7 @@ docker compose down
 ## 4. 替换 docker-compose.yml（本地已改好，直接覆盖）
 
 ```bash
-cp /opt/docker-compose.yml /opt/backup/docker-compose.yml.$(date +%m%d_%H%M)
+cp /opt/docker-compose.yml /opt/backup/docker-compose.$(date +%m%d_%H%M).yml
 cp /opt/deploy-v5/docker-compose.yml /opt/docker-compose.yml
 ```
 
