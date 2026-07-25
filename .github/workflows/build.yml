@@ -13,9 +13,9 @@ jobs:
       - uses: actions/setup-java@v4
         with: { java-version: '17', distribution: 'temurin' }
       - name: Build JAR
-        run: mvn clean package -DskipTests -q 2>&1 | tail -5
+        run: mvn clean package -DskipTests --fail-at-end 2>&1 | tail -30
       - name: Debug JAR location
-        run: find . -name "ruoyi-admin*.jar" -path "*/target/*" -ls 2>/dev/null
+        run: find . -name "*.jar" -path "*/target/*" -ls 2>/dev/null
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
