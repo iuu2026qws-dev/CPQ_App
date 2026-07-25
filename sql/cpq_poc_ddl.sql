@@ -217,9 +217,9 @@ INSERT INTO `cpq_match_config` (config_id, tenant_id, config_key, config_value, 
 INSERT INTO `cpq_approval_rule` (rule_id, tenant_id, rule_name, trigger_type, approval_chain_json, status, del_flag) VALUES
 (100, '000000', '锂原标品匹配推荐确认', 'ALWAYS', '[]', '0', '0');
 
--- 审批矩阵: process_scheduler 角色审批
-INSERT INTO `cpq_approval_matrix` (matrix_id, tenant_id, rule_id, approver_role, min_approvals, status, del_flag) VALUES
-(1, '000000', 100, 'process_scheduler', 1, '0', '0');
+-- 审批矩阵: process_scheduler 角色审批（匹配推荐场景）
+INSERT INTO `cpq_approval_matrix` (matrix_id, tenant_id, dimension_type, dimension_value, approver_role, min_approvals, status, del_flag) VALUES
+(1, '000000', 'PRODUCT_LINE', '507', 'process_scheduler', 1, '0', '0');
 
 -- 产品列表查询性能优化索引
 CREATE INDEX IF NOT EXISTS idx_cat_status ON cpq_product_model(category_id, status, del_flag);
