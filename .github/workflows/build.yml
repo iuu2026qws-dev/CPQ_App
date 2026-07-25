@@ -14,11 +14,13 @@ jobs:
         with: { java-version: '17', distribution: 'temurin' }
       - name: Build JAR
         run: mvn clean package -DskipTests -q 2>&1 | tail -5
+      - name: Find and list JARs
+        run: find . -name "ruoyi-admin*.jar" -type f 2>/dev/null || echo "NO JAR FOUND"
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: cpq-app-jar
-          path: "ruoyi-admin 2/target/ruoyi-admin.jar"
+          path: "**/target/ruoyi-admin*.jar"
           retention-days: 30
       - name: Upload JAR
         uses: actions/upload-artifact@v4
