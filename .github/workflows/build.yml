@@ -17,7 +17,7 @@ jobs:
           distribution: 'temurin'
       - name: Build modules
         run: |
-          mvn install -pl "ruoyi-modules" -DskipTests -q
+          mvn install -pl "ruoyi-modules" -am -DskipTests -q
           mvn package -pl "ruoyi-admin 2" -am -DskipTests -q
         shell: bash
       - name: Find and upload JAR
