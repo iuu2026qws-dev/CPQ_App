@@ -214,8 +214,8 @@ INSERT INTO `cpq_match_config` (config_id, tenant_id, config_key, config_value, 
 
 
 -- 审批规则: 锂原标品匹配推荐确认
-INSERT INTO `cpq_approval_rule` (rule_id, tenant_id, rule_name, trigger_type, status, del_flag) VALUES
-(100, '000000', '锂原标品匹配推荐确认', 'ALWAYS', '0', '0');
+INSERT INTO `cpq_approval_rule` (rule_id, tenant_id, rule_name, trigger_type, approval_chain_json, status, del_flag) VALUES
+(100, '000000', '锂原标品匹配推荐确认', 'ALWAYS', '[]', '0', '0');
 
 -- 审批矩阵: process_scheduler 角色审批
 INSERT INTO `cpq_approval_matrix` (matrix_id, tenant_id, rule_id, approver_role, min_approvals, status, del_flag) VALUES
