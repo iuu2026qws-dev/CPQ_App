@@ -1,0 +1,25 @@
+name: CPQ App Build JAR
+
+on:
+  push:
+    branches: [v4-deploy, main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build JAR
+        run: mvn package -pl "ruoyi-admin 2" -am -DskipTests -q
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpq-app-jar
+          path: "ruoyi-admin 2/target/ruoyi-admin.jar"
+          retention-days: 30

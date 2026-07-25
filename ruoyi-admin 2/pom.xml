@@ -162,6 +162,13 @@
             <version>${revision}</version>
         </dependency>
 
+        <!--  CPQ 评分匹配模块  -->
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>ruoyi-cpq-match</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>

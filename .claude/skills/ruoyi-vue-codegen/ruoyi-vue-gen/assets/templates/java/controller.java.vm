@@ -1,0 +1,100 @@
+package ${packageName}.controller;
+
+import java.util.List;
+import jakarta.servlet.http.HttpServletResponse;
+
+import cn.dev33.satoken.annotation.SaCheckPermission;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.dromara.common.core.domain.R;
+import org.dromara.common.mybatis.core.page.PageQuery;
+import org.dromara.common.mybatis.core.page.TableDataInfo;
+import org.dromara.common.core.exception.ServiceException;
+import org.dromara.common.satoken.utils.LoginHelper;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import ${packageName}.domain.${ClassName};
+import ${packageName}.domain.bo.${ClassName}Bo;
+import ${packageName}.domain.vo.${ClassName}Vo;
+import ${packageName}.service.I${ClassName}Service;
+
+/**
+ * ${functionName}Controller
+ * ⚠️ 全局约束：
+ *   - 返回分页必须用 TableDataInfo.build(result)，不能直接 return Page
+ *   - 业务异常必须用 ServiceException("消息")，禁止 RuntimeException
+ *   - Portal端公开接口必须加 @SaIgnore
+ */
+@Slf4j
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/${moduleName}/${businessName}")
+public class ${ClassName}Controller {
+
+    private final I${ClassName}Service ${className}Service;
+
+    /**
+     * 查询${functionName}列表
+     */
+    @SaCheckPermission("${moduleName}:${businessName}:list")
+    @GetMapping("/list")
+    public TableDataInfo<${ClassName}Vo> list(${ClassName}Bo bo, PageQuery pageQuery) {
+        return ${className}Service.queryPageList(bo, pageQuery);
+    }
+
+    /**
+     * 导出${functionName}
+     */
+    @SaCheckPermission("${moduleName}:${businessName}:export")
+    @PostMapping("/export")
+    public void export(@Validated ${ClassName}Bo bo, HttpServletResponse response) {
+        List<${ClassName}Vo> list = ${className}Service.queryList(bo);
+        // ExcelUtil.exportExcel(list, "${functionName}", ${ClassName}Vo.class, response);
+    }
+
+    /**
+     * 获取${functionName}详细信息
+     */
+    @SaCheckPermission("${moduleName}:${businessName}:query")
+    @GetMapping("/{id}")
+    public R<${ClassName}Vo> getInfo(@PathVariable Long id) {
+        return R.ok(${className}Service.queryById(id));
+    }
+
+    /**
+     * 新增${functionName}
+     */
+    @SaCheckPermission("${moduleName}:${businessName}:add")
+    @PostMapping
+    public R<Void> add(@Validated @RequestBody ${ClassName}Bo bo) {
+        if (!${className}Service.insertByBo(bo)) {
+            throw new ServiceException("新增${functionName}失败");
+        }
+        return R.ok();
+    }
+
+    /**
+     * 修改${functionName}
+     */
+    @SaCheckPermission("${moduleName}:${businessName}:edit")
+    @PutMapping
+    public R<Void> edit(@Validated @RequestBody ${ClassName}Bo bo) {
+        if (!${className}Service.updateByBo(bo)) {
+            throw new ServiceException("修改${functionName}失败");
+        }
+        return R.ok();
+    }
+
+    /**
+     * 删除${functionName}
+     */
+    @SaCheckPermission("${moduleName}:${businessName}:remove")
+    @DeleteMapping("/{ids}")
+    public R<Void> remove(@PathVariable Long[] ids) {
+        if (!${className}Service.deleteWithValidByIds(List.of(ids))) {
+            throw new ServiceException("删除${functionName}失败");
+        }
+        return R.ok();
+    }
+}

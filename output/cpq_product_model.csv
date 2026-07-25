@@ -1,0 +1,4 @@
+model_id,tenant_id,catalog_id,category_id,model_code,model_name,description,lifecycle_status,config_type,base_price,currency,min_order_qty,lead_time_days,status,del_flag,create_time
+6001,000000,11,507,ER14250-BP-001,ER14250电池包 50mm线长 JST插头 桶装,电池包 / BP-T1 / 2串,ACTIVE,STANDARD,\\N,CNY,1,\\N,0,0,2026-07-24 15:44:56
+6002,000000,11,507,ER14250-BP-002,ER14250电池包 100mm线长 Molex插头 非桶装,电池包 / BP-T2 / 单串,ACTIVE,STANDARD,\\N,CNY,1,\\N,0,0,2026-07-24 15:44:56
+6003,000000,11,507,ER14250-BP-003,ER14250裸电芯包 无插头 简易包装,裸电芯包 / BP-BARE / 单颗,ACTIVE,STANDARD,\\N,CNY,1,\\N,0,0,2026-07-24 15:44:56

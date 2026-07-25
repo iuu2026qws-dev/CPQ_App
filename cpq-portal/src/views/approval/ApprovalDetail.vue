@@ -2,99 +2,152 @@
   <div class="cpq-page">
     <div class="toolbar">
       <el-button @click="$router.back()">返回</el-button>
-      <el-button type="primary" @click="$router.push('/approval/history')">审批历史</el-button>
     </div>
 
-    <!-- 审批链基本描述 -->
-    <el-descriptions v-if="store.currentChain" :column="2" border>
-      <el-descriptions-item label="审批链ID">{{ store.currentChain.chainId }}</el-descriptions-item>
-      <el-descriptions-item label="报价单ID">{{ store.currentChain.quoteId }}</el-descriptions-item>
-      <el-descriptions-item label="当前步骤">{{ store.currentChain.currentStep }}/{{ store.currentChain.totalSteps }}</el-descriptions-item>
-      <el-descriptions-item label="SLA">{{ store.currentChain.slaHours }}小时</el-descriptions-item>
-      <el-descriptions-item label="状态">
-        <el-tag>{{ store.currentChain.status }}</el-tag>
+    <!-- ★ 业务上下文：客户需求 + 选定产品 -->
+    <h3>📋 工艺确认单</h3>
+    <el-descriptions v-if="detail" :column="2" border style="margin-bottom:20px">
+      <el-descriptions-item label="推荐产品">{{ detail.model_code }} {{ detail.model_name }}</el-descriptions-item>
+      <el-descriptions-item label="基准价格">¥{{ detail.base_price }}</el-descriptions-item>
+      <el-descriptions-item label="客户需求" :span="2">
+        <div style="white-space:pre-wrap;font-size:13px;line-height:1.8">
+          {{ detail?.requirement_text || reqSummary }}
+        </div>
       </el-descriptions-item>
-      <el-descriptions-item label="提交时间">{{ store.currentChain.submittedTime }}</el-descriptions-item>
+      <el-descriptions-item label="匹配结果" :span="2">
+        <div v-if="scoredList.length > 0" style="max-height:200px;overflow:auto">
+          <div v-for="(s, i) in scoredList" :key="i" style="font-size:12px;margin-bottom:4px">
+            #{{ s.rank }} {{ s.modelCode }} — {{ s.totalScore }}分 | {{ s.aiReason || '' }}
+          </div>
+        </div>
+        <span v-else>暂无</span>
+      </el-descriptions-item>
+      <el-descriptions-item label="工艺状态">
+        <el-tag :type="detail.confirm_status === 'CONFIRMED' ? 'success' : detail.confirm_status === 'PENDING' ? 'warning' : 'danger'">
+          {{ detail.confirm_status }}
+        </el-tag>
+      </el-descriptions-item>
+      <el-descriptions-item v-if="detail.replaced_model_id" label="替代推荐" :span="2">
+        <div style="padding:8px;background:#fef7e0;border:1px solid #fde3a7;border-radius:6px">
+          <div style="margin-bottom:4px">
+            <span style="color:#909399">原推荐：</span>
+            <span style="text-decoration:line-through;color:#909399">{{ detail.replaced_model_code || detail.replaced_model_id }} {{ detail.replaced_model_name || '' }}</span>
+          </div>
+          <div style="margin-bottom:4px">
+            <span style="color:#1A73E8;font-weight:600">替代产品：</span>
+            <span style="color:#1A73E8;font-weight:600">{{ detail.model_code }} {{ detail.model_name }}</span>
+          </div>
+          <div v-if="detail.replaced_reason">
+            <span style="color:#909399">推荐理由：</span>
+            <span>{{ detail.replaced_reason }}</span>
+          </div>
+        </div>
+      </el-descriptions-item>
     </el-descriptions>
-
-    <!-- 审批链节点可视化 -->
-    <h3 style="margin-top:20px">审批流程</h3>
-    <ApprovalNode
-      v-if="approvalNodes.length > 0"
-      :nodes="approvalNodes"
-      :current-step="store.currentChain?.currentStep || 1"
-      :is-rejected="store.currentChain?.status === 'REJECTED'"
-    />
+    <div v-else-if="loading" style="text-align:center;padding:40px">加载中...</div>
 
     <!-- 审批操作 -->
-    <ApprovalAction
-      v-if="store.currentChain"
-      :chain-id="store.currentChain.chainId!"
-      :chain-status="store.currentChain.status!"
-      :current-step="store.currentChain.currentStep || 1"
-      :total-steps="store.currentChain.totalSteps || 1"
-      :approver="store.records.length > 0 ? store.records[store.records.length - 1]?.approverName : undefined"
-      @action-completed="handleActionCompleted"
-    />
+    <div v-if="detail && detail.confirm_status === 'PENDING'" style="margin-bottom:20px">
+      <el-button type="primary" @click="handleApprove">通过</el-button>
+      <el-button type="danger" @click="handleReject">驳回</el-button>
+      <el-button @click="dialogVisible = true">推荐替代产品</el-button>
+    </div>
 
-    <!-- 审批记录时间线 -->
-    <h3 style="margin-top:20px">审批记录</h3>
-    <el-timeline>
-      <el-timeline-item v-for="r in store.records" :key="r.recordId" :timestamp="r.actionTime" placement="top">
-        <el-card>
-          <p><strong>{{ r.approverName }}</strong> — {{ actionLabel(r.action || '') }}</p>
-          <p v-if="r.comment" style="color:#666">{{ r.comment }}</p>
-        </el-card>
-      </el-timeline-item>
-    </el-timeline>
+    <!-- ★ 推荐替代弹窗 -->
+    <el-dialog v-model="dialogVisible" title="推荐替代产品" width="480px" :close-on-click-modal="false">
+      <el-form ref="replaceFormRef" :model="replaceForm" :rules="replaceRules" label-width="auto">
+        <el-form-item label="替代产品型号" prop="modelCode" required>
+          <el-input v-model="replaceForm.modelCode" placeholder="如 ER14505" style="width:100%" />
+        </el-form-item>
+        <el-form-item label="推荐理由" prop="reason" required>
+          <el-input v-model="replaceForm.reason" type="textarea" :rows="2" placeholder="请输入推荐理由" style="width:100%" />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="submitReplace">确认推荐</el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useApprovalStore } from '@/store/approval'
-import ApprovalNode from '@/components/approval/ApprovalNode.vue'
-import type { ApprovalNodeData } from '@/components/approval/ApprovalNode.vue'
-import ApprovalAction from '@/components/approval/ApprovalAction.vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import request from '@/utils/request'
 
 const route = useRoute()
-const store = useApprovalStore()
+const loading = ref(false)
+const detail = ref<any>(null)
 
-function actionLabel(a: string) {
-  const m: Record<string, string> = { APPROVE: '批准', CONDITIONAL_APPROVE: '条件通过', REJECT: '驳回', TRANSFER: '转审', DELEGATE: '委托', ADD_SIGNER: '加签' }
-  return m[a] || a
+const dialogVisible = ref(false)
+const replaceFormRef = ref()
+const replaceForm = reactive({ modelCode: '', reason: '' })
+const replaceRules = {
+  modelCode: [{ required: true, message: '请输入替代产品型号', trigger: 'blur' }],
+  reason: [{ required: true, message: '请输入推荐理由', trigger: 'blur' }],
 }
 
-// 从审批链和记录构建可视化节点
-const approvalNodes = computed<ApprovalNodeData[]>(() => {
-  if (!store.currentChain) return []
-  const nodes: ApprovalNodeData[] = []
-  for (let i = 1; i <= (store.currentChain.totalSteps || 1); i++) {
-    const rec = store.records.find(r => r.stepNumber === i)
-    nodes.push({
-      title: `第${i}步审批`,
-      role: i === 1 ? '部门经理' : i === 2 ? '总监' : i === 3 ? 'VP' : '审批人',
-      approverName: rec?.approverName,
-      status: rec ? (rec.action === 'APPROVE' ? 'APPROVED' : rec.action === 'REJECT' ? 'REJECTED' : 'APPROVED') : (i === store.currentChain!.currentStep ? 'PENDING' : undefined),
-      actionTime: rec?.actionTime,
-      comment: rec?.comment,
+const reqSummary = computed(() => {
+  try {
+    const r = JSON.parse(detail.value?.requirement_json || '{}')
+    const req = r.requirements || r
+    return JSON.stringify(req, null, 2)
+  } catch { return detail.value?.requirement_json || '-' }
+})
+
+const scoredList = computed(() => {
+  try {
+    const s = JSON.parse(detail.value?.scored_json || '[]')
+    return Array.isArray(s) ? s : []
+  } catch { return [] }
+})
+
+async function fetchDetail() {
+  loading.value = true
+  try {
+    const chainId = String(route.params.id)
+    const res: any = await request.get(`/cpq/process/detail/${chainId}`)
+    detail.value = res
+  } catch { detail.value = null }
+  finally { loading.value = false }
+}
+
+async function handleApprove() {
+  try {
+    await request.post('/cpq/process/approve', { chainId: Number(route.params.id), action: 'APPROVED' })
+    ElMessage.success('已通过')
+    fetchDetail()
+  } catch { }
+}
+
+async function handleReject() {
+  try {
+    const { value } = await ElMessageBox.prompt('驳回原因', '驳回', { type: 'warning' })
+    await request.post('/cpq/process/approve', { chainId: Number(route.params.id), action: 'REJECTED', comment: value || '' })
+    ElMessage.success('已驳回')
+    fetchDetail()
+  } catch { }
+}
+
+async function submitReplace() {
+  const valid = await replaceFormRef.value?.validate().catch(() => false)
+  if (!valid) return
+  try {
+    await request.post('/cpq/process/confirm', {
+      resultId: detail.value?.result_id, modelId: detail.value?.model_id,
+      action: 'REPLACE', replacedModelCode: replaceForm.modelCode.trim(), replacedReason: replaceForm.reason.trim()
     })
-  }
-  return nodes
-})
-
-async function handleActionCompleted() {
-  if (store.currentChain?.chainId) {
-    await store.fetchChain(store.currentChain.chainId)
-    await store.fetchRecords(store.currentChain.chainId)
-  }
+    ElMessage.success('已推荐替代产品')
+    dialogVisible.value = false
+    replaceForm.modelCode = ''
+    replaceForm.reason = ''
+    fetchDetail()
+  } catch { }
 }
 
-onMounted(async () => {
-  const chainId = String(route.params.id)
-  if (chainId) { await store.fetchChain(chainId); await store.fetchRecords(chainId) }
-})
+onMounted(() => { fetchDetail() })
 </script>
 
 <style scoped>

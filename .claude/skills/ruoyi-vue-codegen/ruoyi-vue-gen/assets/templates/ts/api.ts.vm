@@ -1,0 +1,65 @@
+import request from '@/utils/request'
+
+/**
+ * ${functionName}API接口
+ */
+
+export interface ${ClassName}Query {
+  /** 主键 */
+  ${pkColumn.javaField}?: ${pkColumn.javaType}
+#foreach ($column in $columns)
+#if($column.query)
+  /** $column.columnComment */
+  $column.javaField?: $column.javaType
+#end
+#end
+}
+
+/**
+ * ${functionName}API接口
+ */
+export interface ${ClassName}Form {
+  /** 主键 */
+  ${pkColumn.javaField}?: ${pkColumn.javaType}
+#foreach ($column in $columns)
+#if(!$column.isSuperColumn())
+  /** $column.columnComment */
+  $column.javaField?: $column.javaType
+#end
+#end
+}
+
+/**
+ * 查询${functionName}列表
+ */
+export function list${ClassName}(query?: ${ClassName}Query) {
+  return request.get<${ClassName}Form[]>('/${moduleName}/${businessName}/list', { params: query })
+}
+
+/**
+ * 查询${functionName}详细
+ */
+export function get${ClassName}(${pkColumn.javaField}: ${pkColumn.javaType}) {
+  return request.get<${ClassName}Form>('/${moduleName}/${businessName}/' + ${pkColumn.javaField})
+}
+
+/**
+ * 新增${functionName}
+ */
+export function add${ClassName}(data: ${ClassName}Form) {
+  return request.post('/${moduleName}/${businessName}', data)
+}
+
+/**
+ * 修改${functionName}
+ */
+export function update${ClassName}(data: ${ClassName}Form) {
+  return request.put('/${moduleName}/${businessName}', data)
+}
+
+/**
+ * 删除${functionName}
+ */
+export function del${ClassName}(${pkColumn.javaField}: ${pkColumn.javaType}) {
+  return request.delete('/${moduleName}/${businessName}/' + ${pkColumn.javaField})
+}

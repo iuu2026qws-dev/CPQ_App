@@ -30,6 +30,12 @@ public class CpqApprovalRecordServiceImpl extends ServiceImpl<CpqApprovalRecordM
     @Override public TableDataInfo<CpqApprovalRecordVo> selectPageList(CpqApprovalRecordBo bo, PageQuery pageQuery) {
         LambdaQueryWrapper<CpqApprovalRecord> qw = new LambdaQueryWrapper<>();
         qw.eq(bo.getChainId() != null, CpqApprovalRecord::getChainId, bo.getChainId());
+        qw.eq(bo.getApproverId() != null, CpqApprovalRecord::getApproverId, bo.getApproverId());
+        // status=pending → action IS NULL
+        qw.isNull(bo.getAction() != null && "pending".equals(bo.getAction()), CpqApprovalRecord::getAction);
+        // status=processed → action IS NOT NULL
+        qw.isNotNull(bo.getAction() != null && "processed".equals(bo.getAction()), CpqApprovalRecord::getAction);
+        qw.orderByDesc(CpqApprovalRecord::getRecordId);
         return TableDataInfo.build(BeanUtil.copyToList(page(pageQuery.build(), qw).getRecords(), CpqApprovalRecordVo.class));
     }
     @Override @Transactional public int insert(CpqApprovalRecordBo bo) { return save(BeanUtil.toBean(bo, CpqApprovalRecord.class)) ? 1 : 0; }

@@ -127,8 +127,8 @@ async function handleCommand(command: string) {
 
 .portal-sidebar {
   width: var(--cpq-sidebar-width);
-  background: #1a2332;
-  color: #fff;
+  background: #E8F0FE;
+  color: #4A5568;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -136,39 +136,36 @@ async function handleCommand(command: string) {
 
   .sidebar-header {
     padding: 20px 16px 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid #D0D7E2;
     flex-shrink: 0;
-    .logo { font-size: 20px; font-weight: 700; color: #fff; }
-    .logo-sub { font-size: 11px; color: rgba(255,255,255,0.45); display: block; margin-top: 2px; }
+    .logo { font-size: 20px; font-weight: 700; color: #1A73E8; }
+    .logo-sub { font-size: 11px; color: #718096; display: block; margin-top: 2px; }
   }
 
   .sidebar-nav {
     flex: 1;
     overflow-y: auto;
 
-    // el-menu 暗色主题定制
     :deep(.el-menu) {
       border-right: none;
 
-      // 一级 sub-menu 标题
       .el-sub-menu__title {
         font-size: 14px;
         height: 44px;
         line-height: 44px;
         padding-left: 16px !important;
+        color: #4A5568;
         &:hover {
-          background: rgba(255,255,255,0.06);
-          color: #fff;
+          background: rgba(26,115,232,0.06);
+          color: #1A73E8;
         }
-        .el-icon { margin-right: 10px; }
+        .el-icon { margin-right: 10px; color: #718096; }
       }
 
-      // sub-menu 展开时标题高亮
       .el-sub-menu.is-opened > .el-sub-menu__title {
-        color: #fff;
+        color: #1A73E8;
       }
 
-      // 二级 menu-item
       .el-menu-item {
         font-size: 13px;
         height: 40px;
@@ -176,13 +173,15 @@ async function handleCommand(command: string) {
         padding-left: 48px !important;
         border-radius: 0 6px 6px 0;
         margin: 2px 8px 2px 0;
+        color: #4A5568;
         &:hover {
-          background: rgba(255,255,255,0.06);
-          color: #fff;
+          background: rgba(26,115,232,0.08);
+          color: #1A73E8;
         }
         &.is-active {
-          background: var(--cpq-primary);
-          color: #fff;
+          background: rgba(26,115,232,0.12);
+          color: #1A73E8;
+          font-weight: 600;
         }
         .el-icon { font-size: 16px; }
       }

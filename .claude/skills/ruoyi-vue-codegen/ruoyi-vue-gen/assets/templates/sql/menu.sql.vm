@@ -1,0 +1,24 @@
+-- 菜单 SQL
+-- ${functionName}
+-- ${datetime}
+
+-- ${functionName}菜单
+INSERT INTO sys_menu (menu_name, parent_id, order_num, path, component, is_frame, is_cache, menu_type, visible, status, perms, icon, create_by, create_time, update_by, update_time, remark)
+VALUES ('${functionName}', '${parentMenuId}', '1', '${businessName}', '${moduleName}/${businessName}/index', 1, 0, 'C', '0', '0', '${moduleName}:${businessName}:list', '#', 'admin', sysdate(), '', null, '${functionName}菜单');
+
+-- ${functionName}按钮
+SELECT @menu_id := LAST_INSERT_ID();
+INSERT INTO sys_menu (menu_name, parent_id, order_num, path, component, is_frame, is_cache, menu_type, visible, status, perms, icon, create_by, create_time, update_by, update_time, remark)
+VALUES ('${functionName}查询', @menu_id, '1', '#', '', 1, 0, 'F', '0', '0', '${moduleName}:${businessName}:query', '#', 'admin', sysdate(), '', null, '');
+
+INSERT INTO sys_menu (menu_name, parent_id, order_num, path, component, is_frame, is_cache, menu_type, visible, status, perms, icon, create_by, create_time, update_by, update_time, remark)
+VALUES ('${functionName}新增', @menu_id, '2', '#', '', 1, 0, 'F', '0', '0', '${moduleName}:${businessName}:add', '#', 'admin', sysdate(), '', null, '');
+
+INSERT INTO sys_menu (menu_name, parent_id, order_num, path, component, is_frame, is_cache, menu_type, visible, status, perms, icon, create_by, create_time, update_by, update_time, remark)
+VALUES ('${functionName}修改', @menu_id, '3', '#', '', 1, 0, 'F', '0', '0', '${moduleName}:${businessName}:edit', '#', 'admin', sysdate(), '', null, '');
+
+INSERT INTO sys_menu (menu_name, parent_id, order_num, path, component, is_frame, is_cache, menu_type, visible, status, perms, icon, create_by, create_time, update_by, update_time, remark)
+VALUES ('${functionName}删除', @menu_id, '4', '#', '', 1, 0, 'F', '0', '0', '${moduleName}:${businessName}:remove', '#', 'admin', sysdate(), '', null, '');
+
+INSERT INTO sys_menu (menu_name, parent_id, order_num, path, component, is_frame, is_cache, menu_type, visible, status, perms, icon, create_by, create_time, update_by, update_time, remark)
+VALUES ('${functionName}导出', @menu_id, '5', '#', '', 1, 0, 'F', '0', '0', '${moduleName}:${businessName}:export', '#', 'admin', sysdate(), '', null, '');

@@ -27,6 +27,7 @@
     <module>ruoyi-cpq-migration</module>
         <module>ruoyi-cpq-knowledge</module>
         <module>ruoyi-cpq-crm</module>
+        <module>ruoyi-cpq-match</module>
     </modules>
 
     <artifactId>ruoyi-modules</artifactId>

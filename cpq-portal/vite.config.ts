@@ -33,11 +33,11 @@ export default defineConfig({
     rollupOptions: {
       output: {
         // 代码分割：将大型依赖拆分为独立 chunk
-        manualChunks: {
-          'vue-vendor': ['vue', 'vue-router', 'pinia'],
-          'element-plus': ['element-plus', '@element-plus/icons-vue'],
-          'echarts': ['echarts'],
-          'ag-grid': ['ag-grid-vue3', 'ag-grid-community'],
+        manualChunks(id: string) {
+          if (id.includes('node_modules/vue') || id.includes('node_modules/pinia') || id.includes('node_modules/vue-router')) return 'vue-vendor'
+          if (id.includes('node_modules/element-plus') || id.includes('node_modules/@element-plus')) return 'element-plus'
+          if (id.includes('node_modules/echarts')) return 'echarts'
+          if (id.includes('node_modules/ag-grid')) return 'ag-grid'
         },
         chunkFileNames: 'js/[name]-[hash].js',
         entryFileNames: 'js/[name]-[hash].js',

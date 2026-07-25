@@ -6,6 +6,7 @@ import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.dromara.common.core.utils.StringUtils;
@@ -30,8 +31,32 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 public class CpqQuoteServiceImpl extends ServiceImpl<CpqQuoteMapper, CpqQuote> implements ICpqQuoteService {
 
-    private final AtomicInteger sequence = new AtomicInteger(1);
+    private final AtomicInteger sequence = new AtomicInteger(0);
     private final CpqQuoteLineItemMapper lineItemMapper;
+    private final CpqQuoteMapper quoteMapper;
+
+    @PostConstruct
+    void initSequence() {
+        String prefix = "QTE-" + DateUtil.format(DateUtil.date(), "yyyyMMdd") + "-%";
+        LambdaQueryWrapper<CpqQuote> qw = new LambdaQueryWrapper<>();
+        qw.select(CpqQuote::getQuoteNumber);
+        qw.likeRight(CpqQuote::getQuoteNumber, prefix);
+        qw.orderByDesc(CpqQuote::getQuoteNumber);
+        qw.last("LIMIT 1");
+        CpqQuote last = getOne(qw, false);
+        if (last != null && last.getQuoteNumber() != null) {
+            String num = last.getQuoteNumber();
+            try {
+                int max = Integer.parseInt(num.substring(num.lastIndexOf("-") + 1));
+                sequence.set(max + 1);
+                log.info("Quote sequence initialized from DB: {}", max + 1);
+            } catch (NumberFormatException e) {
+                sequence.set(1);
+            }
+        } else {
+            sequence.set(1);
+        }
+    }
 
     @Override
     public CpqQuoteVo selectById(Long id) {

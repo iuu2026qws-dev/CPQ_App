@@ -1,0 +1,8 @@
+mapping_id,tenant_id,dimension_code,product_attr_category,product_attr_name,mapping_role,sort_order,status,del_flag
+100,000000,SIZE_MATCH,电芯规格,参考尺寸,BOTH,0,0,0
+101,000000,SIZE_MATCH,电芯规格,最大尺寸,BOTH,0,0,0
+102,000000,USAGE_MATCH,电芯规格,应用范围,PRODUCT_COMPARE,0,0,0
+103,000000,TEMP_MATCH,电芯规格,工作温度,PRODUCT_COMPARE,0,0,0
+104,000000,LIFE_MATCH,电芯规格,标称容量,PRODUCT_COMPARE,0,0,0
+105,000000,SEAL_MATCH,防护信息,IP等级,BOTH,0,0,0
+106,000000,BONUS,成品规格,近一年出货量,PRODUCT_COMPARE,0,0,0

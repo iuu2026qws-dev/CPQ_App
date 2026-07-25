@@ -5,9 +5,9 @@
     </div>
 
     <el-table v-loading="loading" :data="records" stripe>
-      <el-table-column prop="recordId" label="审批编号" width="100" />
-      <el-table-column label="审批链ID" width="100">
-        <template #default="{ row }">{{ row.chainId }}</template>
+      <el-table-column prop="record_id" label="审批编号" width="100" />
+      <el-table-column label="推荐产品" width="200">
+        <template #default="{ row }">{{ row.model_code }} {{ row.model_name }}</template>
       </el-table-column>
       <el-table-column label="审批动作" width="100">
         <template #default="{ row }">
@@ -17,23 +17,13 @@
       <el-table-column prop="comment" label="审批意见" min-width="150" show-overflow-tooltip>
         <template #default="{ row }">{{ row.comment || '—' }}</template>
       </el-table-column>
-      <el-table-column prop="actionTime" label="审批时间" width="160" />
+      <el-table-column prop="action_time" label="审批时间" width="160" />
       <el-table-column label="操作" width="100" fixed="right">
         <template #default="{ row }">
           <el-button size="small" link type="primary" @click="handleView(row)">查看详情</el-button>
         </template>
       </el-table-column>
     </el-table>
-
-    <el-pagination
-      v-if="total > 0"
-      v-model:current-page="pageNum"
-      v-model:page-size="pageSize"
-      :total="total"
-      layout="total, sizes, prev, pager, next"
-      @change="fetchData"
-      style="margin-top: 16px; justify-content: flex-end;"
-    />
 
     <el-empty v-if="!loading && records.length === 0" description="暂无已审批记录" />
   </div>
@@ -42,47 +32,49 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { listApprovalRecords, type ApprovalRecordVo } from '@/api/approval'
+import request from '@/utils/request'
 import { useUserStore } from '@/store/user'
 
 const router = useRouter()
 const userStore = useUserStore()
 const loading = ref(false)
-const total = ref(0)
-const pageNum = ref(1)
-const pageSize = ref(10)
-const records = ref<ApprovalRecordVo[]>([])
+const records = ref<any[]>([])
 
 async function fetchData() {
   loading.value = true
   try {
-    const res = await listApprovalRecords({
-      pageNum: pageNum.value,
-      pageSize: pageSize.value,
-      status: 'processed',
-      approverId: userStore.userId
+    const res: any = await request.get('/cpq/process/processed', {
+      params: { approverId: userStore.userId || 1 }
     })
-    records.value = res.rows || []
-    total.value = res.total || 0
+    records.value = res.rows || res.data || res || []
   } catch {
     records.value = []
-    total.value = 0
   } finally {
     loading.value = false
   }
 }
 
 function actionLabel(a?: string) {
-  const m: Record<string, string> = { APPROVE: '通过', REJECT: '驳回', CONDITIONAL_APPROVE: '条件通过', TRANSFER: '转审', DELEGATE: '委托', ADD_SIGNER: '加签' }
+  const m: Record<string, string> = {
+    APPROVED: '通过', REJECTED: '驳回',
+    APPROVE: '通过', REJECT: '驳回',
+    CONDITIONAL_APPROVE: '条件通过', TRANSFER: '转审',
+    DELEGATE: '委托', ADD_SIGNER: '加签'
+  }
   return m[a || ''] || a || '—'
 }
 function actionTag(a?: string) {
-  const m: Record<string, '' | 'success' | 'danger' | 'warning' | 'info'> = { APPROVE: 'success', REJECT: 'danger', CONDITIONAL_APPROVE: 'warning', TRANSFER: 'info', DELEGATE: 'info', ADD_SIGNER: '' }
+  const m: Record<string, '' | 'success' | 'danger' | 'warning' | 'info'> = {
+    APPROVED: 'success', REJECTED: 'danger',
+    APPROVE: 'success', REJECT: 'danger',
+    CONDITIONAL_APPROVE: 'warning', TRANSFER: 'info',
+    DELEGATE: 'info', ADD_SIGNER: ''
+  }
   return m[a || ''] || 'info'
 }
 
-function handleView(row: ApprovalRecordVo) {
-  router.push('/approval/' + row.chainId)
+function handleView(row: any) {
+  router.push('/approval/' + row.chain_id)
 }
 
 onMounted(() => { fetchData() })

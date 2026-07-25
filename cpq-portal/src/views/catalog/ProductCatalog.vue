@@ -20,7 +20,40 @@
           </el-button>
         </template>
       </el-input>
+      <el-button type="success" @click="openImportDialog" style="margin-left:12px">📥 导入产品</el-button>
     </div>
+
+    <!-- 导入弹窗 -->
+    <el-dialog v-model="importDialogVisible" title="导入产品数据" width="520px" :close-on-click-modal="false">
+      <el-form label-width="90px">
+        <el-form-item label="产品分类" required>
+          <el-cascader v-model="importForm.categoryId" :options="categoryTree" :props="{ value:'categoryId', label:'categoryName', children:'children', checkStrictly:true, emitPath:false }" placeholder="选择产品系列" style="width:100%" />
+        </el-form-item>
+        <el-form-item label="基准价格(¥)">
+          <el-input-number v-model="importForm.basePrice" :min="0" :precision="2" style="width:100%" />
+        </el-form-item>
+        <el-form-item label="最小起订量">
+          <el-input-number v-model="importForm.minOrderQty" :min="1" style="width:100%" />
+        </el-form-item>
+        <el-form-item label="交期(天)">
+          <el-input-number v-model="importForm.leadTimeDays" :min="1" style="width:100%" />
+        </el-form-item>
+        <el-form-item label="数据文件" required>
+          <el-upload ref="uploadRef" :auto-upload="false" :limit="1" accept=".csv,.tsv,.xlsx,.xls" :on-change="handleFileChange" drag>
+            <el-icon class="el-icon--upload"><svg viewBox="0 0 24 24" width="36" height="36" stroke="#409eff" fill="none"><path d="M12 16V4M8 8l4-4 4 4M4 16v4h16v-4" stroke-width="2" stroke-linecap="round"/></svg></el-icon>
+            <div class="el-upload__text">拖拽文件到此处，或<em>点击上传</em></div>
+          </el-upload>
+          <div style="margin-top:6px">
+            <el-button link type="primary" size="small" @click="downloadTemplate">📥 下载导入模板</el-button>
+            <span style="color:#909399;font-size:11px;margin-left:4px">含填写规范和示例数据</span>
+          </div>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <el-button @click="importDialogVisible = false">取消</el-button>
+        <el-button type="primary" :loading="importLoading" :disabled="!importForm.categoryId || !importFile" @click="doImport">开始导入</el-button>
+      </template>
+    </el-dialog>
 
     <el-row :gutter="16">
       <el-col :span="8">
@@ -88,7 +121,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import request from '@/utils/request'
@@ -243,6 +276,49 @@ const configTypeTagType = (ct: string) => {
     case 'BUNDLE': return 'info'
     default: return 'info'
   }
+}
+
+// ── 导入 ──
+const importDialogVisible = ref(false)
+const importLoading = ref(false)
+const importFile = ref<File | null>(null)
+const importForm = reactive({ categoryId: null as number | null, basePrice: 5.00, minOrderQty: 1, leadTimeDays: 7 })
+
+function openImportDialog() {
+  importForm.categoryId = null; importForm.basePrice = 5.00; importForm.minOrderQty = 1; importForm.leadTimeDays = 7
+  importFile.value = null; importDialogVisible.value = true
+}
+function handleFileChange(_file: any, uploadFiles: any) {
+  importFile.value = uploadFiles[0]?.raw || null
+}
+function downloadTemplate() {
+  const csv = '﻿电芯编码*,电芯型号*,参考尺寸,标称电压,标称容量,最大持续电流,最大脉冲电流,工作温度,最大尺寸,重量(g),存储温度,应用范围,成品编码*,成品描述*,机型号,插头线型号,插头方向,线长(mm),是否绕线,是否桶装,运输方式,产品类型,锂亚电芯数,结构,装箱数量,外贴商标,工时,近一年出货量\n' +
+    'ER14250,ER14250,1/2AA,3.6V,1200mAh,50mA,100mA,-55~85℃,Φ14.5×25mm,10,-40~60℃,"GPS,安防",ER14250-BP-001,ER14250电池包 50mm线长 JST插头,TYPE-A,JST-XH-2P,正向,50,是,是,空运,电池包,1,单体,100,自有商标,2.5,5000\n' +
+    'ER14505,ER14505,AA,3.6V,2400mAh,100mA,200mA,-40~+85℃,Φ14.5×50mm,18,-40~60℃,智能水表,ER14505-BP-001,ER14505电池包 200mm Molex,TYPE-B,Molex-51021,反向,200,否,否,海运,电池包,2,双串,50,自有商标,3.0,3000\n' +
+    '\n# ⚠️ 填写数据前请删除以上2行示例数据及本注释行\n' +
+    '# 必填列: 电芯编码,电芯型号,成品编码,成品描述\n' +
+    '# 尺寸格式: Φ14.5x25.0mm 或 14.5×25mm | 温度格式: -55~85℃, -60℃~+85℃\n' +
+    '# 多值字段用英文双引号包裹: "GPS,安防" | 数值填数字不要带单位'
+  const blob = new Blob([csv], { type: 'text/csv;charset=UTF-8' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a'); a.href = url; a.download = 'CPQ产品导入模版.csv'
+  a.click(); URL.revokeObjectURL(url)
+}
+async function doImport() {
+  if (!importForm.categoryId || !importFile.value) return
+  importLoading.value = true
+  try {
+    const fd = new FormData()
+    fd.append('file', importFile.value)
+    fd.append('categoryId', String(importForm.categoryId))
+    fd.append('basePrice', String(importForm.basePrice))
+    fd.append('minOrderQty', String(importForm.minOrderQty))
+    fd.append('leadTimeDays', String(importForm.leadTimeDays))
+    const res: any = await request.post('/cpq/product/model/import', fd, { headers: { 'Content-Type': 'multipart/form-data' } })
+    ElMessage.success(`导入完成：${res.products} 个产品，${res.attributes} 条属性，${res.sbomLines} 条BOM行`)
+    importDialogVisible.value = false; handleSearch()
+  } catch (e: any) { ElMessage.error('导入失败: ' + (e?.message || '未知错误')) }
+  finally { importLoading.value = false }
 }
 
 onMounted(loadCategoryTree)
