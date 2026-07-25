@@ -147,8 +147,8 @@ CREATE TABLE `cpq_process_confirm` (
 -- ============================================================
 -- 表修改: cpq_product_model — 新增产品高清主图URL
 -- ============================================================
--- ALTER TABLE `cpq_product_model`
---   ADD COLUMN `image_url` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '产品高清主图URL'
+ALTER TABLE `cpq_product_model`
+  ADD COLUMN `image_url` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '产品高清主图URL';
 --   AFTER `thumbnail_url`;
 
 
