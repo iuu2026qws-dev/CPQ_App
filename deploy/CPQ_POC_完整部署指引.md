@@ -84,7 +84,7 @@ cp ruoyi-admin/target/ruoyi-admin.jar ~/Desktop/deploy-v5/
 ```yaml
     volumes:
       - ./application-dev.yml:/app/config/application-dev.yml
-      - ./deploy-v5/ruoyi-admin.jar:/app/app.jar    # ← 新增
+      - ./deploy-v5/ruoyi-admin.jar:/app/ruoyi-admin.jar    # ★ 必须覆盖容器实际启动的JAR文件名
 ```
 
 **修改点 2**：在 `cpq-frontend` 服务之后、`volumes:` 顶级节点之前，插入两个 Agent 服务
