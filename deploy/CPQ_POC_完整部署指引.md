@@ -133,6 +133,7 @@ cp ruoyi-admin/target/ruoyi-admin.jar ~/Desktop/deploy-v5/
 - INSERT 语句列的 **数量和名称** 必须和实际表结构一致
 - MySQL **不支持** `CREATE INDEX IF NOT EXISTS`（MariaDB/PostgreSQL 才支持）
 - `cpq_approval_rule` 表有 `approval_chain_json json NOT NULL`（**无默认值**），INSERT 必须包含该列
+- `cpq_product_model` 匹配引擎代码需要 `image_url` 列，DB 可能缺失，需 ALTER TABLE 补充
 
 **验证**：在服务器上 `grep -n "CREATE INDEX.*IF NOT EXISTS" /opt/deploy-v5/cpq_poc_ddl.sql` 无输出则正确
 
@@ -485,11 +486,12 @@ docker compose up -d
 | 2 | Config 挂载路径 | `no config file found` → `Missing credentials` | 挂载到 `/config/config.yaml`（非 `/app/config/config.yaml`） |
 | 3 | 前端 API 地址 | 页面能打开，对话无响应 | nginx 反向代理 + 空 BASE_URL（同源请求） |
 | 4 | `cat >>` 追加 compose | 服务被解析为 volumes 子属性，`docker compose up` 失败 | 本地改好 docker-compose.yml，直接覆盖 |
-| 5 | JAR 容器内文件名 | `docker cp` 找不到 `/app/app.jar` | 容器内文件名是 `ruoyi-admin.jar` |
+| 5 | JAR 容器内文件名 | `docker cp` 找不到 `/app/app.jar` | 容器启动命令用 `ruoyi-admin.jar`，挂载必须覆盖原名 |
 | 6 | DDL INSERT 缺列 | `Field 'approval_chain_json' doesn't have a default value` | INSERT 列清单与表结构对齐 |
 | 7 | `CREATE INDEX IF NOT EXISTS` | MySQL 语法错误 | 去掉 `IF NOT EXISTS` |
 | 8 | 备份文件名日期位置 | `docker-compose.yml.0726` 扩展名丢了 | 日期放 `.yml` 前：`docker-compose.0726.yml` |
 | 9 | `tar -C` 目录不存在 | `tar: Cannot open: No such file or directory` | 先 `mkdir -p /tmp/agent-deploy` |
+| 10 | 匹配引擎 SQL 列表不匹配 | `bad SQL grammar SELECT ... image_url FROM cpq_product_model` | ALTER TABLE 补 `image_url` 列（DDL 中取消注释） |
 
 ---
 
