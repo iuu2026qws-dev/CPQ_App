@@ -222,4 +222,4 @@ INSERT INTO `cpq_approval_matrix` (matrix_id, tenant_id, dimension_type, dimensi
 (1, '000000', 'PRODUCT_LINE', '507', 'process_scheduler', 1, '0', '0');
 
 -- 产品列表查询性能优化索引
-CREATE INDEX IF NOT EXISTS idx_cat_status ON cpq_product_model(category_id, status, del_flag);
+CREATE INDEX idx_cat_status ON cpq_product_model(category_id, status, del_flag);
