@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-java@v4
         with: { java-version: '17', distribution: 'temurin' }
       - name: Build JAR
-        run: mvn clean package -DskipTests -q
+        run: mvn clean package -DskipTests 2>&1 | tail -5 && find . -name "ruoyi-admin*.jar" -type f -ls 2>/dev/null
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
