@@ -16,11 +16,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build JAR
-        run: mvn package -pl "./ruoyi-admin 2" -am -DskipTests -B 2>&1 | tail -30
+        run: mvn package -pl ruoyi-admin -am -DskipTests -B
       - name: Find and upload JAR
         run: |
-          find . -name "ruoyi-admin.jar" -type f
-          cp "./ruoyi-admin 2/target/ruoyi-admin.jar" ./cpq-app.jar
+          JAR=$(find . -name "ruoyi-admin.jar" -path "*/target/*" -type f | head -1)
+          echo "Found: $JAR"
+          cp "$JAR" ./cpq-app.jar
+          ls -lh ./cpq-app.jar
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
