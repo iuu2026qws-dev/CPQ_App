@@ -13,9 +13,14 @@ jobs:
       - uses: actions/setup-java@v4
         with: { java-version: '17', distribution: 'temurin' }
       - name: Build JAR
-        run: mvn clean package -DskipTests --fail-at-end 2>&1 | tail -30
-      - name: Debug JAR location
-        run: find . -name "*.jar" -path "*/target/*" -ls 2>/dev/null
+        run: mvn clean package -pl "ruoyi-admin 2" -am -DskipTests 2>&1 | grep -E "BUILD|ERROR|ruoyi-admin" | head -10
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpq-app-jar
+          path: "ruoyi-admin 2/target/ruoyi-admin.jar"
+          if-no-files-found: error
+          retention-days: 30
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
