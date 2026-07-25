@@ -16,7 +16,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build JAR
-        run: mvn package -pl ruoyi-admin -am -DskipTests -B
+        run: mvn package -DskipTests -B -q 2>&1 | tail -10
       - name: Find and upload JAR
         run: |
           JAR=$(find . -name "ruoyi-admin.jar" -path "*/target/*" -type f | head -1)
