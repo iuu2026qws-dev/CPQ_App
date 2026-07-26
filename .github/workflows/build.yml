@@ -34,10 +34,6 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: '22' }
-      - name: Debug — 裸跑 npm install + build 排查
-        run: cd cpq-portal && npm install --ignore-engines --legacy-peer-deps && npm run build
       - name: Build Docker image
         run: cd cpq-portal && docker build -t cpq-frontend:latest .
       - name: Export image
