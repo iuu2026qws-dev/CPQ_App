@@ -16,11 +16,9 @@ eve-cpq-poc-deploy-0727/
 ├── cpq-frontend.tar.gz          ← CPQ_App CI: cpq-frontend-image
 ├── cpq-agent-backend.tar.gz     ← CPQ_Agent CI: cpq-agent-backend-image
 ├── cpq-agent-frontend.tar.gz    ← CPQ_Agent CI: cpq-agent-frontend-image
-├── cpq-agent-deploy.tar.gz      ← CPQ_Agent CI: cpq-agent-linux-deploy
-│   └── 内含 agent-config.yaml（staging版，需替换）
 ├── agent-config.yaml            ← ★ 生产版（Qwen3 + 内网 API）
-├── docker-compose.yml           ← ★ 生产版（xybot-redis + 生产DB）
-├── application-dev.yml          ← 生产 DB 配置
+├── docker-compose.yml           ← ★ 生产版（xybot-redis + 生产DB + Agent）
+├── application-dev.yml          ← 生产 DB 配置（从服务器获取）
 └── cpq_poc_ddl.sql              ← 幂等版（INSERT IGNORE + IF NOT EXISTS）
 ```
 
@@ -93,6 +91,8 @@ docker images | grep -E "cpq-frontend|cpq_agent"
 ---
 
 ## 五、阶段 3：部署 Agent 配置
+
+生产版 agent-config.yaml 已直接在部署包里，直接复制即可：
 
 ```bash
 mkdir -p /opt/agent-config /opt/agent-data
