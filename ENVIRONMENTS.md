@@ -49,7 +49,8 @@
 |------|------|------|
 | 应用服务器 | `10.100.111.55` | 内网可达 |
 | CPQ App 后端 | `:2999`（外部）/ `:30000`（容器内） | Docker 部署 |
-| CPQ App 前端 (门户) | `:3000` | Nginx |
+| CPQ App 前端 (门户) | `:3000` | Nginx (cpq-portal) |
+| CPQ App 管理后台 | `:5173` | Nginx (ruoyi-ui) |
 | CPQ Agent 后端 | `:58100` | 新增于 v4 |
 | CPQ Agent 前端 | `:57100` | 新增于 v4 |
 | 数据库 | `10.100.111.48:3306` / `dm_app_yhs_safe` | yhs_data_uat / Zc8!jS5&mE4# |
