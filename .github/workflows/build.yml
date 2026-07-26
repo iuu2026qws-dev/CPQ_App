@@ -21,8 +21,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cpq-app-jar
-          path: ruoyi-admin/target/ruoyi-admin.jar
-          if-no-files-found: error
+          path: |
+            ruoyi-admin/target/ruoyi-admin.jar
+            ruoyi-admin/**/ruoyi-admin.jar
+          if-no-files-found: warn
           retention-days: 30
 
   # ── Job 2: 前端 Docker 镜像（cpq-portal nginx 生产构建）──
