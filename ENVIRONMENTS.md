@@ -9,9 +9,10 @@
 | 组件 | 地址 | 备注 |
 |------|------|------|
 | CPQ App 后端 | `localhost:30000` | `java -jar ruoyi-admin.jar` |
-| CPQ App 前端 (门户) | `localhost:3000` | Vite |
+| CPQ App 前端 (门户) | `localhost:3000` | Vite (cpq-portal) |
+| CPQ App 管理后台 | `localhost:2999` | Vite (ruoyi-ui) |
 | CPQ Agent 后端 | `localhost:58100` | Python FastAPI |
-| CPQ Agent 前端 | `localhost:57100` | Vue 3 + Vite |
+| CPQ Agent 前端 | `localhost:5173` | Vite (Agent) |
 | 数据库 | `8.148.208.235:3306` / `Ruoyi_CPQ` | root / Celnet2025.QY |
 | Redis | `localhost:6379` | 密码 `ruoyi123` |
 | 项目路径 (App) | `/Users/a1234/Desktop/CPQ_App` | |
@@ -28,7 +29,8 @@
 |------|------|------|
 | 应用服务器 | `8.148.208.235` | Docker 部署 |
 | CPQ App 后端 | `:2999`（外部）/ `:30000`（容器内） | Docker 端口映射 |
-| CPQ App 前端 (门户) | `:3000` | Nginx |
+| CPQ App 前端 (门户) | `:3000` | Nginx (cpq-portal) |
+| CPQ App 管理后台 | `:5173` | Nginx (ruoyi-ui) |
 | CPQ Agent 后端 | `:58100` | Python FastAPI，新增于 v4 |
 | CPQ Agent 前端 | `:57100` | Nginx，新增于 v4 |
 | 数据库 | `8.133.17.0:3306` / `Ruoyi_CPQ` | root / Celnet2025.QY |
