@@ -15,8 +15,7 @@
 -- 说明: 算法类型、算法参数、权重移至 cpq_scoring_weight，
 --        本表退化为纯字典（评分引擎不直接读此表）
 -- ============================================================
-DROP TABLE IF EXISTS `cpq_dimension_def`;
-CREATE TABLE `cpq_dimension_def` (
+CREATE TABLE IF NOT EXISTS `cpq_dimension_def` (
   `dimension_id` bigint NOT NULL,
   `tenant_id` varchar(20) COLLATE utf8mb4_general_ci DEFAULT '000000',
   `dimension_code` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT '维度编码(全局唯一)',
@@ -37,8 +36,7 @@ CREATE TABLE `cpq_dimension_def` (
 --          - 维度集合（动力电池有"放电倍率"，锂原没有）
 --          - 算法参数（尺寸容差锂原5% vs 动力2%）
 -- ============================================================
-DROP TABLE IF EXISTS `cpq_scoring_weight`;
-CREATE TABLE `cpq_scoring_weight` (
+CREATE TABLE IF NOT EXISTS `cpq_scoring_weight` (
   `weight_id` bigint NOT NULL,
   `tenant_id` varchar(20) COLLATE utf8mb4_general_ci DEFAULT '000000',
   `category_id` bigint NOT NULL COMMENT '产品线ID → cpq_product_category',
@@ -61,8 +59,7 @@ CREATE TABLE `cpq_scoring_weight` (
 -- 用途: 通过 dimension_code 关联权重表，指定每个评分维度
 --        对应产品表中的哪些属性（分类+属性名）
 -- ============================================================
-DROP TABLE IF EXISTS `cpq_dimension_attr_mapping`;
-CREATE TABLE `cpq_dimension_attr_mapping` (
+CREATE TABLE IF NOT EXISTS `cpq_dimension_attr_mapping` (
   `mapping_id` bigint NOT NULL,
   `tenant_id` varchar(20) COLLATE utf8mb4_general_ci DEFAULT '000000',
   `dimension_code` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT '→ cpq_scoring_weight.dimension_code',
@@ -81,8 +78,7 @@ CREATE TABLE `cpq_dimension_attr_mapping` (
 -- 表4: cpq_match_config — 匹配引擎全局配置
 -- 用途: 存储匹配引擎的运行时参数（阈值、TopN等）
 -- ============================================================
-DROP TABLE IF EXISTS `cpq_match_config`;
-CREATE TABLE `cpq_match_config` (
+CREATE TABLE IF NOT EXISTS `cpq_match_config` (
   `config_id` bigint NOT NULL,
   `tenant_id` varchar(20) COLLATE utf8mb4_general_ci DEFAULT '000000',
   `config_key` varchar(100) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'DEFAULT_THRESHOLD / TOP_N_COUNT / ENABLE_DIY_SUGGESTION / SCORE_PRECISION / MAX_REMATCH_ROUNDS',
@@ -101,8 +97,7 @@ CREATE TABLE `cpq_match_config` (
 -- 表5: cpq_match_result — 匹配评分结果审计
 -- 用途: 记录每次 match_product 调用的完整输入输出
 -- ============================================================
-DROP TABLE IF EXISTS `cpq_match_result`;
-CREATE TABLE `cpq_match_result` (
+CREATE TABLE IF NOT EXISTS `cpq_match_result` (
   `result_id` bigint NOT NULL,
   `tenant_id` varchar(20) COLLATE utf8mb4_general_ci DEFAULT '000000',
   `session_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '会话ID',
@@ -123,8 +118,7 @@ CREATE TABLE `cpq_match_result` (
 -- 用途: 记录销售选择产品 → 工艺确认 → 替代推荐的完整流程
 --       关联审批链，存储客户需求自然语言描述
 -- ============================================================
-DROP TABLE IF EXISTS `cpq_process_confirm`;
-CREATE TABLE `cpq_process_confirm` (
+CREATE TABLE IF NOT EXISTS `cpq_process_confirm` (
   `confirm_id` bigint NOT NULL COMMENT '确认单ID',
   `tenant_id` varchar(20) COLLATE utf8mb4_general_ci DEFAULT '000000',
   `result_id` bigint NOT NULL COMMENT '→ cpq_match_result.result_id',
@@ -147,8 +141,14 @@ CREATE TABLE `cpq_process_confirm` (
 -- ============================================================
 -- 表修改: cpq_product_model — 新增产品高清主图URL
 -- ============================================================
-ALTER TABLE `cpq_product_model`
-  ADD COLUMN `image_url` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '产品高清主图URL';
+-- 幂等添加列（已存在则跳过）
+SELECT COUNT(*) INTO @col_exists FROM information_schema.columns
+  WHERE table_schema = DATABASE() AND table_name = 'cpq_product_model' AND column_name = 'image_url';
+SET @sql = IF(@col_exists = 0, 'ALTER TABLE `cpq_product_model`
+  ADD COLUMN `image_url` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT ''产品高清主图URL'';', 'SELECT "column image_url already exists" AS msg');
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
 --   AFTER `thumbnail_url`;
 
 
@@ -167,7 +167,7 @@ ALTER TABLE `cpq_product_model`
 -- ############################################################
 
 -- 维度字典（7个维度）
-INSERT INTO `cpq_dimension_def` (dimension_id, tenant_id, dimension_code, dimension_name, sort_order, status) VALUES
+INSERT IGNORE INTO `cpq_dimension_def` (dimension_id, tenant_id, dimension_code, dimension_name, sort_order, status) VALUES
 (1, '000000', 'SIZE_MATCH',     '尺寸合规',     1, '0'),
 (2, '000000', 'USAGE_MATCH',    '用途场景匹配', 2, '0'),
 (3, '000000', 'TEMP_MATCH',     '温度范围覆盖', 3, '0'),
@@ -178,7 +178,7 @@ INSERT INTO `cpq_dimension_def` (dimension_id, tenant_id, dimension_code, dimens
 
 
 -- 锂原电池(分类ID=507) 7维权重配置
-INSERT INTO `cpq_scoring_weight` (weight_id, tenant_id, category_id, dimension_code, dimension_name, score_type, score_formula, dim_weight, sort_order, status) VALUES
+INSERT IGNORE INTO `cpq_scoring_weight` (weight_id, tenant_id, category_id, dimension_code, dimension_name, score_type, score_formula, dim_weight, sort_order, status) VALUES
 (1, '000000', 507, 'SIZE_MATCH',   '尺寸合规',     'RANGE_COVER',      '{"tolerance":5}',                                    35.00, 1, '0'),
 (2, '000000', 507, 'USAGE_MATCH',  '用途场景匹配', 'ENUM_HIERARCHY',   '{"hierarchy":{"智能表计":["智能水表","智能燃气表","智能电表"],"安防报警":["安防","ETC","报警器"],"物联网":["GPS追踪","环境监测","NB-IoT"],"工业":["PLC","CNC","RTU"],"医疗":["医疗设备","紧急发射器"],"汽车":["汽车电子","TPMS"],"其他":["RTC","记忆备份"]}}', 15.00, 2, '0'),
 (3, '000000', 507, 'TEMP_MATCH',   '温度范围覆盖', 'RANGE_COVER',      '{"tolerance":0}',                                    15.00, 3, '0'),
@@ -189,7 +189,7 @@ INSERT INTO `cpq_scoring_weight` (weight_id, tenant_id, category_id, dimension_c
 
 
 -- 维度→产品属性映射
-INSERT INTO `cpq_dimension_attr_mapping` (mapping_id, tenant_id, dimension_code, product_attr_category, product_attr_name, mapping_role) VALUES
+INSERT IGNORE INTO `cpq_dimension_attr_mapping` (mapping_id, tenant_id, dimension_code, product_attr_category, product_attr_name, mapping_role) VALUES
 (1,  '000000', 'SIZE_MATCH',   '物理规格', '外形长度',     'BOTH'),
 (2,  '000000', 'SIZE_MATCH',   '物理规格', '外形宽度',     'BOTH'),
 (3,  '000000', 'SIZE_MATCH',   '物理规格', '外形高度',     'BOTH'),
@@ -205,7 +205,7 @@ INSERT INTO `cpq_dimension_attr_mapping` (mapping_id, tenant_id, dimension_code,
 
 
 -- 匹配引擎全局配置
-INSERT INTO `cpq_match_config` (config_id, tenant_id, config_key, config_value, config_type, description) VALUES
+INSERT IGNORE INTO `cpq_match_config` (config_id, tenant_id, config_key, config_value, config_type, description) VALUES
 (1, '000000', 'DEFAULT_THRESHOLD',     '70',   'NUMBER',  '默认匹配阈值(70分)'),
 (2, '000000', 'TOP_N_COUNT',           '10',   'NUMBER',  '推荐TopN数量'),
 (3, '000000', 'ENABLE_DIY_SUGGESTION', 'true', 'BOOLEAN', '低于阈值提示转定制'),
@@ -214,11 +214,11 @@ INSERT INTO `cpq_match_config` (config_id, tenant_id, config_key, config_value, 
 
 
 -- 审批规则: 锂原标品匹配推荐确认
-INSERT INTO `cpq_approval_rule` (rule_id, tenant_id, rule_name, trigger_type, approval_chain_json, status, del_flag) VALUES
+INSERT IGNORE INTO `cpq_approval_rule` (rule_id, tenant_id, rule_name, trigger_type, approval_chain_json, status, del_flag) VALUES
 (100, '000000', '锂原标品匹配推荐确认', 'ALWAYS', '[]', '0', '0');
 
 -- 审批矩阵: process_scheduler 角色审批（匹配推荐场景）
-INSERT INTO `cpq_approval_matrix` (matrix_id, tenant_id, dimension_type, dimension_value, approver_role, min_approvals, status, del_flag) VALUES
+INSERT IGNORE INTO `cpq_approval_matrix` (matrix_id, tenant_id, dimension_type, dimension_value, approver_role, min_approvals, status, del_flag) VALUES
 (1, '000000', 'PRODUCT_LINE', '507', 'process_scheduler', 1, '0', '0');
 
 -- 产品列表查询性能优化索引
