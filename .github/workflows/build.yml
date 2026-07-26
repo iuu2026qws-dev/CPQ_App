@@ -34,8 +34,8 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - name: Build Docker image
-        run: cd cpq-portal && docker build -t cpq-frontend:latest .
+      - name: Build Docker image（双前端：cpq-portal + ruoyi-ui）
+        run: docker build -f Dockerfile.frontend -t cpq-frontend:latest .
       - name: Export image
         run: docker save cpq-frontend:latest | gzip > cpq-frontend.tar.gz
       - name: Upload image
