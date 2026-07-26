@@ -16,7 +16,7 @@ jobs:
       - name: Rename directories with spaces
         run: mv "ruoyi-admin 2" ruoyi-admin && mv "ruoyi-common 2" ruoyi-common && sed -i 's/ruoyi-admin 2/ruoyi-admin/g;s/ruoyi-common 2/ruoyi-common/g' pom.xml ruoyi-modules/pom.xml 2>/dev/null
       - name: Build JAR
-        run: mvn clean package -DskipTests -q
+        run: mvn clean package -DskipTests --no-transfer-progress 2>&1 | tail -50
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
