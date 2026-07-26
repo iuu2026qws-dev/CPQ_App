@@ -8,10 +8,10 @@
 
 ---
 
-## 一、部署包：`deploy-prod-v1/`
+## 一、部署包：`eve-cpq-poc-deploy-0727/`
 
 ```
-deploy-prod-v1/
+eve-cpq-poc-deploy-0727/
 ├── ruoyi-admin.jar              ← CPQ_App CI: cpq-app-jar
 ├── cpq-frontend.tar.gz          ← CPQ_App CI: cpq-frontend-image
 ├── cpq-agent-backend.tar.gz     ← CPQ_Agent CI: cpq-agent-backend-image
@@ -61,12 +61,12 @@ df -h /opt
 本机执行（通过 VPN 连接后）：
 
 ```bash
-scp -r ~/Desktop/deploy-prod-v1 eveuser@10.100.111.55:/opt/
+scp -r ~/Desktop/eve-cpq-poc-deploy-0727 eveuser@10.100.111.55:/opt/
 ```
 
 **验证**：
 ```bash
-ssh eveuser@10.100.111.55 "ls -lh /opt/deploy-prod-v1/"
+ssh eveuser@10.100.111.55 "ls -lh /opt/eve-cpq-poc-deploy-0727/"
 ```
 
 ---
@@ -74,7 +74,7 @@ ssh eveuser@10.100.111.55 "ls -lh /opt/deploy-prod-v1/"
 ## 四、阶段 2：加载 Docker 镜像
 
 ```bash
-cd /opt/deploy-prod-v1
+cd /opt/eve-cpq-poc-deploy-0727
 
 # Agent 镜像（离线导入）
 docker load < cpq-agent-backend.tar.gz
@@ -96,7 +96,7 @@ docker images | grep -E "cpq-frontend|cpq_agent"
 
 ```bash
 mkdir -p /opt/agent-config /opt/agent-data
-cp /opt/deploy-prod-v1/agent-config.yaml /opt/agent-config/config.yaml
+cp /opt/eve-cpq-poc-deploy-0727/agent-config.yaml /opt/agent-config/config.yaml
 ```
 
 **验证**：
@@ -142,12 +142,12 @@ docker-compose ps -a
 ### 7.1 覆盖 compose
 
 ```bash
-cp /opt/deploy-prod-v1/docker-compose.yml /opt/docker-compose.yml
+cp /opt/eve-cpq-poc-deploy-0727/docker-compose.yml /opt/docker-compose.yml
 ```
 
 **验证**：
 ```bash
-grep -E "cpq-agent|ruoyi-admin.jar|deploy-prod-v1|xybot-redis" /opt/docker-compose.yml
+grep -E "cpq-agent|ruoyi-admin.jar|eve-cpq-poc-deploy-0727|xybot-redis" /opt/docker-compose.yml
 # 确认：Agent 服务存在、JAR 挂载路径正确、redis 为 xybot-redis
 grep "/config/config.yaml" /opt/docker-compose.yml
 # 确认：/config/config.yaml（不是 /app/config）
@@ -176,7 +176,7 @@ docker-compose ps
 
 ```bash
 mysql -h 10.100.111.48 -u yhs_data_uat -p'Zc8!jS5&mE4#' dm_app_yhs_safe \
-  < /opt/deploy-prod-v1/cpq_poc_ddl.sql 2>&1 | grep -v "already exists\|Duplicate"
+  < /opt/eve-cpq-poc-deploy-0727/cpq_poc_ddl.sql 2>&1 | grep -v "already exists\|Duplicate"
 ```
 
 > DDL 已做幂等处理：`CREATE TABLE IF NOT EXISTS` + `INSERT IGNORE` + 列/索引存在判断。可安全重复执行。
@@ -283,7 +283,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./application-dev.yml:/app/config/application-dev.yml
-      - ./deploy-prod-v1/ruoyi-admin.jar:/app/ruoyi-admin.jar
+      - ./eve-cpq-poc-deploy-0727/ruoyi-admin.jar:/app/ruoyi-admin.jar
     healthcheck:
       test: ["CMD", "sh", "-c", "curl -f http://localhost:2999/ || exit 1"]
       interval: 30s
@@ -359,4 +359,4 @@ volumes:
 | AI 模型 | DeepSeek v4-pro | Qwen3-235B |
 | AI API | api.deepseek.com | ai-pool.evebattery.com/v1 |
 | 网络 | 公网 | 内网/VPN |
-| 部署目录 | `/opt/deploy-v5/` | `/opt/deploy-prod-v1/` |
+| 部署目录 | `/opt/deploy-v5/` | `/opt/eve-cpq-poc-deploy-0727/` |
