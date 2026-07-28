@@ -12,8 +12,10 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ApprovalButton: typeof import('./../components/Process/approvalButton.vue')['default']
+    ApprovalChainBuilder: typeof import('./../components/approval/ApprovalChainBuilder.vue')['default']
     ApprovalRecord: typeof import('./../components/Process/approvalRecord.vue')['default']
     Breadcrumb: typeof import('./../components/Breadcrumb/index.vue')['default']
+    ChainStepCard: typeof import('./../components/approval/ChainStepCard.vue')['default']
     DictTag: typeof import('./../components/DictTag/index.vue')['default']
     Editor: typeof import('./../components/Editor/index.vue')['default']
     ElAlert: typeof import('element-plus/es')['ElAlert']
@@ -34,6 +36,7 @@ declare module 'vue' {
     ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElDivider: typeof import('element-plus/es')['ElDivider']
+    ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
@@ -51,6 +54,7 @@ declare module 'vue' {
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElPopover: typeof import('element-plus/es')['ElPopover']
     ElRadio: typeof import('element-plus/es')['ElRadio']
+    ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElResult: typeof import('element-plus/es')['ElResult']
     ElRow: typeof import('element-plus/es')['ElRow']

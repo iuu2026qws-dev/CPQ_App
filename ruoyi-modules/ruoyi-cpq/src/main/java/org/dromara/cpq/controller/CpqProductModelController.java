@@ -95,7 +95,7 @@ public class CpqProductModelController extends BaseController {
         response.setHeader("Content-Disposition", "attachment;filename=CPQ产品导入模版.csv");
         java.io.PrintWriter w = response.getWriter();
         w.write("﻿"); // BOM for Excel UTF-8
-        w.println("电芯编码*,电芯型号*,参考尺寸,标称电压,标称容量,最大持续电流,最大脉冲电流,工作温度,最大尺寸,重量(g),存储温度,应用范围,成品编码*,成品描述*,机型号,插头线型号,插头方向,线长(mm),是否绕线,是否桶装,运输方式,产品类型,锂亚电芯数,结构,装箱数量,外贴商标,工时,近一年出货量");
+        w.println("电芯编码,电芯型号,参考尺寸,标称电压,标称容量,最大持续电流,最大脉冲电流,工作温度,最大尺寸,重量(g),存储温度,应用范围,成品编码,成品描述,机型号,插头线型号,插头方向,线长(mm),是否绕线,是否桶装,运输方式,产品类型,锂亚电芯数,结构,装箱数量,外贴商标,工时,近一年出货量");
         w.println("ER14250,ER14250,1/2AA,3.6V,1200mAh,50mA,100mA,-55~85℃,Φ14.5×25mm,10,-40~60℃,\"GPS,安防\",ER14250-BP-001,ER14250电池包 50mm线长 JST插头,TYPE-A,JST-XH-2P,正向,50,是,是,空运,电池包,1,单体,100,自有商标,2.5,5000");
         w.println("ER14505,ER14505,AA,3.6V,2400mAh,100mA,200mA,-40~+85℃,Φ14.5×50mm,18,-40~60℃,智能水表,ER14505-BP-001,ER14505电池包 200mm Molex,TYPE-B,Molex-51021,反向,200,否,否,海运,电池包,2,双串,50,自有商标,3.0,3000");
         w.println();
@@ -202,13 +202,20 @@ public class CpqProductModelController extends BaseController {
                     "INSERT INTO cpq_product_model (model_id,tenant_id,catalog_id,category_id,model_code,model_name,description,lifecycle_status,config_type,base_price,currency,min_order_qty,lead_time_days,status,del_flag,create_time) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE model_name=VALUES(model_name),description=VALUES(description),base_price=VALUES(base_price),min_order_qty=VALUES(min_order_qty),lead_time_days=VALUES(lead_time_days)",
                     modelId, "000000", 11L, categoryId, code, name, desc, "ACTIVE", "STANDARD",
                     basePrice, "CNY", minOrderQty, leadTimeDays, "0", "0", nowStr);
+                // ★ 查出实际 model_id（UPSERT 后可能是旧记录的 ID，不是上面生成的 modelId）
+                Long actualModelId = jdbcTemplate.queryForObject(
+                    "SELECT model_id FROM cpq_product_model WHERE model_code=? AND tenant_id='000000'", Long.class, code);
+                if (actualModelId == null) actualModelId = modelId;
+                else modelId = actualModelId; // 同步后续 BOM 使用的 ID
                 modelCount++;
 
-                // ★ 先删除旧属性（幂等，支持重复导入）
-                jdbcTemplate.update("DELETE FROM cpq_product_attribute WHERE model_id IN (SELECT model_id FROM cpq_product_model WHERE model_code=?)", code);
+                // ★ 先删除旧属性 + 旧BOM（幂等，支持重复导入）
+                jdbcTemplate.update("DELETE FROM cpq_sbom_line WHERE sbom_header_id IN (SELECT sbom_header_id FROM cpq_sbom_header WHERE model_id=?)", modelId);
+                jdbcTemplate.update("DELETE FROM cpq_sbom_header WHERE model_id=?", modelId);
+                jdbcTemplate.update("DELETE FROM cpq_product_attribute WHERE model_id=?", modelId);
                 // 批量收集属性
                 java.util.List<Object[]> attrBatch = new java.util.ArrayList<>();
-                String[][] cellAttrs = {{"电芯编码","STRING"},{"电芯型号","STRING"},{"参考尺寸","STRING"},{"标称电压","NUMBER"},{"标称容量","STRING"},{"最大持续电流","STRING"},{"最大脉冲电流","STRING"},{"工作温度","STRING"},{"最大尺寸","STRING"},{"重量","STRING"},{"存储温度","STRING"},{"应用范围","STRING"}};
+                String[][] cellAttrs = {{"电芯编码","STRING"},{"电芯型号","STRING"},{"参考尺寸","STRING"},{"标称电压","NUMBER"},{"标称容量","STRING"},{"最大持续电流","STRING"},{"最大脉冲电流","STRING"},{"工作温度","STRING"},{"最大尺寸","STRING"},{"重量(g)","STRING"},{"存储温度","STRING"},{"应用范围","STRING"}};
                 for (int i = 0; i < cellAttrs.length; i++) {
                     String an = cellAttrs[i][0], at = cellAttrs[i][1], v = row.getOrDefault(an, "").trim();
                     if (!v.isEmpty()) attrBatch.add(new Object[]{attrId++, "000000", modelId, "电芯规格", an, v, "1", "1", i, at, i, "0", nowStr});
@@ -227,7 +234,7 @@ public class CpqProductModelController extends BaseController {
                     attrBatch.add(new Object[]{attrId++, "000000", modelId, "电气性能", "工作温度下限", tm.group(1), "1", "1", 0, "NUMBER", 0, "0", nowStr});
                     attrBatch.add(new Object[]{attrId++, "000000", modelId, "电气性能", "工作温度上限", tm.group(2), "1", "1", 1, "NUMBER", 1, "0", nowStr});
                 }
-                String[][] prodAttrs = {{"机型号","STRING"},{"插头线型号","STRING"},{"插头方向","STRING"},{"线长","NUMBER"},{"是否绕线","BOOLEAN"},{"是否桶装","BOOLEAN"},{"运输方式","STRING"},{"产品类型","STRING"},{"锂亚电芯数","NUMBER"},{"结构","STRING"},{"装箱数量","NUMBER"},{"商标","STRING"},{"工时","NUMBER"},{"近一年出货量","NUMBER"}};
+                String[][] prodAttrs = {{"机型号","STRING"},{"插头线型号","STRING"},{"插头方向","STRING"},{"线长(mm)","NUMBER"},{"是否绕线","BOOLEAN"},{"是否桶装","BOOLEAN"},{"运输方式","STRING"},{"产品类型","STRING"},{"锂亚电芯数","NUMBER"},{"结构","STRING"},{"装箱数量","NUMBER"},{"外贴商标","STRING"},{"工时","NUMBER"},{"近一年出货量","NUMBER"}};
                 for (int i = 0; i < prodAttrs.length; i++) {
                     String an = prodAttrs[i][0], at = prodAttrs[i][1], v = row.getOrDefault(an, "").trim();
                     attrBatch.add(new Object[]{attrId++, "000000", modelId, "成品规格", an, v, "1", an.equals("商标")||an.equals("工时")?"0":"1", i, at, i, "0", nowStr});
@@ -343,10 +350,39 @@ public class CpqProductModelController extends BaseController {
             }
             wb.close();
         } else {
-            // CSV/TSV — 使用 OpenCSV 正确处理引号内的逗号
-            java.io.BufferedReader br = new java.io.BufferedReader(new java.io.InputStreamReader(file.getInputStream()));
+            // CSV/TSV — 自动检测编码（UTF-8 BOM → UTF-8 → GBK）
+            java.io.InputStream is = file.getInputStream();
+            byte[] bytes = is.readAllBytes();
+            is.close();
+
+            // 去掉 UTF-8 BOM（如果存在）
+            String content;
+            if (bytes.length >= 3 && bytes[0] == (byte)0xEF && bytes[1] == (byte)0xBB && bytes[2] == (byte)0xBF) {
+                content = new String(bytes, 3, bytes.length - 3, java.nio.charset.StandardCharsets.UTF_8);
+            } else {
+                // 先尝试 UTF-8，如果包含无效字节则回退到 GBK
+                try {
+                    content = new String(bytes, java.nio.charset.StandardCharsets.UTF_8);
+                    // 检查是否有乱码特征（高位字节的非 UTF-8 序列会变成 �）
+                    if (content.contains("�")) {
+                        content = new String(bytes, java.nio.charset.Charset.forName("GBK"));
+                    }
+                } catch (Exception e) {
+                    content = new String(bytes, java.nio.charset.Charset.forName("GBK"));
+                }
+            }
+
+            java.io.BufferedReader br = new java.io.BufferedReader(new java.io.StringReader(content));
             char delimiter = ext.endsWith(".tsv") ? '\t' : ',';
-            com.opencsv.CSVReader reader = new com.opencsv.CSVReaderBuilder(br).withCSVParser(
+            // ★ 检测分隔符：如果第一行没有逗号但有其他分隔符，自动识别
+            String firstLineForDetect = br.readLine();
+            br.close();
+            if (firstLineForDetect != null && !firstLineForDetect.contains(",") && firstLineForDetect.contains("\t")) {
+                delimiter = '\t';
+            }
+
+            java.io.BufferedReader br2 = new java.io.BufferedReader(new java.io.StringReader(content));
+            com.opencsv.CSVReader reader = new com.opencsv.CSVReaderBuilder(br2).withCSVParser(
                 new com.opencsv.CSVParserBuilder().withSeparator(delimiter).build()).build();
             String[] headers = reader.readNext();
             if (headers == null) { reader.close(); return rows; }

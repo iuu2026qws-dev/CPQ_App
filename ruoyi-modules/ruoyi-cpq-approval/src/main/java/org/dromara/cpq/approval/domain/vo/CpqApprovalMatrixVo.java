@@ -12,6 +12,7 @@ public class CpqApprovalMatrixVo implements Serializable {
     private Long matrixId;
     private String dimensionType;
     private String dimensionValue;
+    private String flowCode;
     private String approverRole;
     private String approverIds;
     private Integer minApprovals;

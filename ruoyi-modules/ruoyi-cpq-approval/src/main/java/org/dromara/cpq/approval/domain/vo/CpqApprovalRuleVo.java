@@ -13,8 +13,11 @@ public class CpqApprovalRuleVo implements Serializable {
     private Long ruleId;
     private String ruleName;
     private String triggerType;
+    private String triggerScene;
     private BigDecimal triggerValue;
     private String approvalChainJson;
+    private String flowCode;
     private Integer priority;
+    private Integer slaHours;
     private String status;
 }

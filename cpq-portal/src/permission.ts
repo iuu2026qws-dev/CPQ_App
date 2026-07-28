@@ -21,7 +21,11 @@ router.beforeEach(async (to, _from, next) => {
         next()
       } catch (err: any) {
         await useUserStore().logout()
-        ElMessage.error(err?.message || '获取用户信息失败')
+        // 401/认证失败时不显示错误（登录态过期是正常流程）
+        const msg = err?.message || ''
+        if (!msg.includes('认证失败') && !msg.includes('401')) {
+          ElMessage.error(msg || '获取用户信息失败')
+        }
         next(`/login?redirect=${encodeURIComponent(to.fullPath)}`)
       }
     } else {

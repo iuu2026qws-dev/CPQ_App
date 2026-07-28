@@ -22,9 +22,12 @@ public class CpqApprovalRule extends TenantEntity {
     private Long ruleId;
     private String ruleName;
     private String triggerType;
+    private String triggerScene;
     private BigDecimal triggerValue;
     private String approvalChainJson;
+    private String flowCode;
     private Integer priority;
+    private Integer slaHours;
     private String status;
 
     @TableLogic(value = "0", delval = "2")
